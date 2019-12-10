@@ -42,11 +42,15 @@
 [ ]CLI 환경에서 자바 클래스 파일을 실행할 수 있다.	/Hello.java	$ java  Hello
 
 # 소스 파일과 컴파일 결과 파일 분리 		
-[ ]Maven 표준 디렉토리 구조를 만들 수 있다.		Maven 표준 디렉토리 구조에 맞춰 폴더를 생성
+[ ]Maven 표준 디렉토리 구조를 만들 수 있다.	
+  	Maven 표준 디렉토리 구조에 맞춰 폴더를 생성
 [ ]각 디렉토리의 용도를 이해한다.		
-[ ]프로젝트 디렉토리에서 소스 디렉토리에 있는 자바 소스 파일을 컴파일 할 수 있다.	src/main/java/Hello2.java	$ javac src/main/java/Hello2.java
-[ ]컴파일 할 때 컴파일 결과로 생성된 클래스 파일을 별도 디렉토리에 분리할 수 있다.	src/main/java/Hello2.java	$ javac -d bin/main src/main/java/Hello2.java
-[ ]다른 디렉토리에 있는 클래스 파일을 실행할 수 있다.	src/main/java/Hello2.java	$ java -classpath bin/main Hello2
+[ ]프로젝트 디렉토리에서 소스 디렉토리에 있는 자바 소스 파일을 컴파일 할 수 있다.	
+   src/main/java/Hello2.java	$ javac src/main/java/Hello2.java
+[ ]컴파일 할 때 컴파일 결과로 생성된 클래스 파일을 별도 디렉토리에 분리할 수 있다.	
+   src/main/java/Hello2.java	$ javac -d bin/main src/main/java/Hello2.java
+[ ]다른 디렉토리에 있는 클래스 파일을 실행할 수 있다.	
+   src/main/java/Hello2.java	$ java -classpath bin/main Hello2
 
 # 패키지와 소스 파일		
 [ ]패키지의 용도를 이해하고 패키지를 생성할 수 있다.	com.ohoracs.basic	src/main/java/com/ohoracs/basic 디렉토리 생성
