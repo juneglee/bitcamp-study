@@ -5,7 +5,7 @@ import java.util.Scanner;
 import com.eomcs.lms.domain.Board;
 
 
-public class BoardHandler {
+public class BoardHandler6 {
 
   static final int boardSIZE = 100;
   static Board[] boards = new Board[boardSIZE]; 
