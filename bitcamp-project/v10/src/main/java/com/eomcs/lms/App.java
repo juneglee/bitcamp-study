@@ -3,15 +3,13 @@ package com.eomcs.lms;
 
 import java.sql.Date;
 import java.util.Scanner;
-import com.eomcs.lms.handler.BoardHandler;
-import com.eomcs.lms.handler.LessonHandler;
-import com.eomcs.lms.handler.MemberHandler;
 public class App {
 
   static Scanner keyboard = new Scanner(System.in);
 
   public static void main(String[] args) {
-
+    // lessonhandler의 메서르를 사용하기 전에 
+    // 그 메서드가 필요로 하는 키보드 객체를 설정해 줘야 한다
     LessonHandler.keyboard = keyboard;
     MemberHandler.keyboard = keyboard;
     BoardHandler.keyboard = keyboard;
@@ -24,6 +22,7 @@ public class App {
       switch (command){
         case "/lesson/add":
 
+          //다른 클래스 분리한 메서드 호출할 때는 클래스 이름을 지정해야 한다
           LessonHandler.addLesson();
           break;
 
