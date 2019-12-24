@@ -5,6 +5,10 @@ public class Exam06_3 {
     public static void main(String[] args) {
         int i = 7;
         i = i++;
+        int j = 8;
+        j = j++;
+        
+        
         // int temp = i;
         // i = i + 1;
         // i = temp;
@@ -21,6 +25,7 @@ public class Exam06_3 {
         //    => 다시 i는 8에서 7로 바뀌었다.
 
         System.out.println(i);
+        System.out.println(j);
 
     }
 }

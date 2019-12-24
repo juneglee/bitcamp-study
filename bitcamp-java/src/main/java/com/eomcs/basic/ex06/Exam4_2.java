@@ -20,5 +20,6 @@ public class Exam4_2 {
     for (x = 1; x <= 5; x++) 
       System.out.println(x);
     System.out.printf("x = %d\n", x);
+    // 이때 값은 6이라는 것을 주의 해야 한다 
   }
 }

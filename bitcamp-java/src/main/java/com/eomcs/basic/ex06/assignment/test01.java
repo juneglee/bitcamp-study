@@ -14,18 +14,11 @@ import java.util.Scanner;
 
 public class test01 {
   public static void main(String[] args) {
-    Scanner sc =  new Scanner (System.in);
 
-    System.out.print("직삼각형의 밑변 숫자를 입력: ");
-    int no = sc.nextInt();
-
+    int no = Console.inputInt();
     int i = 1;
     while (i <= no) {
-      int j = 1;
-      while (j <= i) {
-        System.out.print("*");
-        j++;
-      }
+      Graphic.drawLine(i);
       System.out.println();
       i++;
     }

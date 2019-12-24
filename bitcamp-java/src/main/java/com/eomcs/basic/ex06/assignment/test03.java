@@ -19,14 +19,22 @@ public class test03 {
 
     System.out.print("정삼각형의 밑변 숫자를 입력: ");
     int no = sc.nextInt();
-
+    
+    if(no % 2 == 0)
+      no -- ;
+    
+    int spaceSize = no >> 1;
     int i = 1;
-    while (i <= no) {
+    while (i <= spaceSize) {
+      if (no % 2 == 0) {
+        continue;
+      }
       int j1 = i;
       while (j1 < no) {
         System.out.print(" ");
         j1++;
       }
+      
       int j2 = 0;
       while (j2 < i*2-1) {
         System.out.print("*");

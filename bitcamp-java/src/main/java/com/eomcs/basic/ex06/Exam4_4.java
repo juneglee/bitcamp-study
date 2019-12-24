@@ -19,12 +19,14 @@ public class Exam4_4 {
 
     for (int i = 0; i < list.size(); i++) 
       System.out.println(list.get(i));
-
+    //길이가 가변적
+    //배열 정수 및 문자 등을 모두 사용할 수 있다.
     System.out.println("----------------------");
 
     // for 문에 컬렉션도 적용할 수 있다.
     // for (변수 선언 : 컬렉션객체) 문장;
     for (Object value : list) 
       System.out.println(value);
+    // 어떤 종류의 데이터도 담을 수 있음; object
   }
 }

@@ -1,3 +1,5 @@
+//역 직삼각형 
+
 package com.eomcs.basic.ex06.assignment;
 
 import java.util.Scanner;
