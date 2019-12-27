@@ -1,0 +1,6 @@
+바코드 스캐너
+https://github.com/EddieLa/BarcodeReader
+
+
+QR코드 리더
+https://github.com/dwa012/html5-qrcode

@@ -1,0 +1,18 @@
+오늘 배운 내용
+- 스태틱 vs 인스턴스
+- 인스턴스 변수
+- 스태틱 변수
+
+    /*
+    class Monitor {
+      int bright;
+      Monitor (){//생성자
+        bright = 70; //기본을 유지할 수 있도록 유효한 값으로 초기화
+                        //없으면 생성자를 기본적으로 만든다
+      }
+    }
+    
+    Monitor obj = new Monitor(); //() 안에 int를 입력하면 int를 써야 한다
+    (); 생성자를 호출
+    obj.
+    */

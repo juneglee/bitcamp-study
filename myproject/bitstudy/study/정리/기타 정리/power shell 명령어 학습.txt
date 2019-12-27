@@ -1,0 +1,5 @@
+clone 전체를 복제하는거 (서버에서)
+pull 파일 변경사항을 가져오는거 (서버에서)
+check out ( 가져옴 (작업중 > local))
+commit ( 넣는거 (작업중 < local))
+add (명단 stage)

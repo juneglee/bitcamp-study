@@ -1,0 +1,86 @@
+12/02  
+1. Git/CVS/SVN 
+2. Eclipse, visual studio code  
+3. JDK > GraalVM(openjdk 11) 
+- JavaScript, Python, Ruby, R, JVM-based languages like Java, Scala, Groovy, Kotlin, Clojure, and LLVM-based languages such as C and C++. 
+4. Gradle + @ 
+
+프로그램 설치 방법 
+1. Scoop 설치  
+- 원도우 패키지 관리자  
+2. Graalvm  
+- 유니버셜 가상 머신  
+- Graalvm.org 사이트에서 java 11버전 다운로드 받는다 
+- C\bitcamp\에 압축 푼다 
+- Graalvm의 bin 폴더를 실행 경로(path)에 추가 한다  
+ - 왜 ? Path에 추가해 놓으면 아무 디렉토리에서나 해당 폴더의 프로그램을 실행 할 수 있다  
+ - 등록 안하면 ? 해당 프로그램의 위치를 모르기 때문에 실행 할 수 없다 
+ - 등록 방법?
+   - 시스템 환경 변수 편집 검핵하여 해당 프로그램 실행 
+   - 고급 - 환경 변수 버튼 클릭
+   - "시스템 변수" 목록(새로만들기 x)에서 path 변수의 값에 graalvm(bin o)의 bin폴더를 추가한다 
+ - graalvm이 설치된 폴더는 자바 홈 이름으로 환경 변수에 등록한다 .
+   - 자바 프로그램 중에서는 jdk(JRE)를 찾을 때 자바 홈 으로 등록된 경로를 찾기 때문이다.
+   -  jdk(자바 개발 도구)를 설치한 후에는 반드시 이 환경 변수에 설치 디렉토리의 경로를 등록하라! 
+   - 어떻게 설정하는가?
+
+- 
+- bitcamp  -syud \ 파일 생성
+ 
+- git 사용 확인
+
+    - "시스템 변수" 목록(새로만들기 O)에서 새로만들기를 한후 
+    - JAVA_HOME 이라는 이름을 graalvm(bin x)을 설치한 디렉토리를 지정한다 .
+3. Visual studio code(VScode) 설치 
+- 일반 및 개발 용 편집기  
+- 자바스크립트로 만든 프로그램  
+- 크롬 웹 브라우저를 기반으로 실행된다. (크롬 웹 브라우저에 살을 붙여 만든 프로그램) 
+- 소스 코드(.java, html, css, js 등) 를 편집하기 위해 설치 
+- 물론 일반 텍스트(.txt, . Md)를 편집할 때도 사용한다    
+
+4. Eclipse 통합 개발 환경 (IDE)
+- www.eclipse.org에서 설치를 도와주는 프로그램을 다운 받는다 
+- 설치 도우미를 시랳ㅇ하여 eclipse를 설치한다 
+- 이클립스의 작업 풀더(workspace)를 설정한다 .
+- 이클립스의 개발 환경을 설정한다 
+  - 다운 받은거 실행(업데이트가 있으면 갱신- 업데이트 완료 후 재실행 )
+  - 이클립스 enterprise 버전 설치
+  - 이클립스 실행 
+  - workspace를 지정 (\C\user\eclipse\workspace)
+  - 이클립스 사용 환경 설정
+    - JDK 경로 확인 및 지정
+      - window 메뉴 > perference 메뉴 클릭 > jAVA > INSTALLED JRES (클릭 및 jDK 설정 확인)
+      - 자바 소스 코드를 저정할 때 사용할 인코딩 규칙 설정 (general > workspace > text file encoding (other > UTF-8)
+    - 기본 편집기의 실행 환경 설정
+      -  general > editors > text editors 
+         ("displayed tab width" = 2 / insert space for tabs > check /  show print margin > check (컬럼 = 100) )
+      -  show whiteespace charachers (confiqure visibilty > trailing (carrigae reture/ line feed 해제)/ 공백을 표시할때 30% 투명도)
+    - 웹 관련 파일을 저장할 때 사용할 인코딩 규칙을 설정
+      - web  > css, html, jsp > all utf-8 
+    - 폰트 및 크기 설정 
+      - general > appearance > colors and fonts ( basic > text font - 폰트의 종류와 크기를 설정)
+
+5. git 준비 
+cd - /dir/remove//remote/git add/git commit/git push/git config/
+- 저장소 준비 
+ - 회원가입
+ - 스터디 저장소 생성
+
+- 개발 pc에 저장소 복제 
+  - c: user\user git 생성
+  - git clone [깃허브 저장소 주소]
+- 로컬 git 사용자 정보 설정
+  - 사용자 이메일 설정 : $ git config --global 
+ git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+- git 사용 확인
+ - 파일 추가 하기 (항상 3가지 모두 사용) ★ 삭제할 때도 3가지를 사용한다.
+
+  -bitcamp-study\test1.txt 파일 생성
+  - 로컬 저장소에 백업 대상 목록 작성 = git add test1. txt
+  - 로컬 저장소 백업 : $ git commit -m " 저장하는 이유"
+  - 로컬 저장소의 내용을 git 서버에 업로드 : $ git push
+ 
+ eomcs/ohoracs/엄진용
+

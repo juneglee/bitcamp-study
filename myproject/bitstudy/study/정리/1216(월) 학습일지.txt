@@ -1,0 +1,35 @@
+- 변수의 크기와 리터럴의 크기
+  - 오류 발생 
+  - 변수의 정의 
+  - 원시 자바 
+
+- 배열
+  - reference와 instance
+  - garbage의 생성과정과 처리과정
+  - 배열에 따른 메모리 할당 
+
+- 연산자 우선순위
+  - 나눗셈에서 int 와 float의 관계
+  - 부동 소수점에서 float과 float에서 유효자릿수가 7자리 이상이 될때 
+  - 정수의 대소 구분
+  - 형변환 규칙
+  - byte,short,char => int => long => float => double ★
+  - 산술 연산자의 우선순위
+  - && 와 &의 구분
+  - 비트연사 : 그래픽,포토샵 개발에 많이 사용
+
+- 가위바위보 예제, 계산기 예제
+  - equqls
+  - math ramdom
+  - if ~ else if
+  - for
+
+- ex99
+  - 값을 출력하기 
+  - next 
+
+- project 
+  - 입력 : scanner(import)
+	Date (import)
+  - 배열 함수 사용 
+

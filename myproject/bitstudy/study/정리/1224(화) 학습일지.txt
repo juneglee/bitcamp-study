@@ -1,0 +1,36 @@
+★gradle - 상대방이 gradle이 없을때 사용할 수 있도록 만든다
+   gradlew - 윈도우에서 사용가능하게 만들어준다
+   gardlew.bat - 리눅스에서 사용가능하게 만들어준다
+
+gradle eclipse 
+.settings, .classpath, .project
+
+★ 클래스 메서드(별로로 블록을 만듬)를 늘리면 속도는 느려진다. 하지만 유지보수 및 개발 비용이 줄어든다
+
+  // public : 다른 패키지에 있는 클래스에서도 이 변수를 사용하게 하려면 공개해야 한다.
+  // protected : 자식까지는 전달
+  // default :즉 public이 없거나, 아무것도 없으면 default이며 같은 패키지는 공유할 수 있다 
+  // private : 같은 패키지이여도 접근 불가능 
+
+★tip 오픈 소스라도 공개할 거만 공개해야 한다. 
+
+nextint에서 nextLine 한줄을 더 추가해야 하는 이유 ?
+- nextint는 Scanner에서 whtie space (= space, tab, newline)을 구분하여 하여 입력값을 자른다. 하지만 nextline은 전체를 입력값으로 보고 자른다
+
+- 게시판의 글이 삭제되더라도 당겨지지 않고 게시판의 인덱스는 그대로 사용해야 한다
+
+기술부채 
+- 시간의 여유로움이 없어서, 혹은 단순한으로 작성한 코드,  복붙등 으로 만들어진 코드를 리팩토리하기 어렵다
+
+
+class ( 변수 -개별관리 , 메서드- 공유)
+
+boards[i].no - board라는 식판 안에 no라는 음식을 얻는다
+
+static 이 있으면 class당 new하나 만들수 있다 하지만 static이 없으면 new를 여러개 만들수 있다
+
+class a
+
+static int a = static field = 클래스 필드  = 클래스에 소속  = // A(클래스 이름으로 변수 ).a = 100
+ int b = non-static field = 인스턴스 필드 = 인스턴스에 소속 = // 인스턴스 주소.b = 100
+

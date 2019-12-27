@@ -1,0 +1,184 @@
+- 대충보기
+ClassFile {
+    4 bytes        Java Magic Number
+    2 bytes        Minor Version
+    2 bytes        Major Version
+    2 bytes        Size of the constant pool
+    * bytes        Numerous bytes making up the constant pool
+    2 bytes        This class' access modifiers (Ie. public)
+    2 bytes        Index of this class in constant pool
+    2 bytes        Index of this class' super class in constant pool
+    2 bytes        Number of interfaces
+    * bytes        Numerous bytes making up interface definitions
+    2 bytes        Number of fields in this class
+    * bytes        Numerous bytes making up field definitions
+    2 bytes        Number of methods in this class
+    * bytes        Numerous bytes making up method definitions
+    2 bytes        Attributes count ( meta data for class file )
+    * bytes        Numerous bytes making up attribute definitions
+}
+
+Java File: CAFE BABE
+Version 8: 0000 0034
+Constant Pool Size of ZERO: 0000 >0003(3개로 변경(상수+1))
+(한줄이 하나의 값이다)
+
+07(index) 0002
+01(문자열) 000a            48 65 6c 6c 6f 57 6f 72 6c 64
+
+Super Public: 0021
+Unknown index of class in constant pool: 0000>0001(known)
+Unknown index of super class in constant pool: 0000
+zero interfaces: 0000
+zero fields: 0000
+zero methods: 0000
+zero attributes: 0000
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+1. javac (ex) javac HelloWorld2.java) > java를 바이트 코드로 변경시키준다 
+
+2. 자바 코딩(.java >자바에서 바이트 코드 java complie=javac.exe >바이트 코드.class> JVM java.exe
+
+3. main (+my) -- 컴파일러 -- 링커 -- 로더 (main, my, OS,(라이브러리))
+원시 > 컴파일 > 목적 > 링커 > 로더
+ - 원시 : 컴파일 되기 전의 소스 코드 형태
+ - 목적 : 언어 번역기 (컴파일러)에 의해서 번역된 원시 프로그램
+
+4. node : 자바스크립트 = 엔진 = 인터프리터
+- 한줄 씩 읽어서 실행한다.  
+- 실행할때마다 문법 오류 검사 수행
+- (속도가 느리다 )
+- 설치되기 전까지 오류를 찾을 수 없다
+- 컴파일을 하지 않는다 
+
+5.  .java(소스 파일) ~~ 컴파일러 ~~ .class(클래스 파일) ---JVM (C#과 동일 )
+    .C -- .obj -- .exe
+
+6. CLI (command line interface) ex) 터미널, powershell
+
+7. unit test (단위 테스트)  = 부품별로 테스트 > junit
+
+8. maven (문서관리)
+src -- main - java/resource(실행중에 사용할 기타 파일 ex)html,propertise,xml)/... 
+    -- test  - java/resource(실행중에 사용할 기타 파일 ex)html,propertise,xml)/... 
+bin
+
+9. 
+- 프로젝트 저장소에서 바이트 코드를 만들어 준다 :  javac src/main/java/Hello2.java
+- 만들어준 바이트 코드에서 클래스 파일이 있는 곳까지 찾아가서 JVM을 실행  -classpath = -cp
+- src에서 만들어진 소스 파일을 bin으로 이동할때 -d
+
+10.
+소스코드(컴파일 되기전의 상태) .java
+바이트 코드 (컴파일이 완료된 상태) .class 
+
+11. 소스파일의 패키지는 반드시 src와 bin 의 위치가 동일하게 소스코드와 바이트코드가 만들어 져야한다 
+- 유지 보수가 쉽기 때문에 
+
+12. 컴파일하기 위한 소스코드의 경로를 설정하고, 그 컴파일된 바이트 코드를 실행하기 위한 경로 설정 
+javac -d bin/main src/main/java/com/ohoracs/ok/Hello3.java (바이트 코드로 저장할 때는 /)
+java -cp bin/main com.ohoracs.basic.Hello3 (VM을 실행 할때는 패키지는 특수 코드로 설정한다 )
+
+13. 패키지 파일을 만드는 이유 ?? 
+- 자바형 언어의 구별의 하기 위해서는 패키지를 생성하여 구별한다 
+- 자바형 언어는 main까지 구별하고 그 밑으로는 패키지로 생성하여 언어에서는 구별하는 의미가 없다 
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+[ ]JIT(Just-in-time)과 AOT(ahead-of-time)이 무엇이고 등장한 이유를 이해한다.	
+- JIT (Just-in-time): 중간언어를 다시 기계어로 변경할 때 변경 실행시 컴파일을 같이 한다
+- AOT (ahead-of-time) : 중간언어를 다시 기계어로 변경할 때 미리 다운로드(컴파일) 후 실행한다	
+- 등장 이유 : JIT > AOT
+JIT(Just-in-time)과 AOT(ahead-of-time) 
+~~JIT는 실행시점에 소소코드를 번역한다. 설치는 빠르지만 실행시점에 느리게 된다. 번역한 정보를 메모리에 올려야 하기 때문에 메모리를 많이 먹는다. 
+~~AOT는 설치시점에 소스코드를 번역한다. 설치가 느리고, 번역을 해서 따로 파일을 저장하기 때문에 용량을 많이 먹게 된다. 하지만 실행시점에 미리 번역한 파일을 실행하므로 빠르게 실행이 가능하다. 
+즉, JIT는 실행 디바이스에서 매번 번역해야 하므로 느리고, AOT는 미리 번역해서 저장해 두기 때문에 빠르다.
+~~jIT를 사용하는 이유?
+jIT 컴파일러는 ART의 현재 AOT(Ahead of Time) 컴파일러를 보완하고 런타임 성능을 개선하며, 저장 공간을 절약하고, 앱 업데이트 및 시스템 업데이트 속도를 빠르게 해줍니다
+
+출처: https://118k.tistory.com/250 [개발자로 살아남기]
+
+
+# 자바 바이트코드와 자바 가상 머신		
+[ ]자바 바이트코드 실행 환경을 준비할 수 있다.		OpenJDK 설치, JAVA_HOME 과 PATH 환경 변수 설정, Sublime 편집기 설치
+-  Graalvm으로 시스템 속성 환경 변수에서 실행 가능 (시스템 변수 - Path에서 설정, JAVA_HOME(규칙이 정해져 있기 때문에 대문자, _를 사용하여 새로 만들기★)
+[ ]자바 바이트코드를 이해한다.	검색	https://docs.oracle.com/javase/specs/jvms/se13/jvms13.pdf
+- java byte code (컴파일링) : 자바로 작성된 코드를 자바 바이트 코르를 이용하여 컴파일링 한다
+[ ]바이트코드와 클래스 파일(.class)의 관계를 이해한다.	/HelloWorld.class	https://medium.com/@davethomas_9528/writing-hello-world-in-java-byte-code-34f75428e0ad
+- 자바 프로그램과 컴파일 했을 때 클래스 파일을 얻을 때, 이때 클래스 파일이 자바 바이트 코드 이다.
+[ ]클래스 파일과 JVM의 관계를 이해한다.		$ javap HelloWorld.class, $ javap -verbose HelloWorld.class
+-  이때 얻은 클래스 파일인 자바 바이트 코드를 자바 가상 머신으로 프로그램을 실행한다 
+[ ]JVM을 이용하여 클래스 파일을 실행할 수 있다.		$ java HelloWorld
+-  실행은 가능하지만, 거기에는 클래스 파일 많지 않다.
+
+# 프로그래밍 언어와 컴파일		
+[ ]컴파일 방식 프로그래밍이 등장한 이유를 이해한다.
+ - 기계어처럼 직접 프로그램을 해야하는 번거로움을 줄이기 위해서 사람 중심의 컴파일 방식으로 프로그래밍 한다 		
+[ ]프로그래밍 언어와 컴파일, CPU 인스트럭션의 관계를 이해한다.
+ - 프로그래밍 언어에는 저급, 중급, 고급 등의 언어로 발전하였으며, 저급언어에는 직접 코드를 작성해야 한다. 점차 발전하면서 assembly, C , java 등의 언어로 발전하였다. 
+ - CPU 는 2진수의 코드로 만들어 졌으며. 이때 코어의 성능에 따라 Hz의 속도로 중장 처리를 한다		
+[ ]컴파일러를 이용하여 소스 코드를 목적 코드(CPU 인스트럭션)로 생성하는 과정을 이해한다. (C 프로그래밍 언어 기준)	/module.c, /main.c	$ gcc -c 소스파일
+ - 프로그래밍 언어로 작성된 소스 코드는 컴파일러를 이용하여 운영체제에서 이용할 수 있다.
+ - .java(소스 파일) ~~ 컴파일러 ~~ .class(클래스 파일) ---JVM (C#과 동일 )
+   .C -- .obj -- .exe
+[ ]링커를 이용하여 목적 코드가 들어 있는 파일을 하나로 묶어 실행 파일을 만드는 과정을 이해한다. (C 프로그래밍 언어 기준)		$ ld -o 실행파일 목적파일 목적파일 … -lSystem -macosx_version_min 10.13
+ - 보통 컴파일 - 링커 - 로더 등의 순서대로 하나의 파일로 묶어 실행 파일을 만든다.
+[ ]"소스 파일, 목적파일, 실행 파일"과 "컴파일러, 링커"의 관계를 이해한다. (C 프로그래밍 언어 기준)		
+ - 소스파일 (.C) -- 컴파일러(링커) -- 목적파일(.obj) --링커-- 로더 -- 실행 파일(.exe) 
+
+# 컴파일러와 인터프리터		
+[ ]인터프리트 방식 프로그래밍과 실행 과정을 이해한다.		
+ - 컴파일링 -- 인터프리팅
+[ ]Node.js 자바스크립트 인터프리터를 준비할 수 있다.		https://nodejs.org/en/
+ -scoop install node
+[ ]인터프리터를 사용하여 소스 파일을 직접 실행하는 과정을 이해한다. (Node.js 기준)	/hello.js	$ node hello.js
+ - node hello.js (visual studio code)
+[ ]컴파일 방식과 인터프리트 방식의 구동 원리를 이해한다.		
+[ ]컴파일 방식과 인터프리트 방식의 장단점을 비교할 수 있다.		
+- node : 자바스크립트. 엔진, 인터프리터 방식
+  - 한줄 씩 읽어서 실행한다.  
+  - 실행할때마다 문법 오류 검사 수행
+  - 속도가 느리다 
+  - 설치되기 전까지 오류를 찾을 수 없다
+  - 컴파일을 하지 않는다 
+
+# 자바 프로그래밍 절차		
+[ ]자바의 프로그래밍 방식과 실행 원리를 이해한다.
+- 		
+[ ]자바 코드와 바이트코드, 소스 파일과 클래스 파일의 관계를 이해한다.		
+- 자바코드(소스 파일) > 바이트 코드 (클래스 파일)
+[ ]자바 컴파일러와 JVM의 역할을 이해한다.		
+- 컴파일한 바이트 코드를 JVM으로 실행
+[ ]CLI 환경에서 컴파일을 수행할 수 있다.	
+-   /Hello.java	$ javac Hello.java
+[ ]CLI 환경에서 자바 클래스 파일을 실행할 수 있다.	
+-   /Hello.java	$ java  Hello
+
+# 소스 파일과 컴파일 결과 파일 분리 		
+[ ]Maven 표준 디렉토리 구조를 만들 수 있다.		Maven 표준 디렉토리 구조에 맞춰 폴더를 생성
+- src, bin의 형식
+[ ]각 디렉토리의 용도를 이해한다.		
+src : 소스코드 (컴파일 되기 전의 코드)  
+bin : 바이트 코드 (컴파일 완료 후의 코드)
+  - main : 코드를 생성하고 실행하기 위한 코드
+  - tset : 제대로 실행되는지 확인하기 위한 코드
+[ ]프로젝트 디렉토리에서 소스 디렉토리에 있는 자바 소스 파일을 컴파일 할 수 있다.	
+- src/main/java/Hello2.java	$ javac src/main/java/Hello2.java
+[ ]컴파일 할 때 컴파일 결과로 생성된 클래스 파일을 별도 디렉토리에 분리할 수 있다.	
+- src/main/java/Hello2.java	$ javac -d bin/main src/main/java/Hello2.java
+[ ]다른 디렉토리에 있는 클래스 파일을 실행할 수 있다.	
+- src/main/java/Hello2.java	$ java -classpath bin/main Hello2
+
+# 패키지와 소스 파일		
+[ ]패키지의 용도를 이해하고 패키지를 생성할 수 있다.	
+- com.ohoracs.basic	src/main/java/com/ohoracs/basic 디렉토리 생성
+[ ]소스 파일에 작성한 코드가 패키지에 소속되게 할 수 있다.	
+- src/main/java/com/ohoracs/basic/Hello3.java	
+[ ]패키지에 소속된 소스 파일의 적절한 디렉토리 경로와 왜 그 위치에 놓아야 하는지 이해한다.
+- 적절한 디렉토리 경로를 설정함으로써 바이트 코드로 컴파일 했을 시 적절한 위치로 저장될 수 있다
+- 다만, 패키지 사용을 하지 않은 경로 설정은 main에 바이트 코드로 저장된다		
+[ ]컴파일 한 후 생성된 클래스 파일의 디렉토리 경로와 그 위치에 있어야 하는 이유를 안다.
+- 유지 보수를 쉽게 위하여 정확한 위치에 있어야 한다		
+[ ]패키지에 소속된 클래스 파일을 실행할 수 있다.	
+src/main/java/com/ohoracs/basic/Hello3.java	$ java -cp bin/main com.ohoracs.basic.Hello3
+[ ]패키지를 적용하지 않은 채로 그 소스 파일을 그냥 패키지 폴더에 둔다면 컴파일 할 때 어떤 문제가 발생하는지 안다.	
+src/main/java/com/ohoracs/basic/Hello4.java
+- 패키지를 사용하지 않으면 지정한 위치에 저장되지 않고 main에 저장된다	

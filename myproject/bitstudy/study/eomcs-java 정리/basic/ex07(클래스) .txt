@@ -1,0 +1,505 @@
+문서 정리 
+
+
+메서드
+1. 파일, 클래스, 메서드, 블록의 관계 .
+
+2. 메서드의 개요 
+
+자바에서는 다양한 종류의 값을 저장할 수 있는 데이터 타입을 제공하지 않는다.
+기본적으로 정수,부동소수점, 문자, 논리 값을 저장할 수 있는 데이터 타입만 제공
+이들 데이터 타입을 "자바 원시 데이터 타입(primitive data type)"이라 한다
+    
+class Member {
+    int no;
+    String name;
+    int birthYear;
+    char gender;
+    float height;//키, 몸무게는 float, 그외는 double
+    float weight;
+    boolean personalTrainingt;
+    }
+이렇게 개발자 임의로 만든 데이터 타입을 "사용자 정의 데이터 타입(user-defined data type)"
+개발자가 class 라는 문법으로 정의한 데이터 타입으로  메모리를 만들 때는 일반적인 방식으로 만들 수 없다.
+    
+new 명령을 사용해야 한다.
+  new Member();
+    준비된 메미모리를 사용하기 위해서는 그 메모리의 주소를 변수에 보관해야 한다.
+     이렇게 class 설계도로 만든 메모리의 주소를 저장하는 변수를 "레퍼런스(reference)"라고한다
+   Member m1 =new Member();
+    
+m1
+   - member 설계도에 따라 준비된 메모리의 주소를 저장할 변수이다.
+     이렇게 인스턴스의 주소를 저장하는 변수를 "레퍼런스"라고 한다.
+   - 다른 설계도로 만든 메모리의 주소를 저장할 수 없다
+   - member 설계도로 만든 메모리는 이 변수를 통해 접근할 수 있다
+    
+new member()
+   - member 설계도에 따라 메모리를 준비시키는 명령이다.
+   - 이 명령을 통해 생선된(사용할 수 있도록 준비된) 메모리
+    "인스턴스(instance)"라고 한다. 보통은 "객체(object)"라고 부른다
+    
+ 사용법 
+ - 레퍼런스를 통해 해당 메모리를 접근할 수 있다.
+    m1.no = 100;
+    m1.name = "홍길동";
+    m1.birthYear = 2001;
+    m1.height = 180.0;
+    
+
+원시 
+자바 원시 데이터 타입은 그냥 변수를 선언하는 순간 메모리도 준비
+
+레퍼런스가 메모리에 주소를 담는 변수이다.  
+레퍼런스를 선언헀다고 해서 해당 설계도에 메모리가 준비되는 것 아니다.
+
+Member m1 = new Member();
+     이처럼 new를 만들어 연속적으로 객체를 생성시키고 m1이라는 주소시작을 할당한다 
+     배열과 동일하게 생성되지만 연속적으로 할당되게 된다는점에서 차이가 있다.
+     ex) new 설계도 이름();
+
+  m1.no = 100; //ok!
+  m1 = new String(); //오류
+  m1 = new Date(); //오류
+
+매서드란 
+
+ 메서드(method) = 함수(function)?
+ - 명령어를 기능 단위로 관리하기 쉽게 별도로 분리하여 묶어 놓은 것.
+ - 반복적으로 자주 사용하는 명령어를 재사용하기 쉽도록 별도로 분리하여 묶어 놓은 것.
+ - "코드를 관리하기 쉽고 재사용하기 쉽도록 기능 단위로 묶어 놓는 문법"
+
+ 메서드 종류?
+ - 클래스 메서드  
+ => 클래스에 소속되어 있다.
+  => 모든 인스턴스에 대해 사용할 수 있다.
+ => static이 붙는다.
+ - 인스턴스 메서드
+   => 인스턴스에 대해 사용할 수 있다.
+   => static이 붙지 않는다.
+ 메서도 4가지 형식 overview
+ 메서드 4가지 형식 
+
+public class test01 {
+  public static void main(String[] args) {
+
+    //입력 값 : x , 리턴 값 : x
+    m1();
+
+    //입력 값 : ㅇ , 리턴 값 : x
+    m2("홍길동");
+
+    //입력 값 : x , 리턴 값 : o
+    String s;
+    s = m3();
+    System.out.println(s);
+
+    //입력 값 : o , 리턴 값 : o
+    String s2 = m4("홍길동");
+    System.out.println(s2);
+
+  }
+  static void m1() {
+    System.out.println("Hello!");
+
+  }
+  static void m2(String name) {
+     System.out.println("Hello," + name);
+  }
+ // 함수 안에 선언된 변수를 "로컬 (local)변수"라 부른다
+    // 로컬 변수 중에서 함수(메서드)가 호출될 때 넘어 온 값을 받는 변수를 파라미터라 부른다.
+    // 함수를 호출 할 때 넘겨주는 값을 아규먼트(argument)라 부른다
+    // 
+  static String m3() {
+    String message = "hello!";
+    return message; //return 값을 구분해야 한다
+    // 값은 only 하나만 리턴하며, 여러개를 리턴받고 싶으면 클래스로 지정해야 한다
+  }
+  static String m4(String name) {
+    String message = name + " 님 안녕하세요"; 
+    return message; 
+  }
+
+Exam01XX
+- 메서드 사용과 리팩토링 overview
+
+Exam02XX
+# 개념 및 기본 문법
+  문법
+   [리턴값의 타입] 함수명(파라미터선언, ...) {명령어들}
+   - 리턴 값(return value)의 타입?      => 함수 블록에 들어있는 명령어를 수행 완료한 후 그 결과로 놓이는 값의 타입.
+   - 파라미터(parameter) 선언?       => 함수 블록을 실행할 때 외부로부터 받은 값을 저장할 변수 선언.
+
+  메서드를 사용하는 방법
+     [리턴값을 받을 변수] = 메서드명(아규먼트);
+
+
+     - 아규먼트(argument)?
+       => 메서드 블록에 들어 있는 명령을 실행하기 위해 넘겨주는 값
+       => 즉 파라미터 변수에 넘겨주는 값
+       => 파라미터 변수의 타입과 개수와 순서에 맞게 값을 넘겨줘야 한다.
+          만약 변수의 타입과 값의 타입이 다르면 컴파일 오류!
+          만약 변수의 개수와 값의 개수가 다르면 컴파일 오류!
+          변수 선언 순서와 값의 순서가 다르면 컴파일 오류!
+    
+     - 리턴값을 받을 변수
+       => 메서드 블록을 실행한 후 리턴되는 값을 받을 변수이다.
+       => 메서드가 값을 리턴한다 하더라도 값을 받기 싫으면  변수를 선언하지 않아도 된다.  그러면 리턴 되는 값은 버려진다.
+       => 값을 리턴하지 않는 메서드에 대해 변수를 선언하면 컴파일 오류!
+
+메서드의 종류 및 사용 방법
+1) 1) 메서드 : 리턴값(X), 파라미터(X)
+    => 함수 블록을 실행할 때 특정 값을 함수에 넘겨 줄 필요가 없고, 함수 블록 실행을 완료한 후 어떤 값도 돌려주지 않는다.
+    => "여러분, 부자되세요!", "여러분, 식사하고 오세요!"
+  static void hello() {
+    System.out.println("안녕하세요!");
+    System.out.println("이 메서드는 어떤 값도 리턴하지 않습니다.");
+  }
+ public static void main(String[] args) {
+ hello();
+System.out.println("hello() 실행 완료!");
+    int i;
+  }
+}
+
+안녕하세요!
+이 메서드는 어떤 값도 리턴하지 않습니다.
+hello() 실행 완료!
+
+2) 메서드 : 리턴값(X), 파라미터(O)
+ => 메서드 블록을 실행할 때 값이 필요하다면 파라미터 변수를 선언하라! 
+
+static void hello(String name, int age) {
+ System.out.printf("%d살 %s님 반갑습니다.\n", age, name);
+ }
+public static void main(String[] args) {
+hello("홍길동", 20);
+hello("임꺽정", 30);
+hello("유관순", 16);
+
+    // 파라미터의 타입, 개수, 순서가 일치해야 한다.
+    //hello("윤봉길"); // 컴파일 오류!
+    //hello(20, "윤봉길"); // 컴파일 오류!
+    //String r = hello("안중근", 30); // 컴파일 오류!
+    //void r = hello("안중근", 30); // 컴파일 오류!
+  }
+}
+
+// 아규먼트(argument)
+// => 메서드를 호출할 때 넘겨주는 값
+// => 예) hello("홍길동", 20);
+//    "홍길동", 20 이 아규먼트이다.
+//
+// 파라미터(parameter)
+// => 아규먼트를 받는 변수
+// => 예) void hello(String name, int age) {...}
+//    name과 age 변수가 파라미터이다.
+//
+// 현장에서는 "아규먼트"와 "파라미터"를 구분하지 않고 사용한다. 
+
+ 3) 메서드 : 리턴값(O), 파라미터(X)
+ => 메서드 블록을 실행한 후 값을 리턴하는 메서드.
+  //    메서드 정의할 때 어떤 값을 리턴하는 지 그 타입을 적어야 한다.
+  //    메서드에서도 종료하기 전에 반드시 그 타입의 값을 리턴해야 한다. 
+  // => 리턴 타입은 반드시 한 개만 가능하다.
+  //    만약 여러 개의 값을 리턴하고 싶다면, 배열에 담거나 객체에 담아 리턴하라!
+
+ static String hello() {
+    // 값을 리턴하는 문법
+    // return 값;
+    return "안녕하세요!";
+  }
+
+  public static void main(String[] args) {
+
+    // hello() 메서드를 실행하고, 그 리턴 값을 변수에 담는다.
+    String r = hello();
+    System.out.println(r);
+
+    // 메서드가 값을 리턴한다고 해서 반드시 그 값을 변수에 받아야 하는 것은 아니다.
+    // 변수에 받을 지 여부는 호출하는 쪽의 마음이다.
+    hello(); // 이때 값을 받을 변수가 없기 때문에 리턴 값은 버려진다.
+
+    // 리턴 타입과 다른 타입의 변수로 값을 받으려 하면 컴파일 오류!
+    //int r2 = hello(); // 컴파일 오류!
+
+4) 메서드 : 리턴값(O), 파라미터(O)
+ static String hello(String name, int age) {
+    String retVal = String.format("%d살 %s님을 환영합니다!", age, name);
+    return retVal;
+  }
+
+  public static void main(String[] args) {
+
+    // hello() 메서드를 실행하고, 그 리턴 값을 변수에 담는다.
+    String r = hello("홍길동", 20);
+    System.out.println(r);
+
+    // 리턴 값을 안 받아도 된다.
+    hello("임꺽정", 30); // 리턴 값은 버려진다.
+  }
+}
+
+메서드 가변 파라미터, 배열 파라미터
+ // 가변 파라미터
+  // [리턴타입] 메서드명(타입... 변수) {...}
+  // => 0 개 이상의 값을 받을 때 선언하는 방식.
+  // => 내부적으로 배열처럼 사용한다.
+  //
+  // 다음은 hello()를 호출할 때 String 값을 0개 이상 전달할 수 있다.
+
+static void hello(String... names) {
+    for (int i = 0; i < names.length; i++) {
+      System.out.printf("%s님 반갑습니다.\n", names[i]);
+    }
+  }
+
+  public static void main(String[] args) {
+
+    hello(); // 이 경우 names 배열의 개수는 0이다.
+    System.out.println("-------------------");
+
+    hello("홍길동"); // 이 경우 names 배열의 개수는 1이다.
+    System.out.println("-------------------"); 
+
+    hello("홍길동", "임꺽정", "유관순"); // 이 경우 names 배열의 개수는 3이다.
+    System.out.println("-------------------"); 
+
+    // 가변 파라미터 자리에 배열을 직접 넣어도 된다.
+    String[] arr = {"김구", "안중근", "윤봉길", "유관순"};
+    hello(arr);
+    System.out.println("-------------------"); 
+
+ // 가변 파라미터
+  static void hello(String... names) {
+    for (int i = 0; i < names.length; i++) {
+      System.out.printf("%s님 반갑습니다.\n", names[i]);
+    }
+  }
+
+  // 배열 파라미터
+  static void hello2(String[] names) {
+    for (int i = 0; i < names.length; i++) {
+      System.out.printf("%s님 반갑습니다.\n", names[i]);
+    }
+  }
+
+ public static void main(String[] args) {
+
+    // 가변 파라미터의 메서드를 호출할 때는 
+    // => 다음과 같이 낱개의 값을 여러 개 줄 수도 있고,
+    hello("홍길동", "임꺽정", "유관순"); 
+    System.out.println("-------------------"); 
+
+    // => 또는 다음과 같이 배열에 담아서 전달할 수도 있다.
+    String[] arr = {"김구", "안중근", "윤봉길", "유관순"};
+    hello(arr);
+    System.out.println("-------------------"); 
+
+    // 배열 파라미터의 메서드를 호출할 때는 
+    // => 가변 파라미터와달리 낱개의 값을 여러 개 줄 수 없다!
+    //hello2("홍길동", "임꺽정", "유관순"); 
+    //System.out.println("-------------------"); 
+
+    // => 오직 배열에 담아서 전달해야 한다.
+    String[] arr2 = {"김구", "안중근", "윤봉길", "유관순"};
+    hello2(arr2);
+    System.out.println("-------------------"); 
+  }
+}
+
+ //static void m2(String... names, String a) {} // 컴파일 오류!
+  //static void m2(String... names, int a) {} // 컴파일 오류!
+  static void m2(int a, String... names) {} // OK!
+
+// 배열 파라미터는 여러 개 선언할 수 있다.
+  static void x1(String[] names, String[] names2) {}
+
+  // 배열 파리미터는 순서에 상관 없다.
+  static void x2(String[] names, int a) {}
+
+// 결론!
+// - 메서드에 가변 파라미터는 한 개만 사용할 수 있다.
+// - 가변 파라미터는 반드시 맨 뒤에 와야 한다.
+// - 그 이유는 복잡한 사용을 막기 위해!
+
+ 메서드 : call by value
+
+ static void swap(int a, int b) {
+    System.out.printf("swap(): a=%d, b=%d\n", a, b);
+    int temp = a;
+    a = b;
+    b = temp;
+    System.out.printf("swap(): a=%d, b=%d\n", a, b);
+  }
+
+  public static void main(String[] args) {
+    int a = 100;
+    int b = 200;
+
+    // swap() 호출할 때 a 변수의 값과 b 변수의 값을 넘긴다.
+    // => 그래서 "call by value"라 부른다.
+    // => 비록 swap()에서 a와 b라는 이름의 변수가 있지만,
+    //    이 변수는 main()에 있는 변수와 다른 변수이다.
+    swap(a, b);
+    System.out.printf("main(): a=%d, b=%d\n", a, b);
+
+// call by value
+// => 자바에서는 primitive data type인 경우 메서드를 호출할 때 
+//    값을 넘긴다.
+// => 자바에서는 primitive data type에 대해서 
+//    메모리 주소를 넘기는 방법이 없다.
+
+# 메서드 : call by reference
+static void swap(int[] arr) {
+    System.out.printf("swap(): arr[0]=%d, arr[1]=%d\n", arr[0], arr[1]);
+    int temp = arr[0];
+    arr[0] = arr[1];
+    arr[1] = temp;
+    System.out.printf("swap(): arr[0]=%d, arr[1]=%d\n", arr[0], arr[1]);
+  }
+
+  public static void main(String[] args) {
+    int[] arr = new int[] {100, 200};
+    swap(arr); // 배열 인스턴스(메모리)를 넘기는 것이 아니다. 
+    // 주소를 넘기는 것이다.
+    // 그래서 "call by reference" 라 부른다.
+    System.out.printf("main(): arr[0]=%d, arr[1]=%d\n", arr[0], arr[1]);
+  }
+}
+# 메서드 : call by reference II
+// main()에서 만든 int a와 int b의 값을 바꾸고 싶다면,
+  // primitive data type 값을 직접 넘기지 말고 
+  // 객체에 담아 넘겨라!
+  static class MyObject {
+    int a;
+    int b;
+  }
+
+  static void swap(MyObject ref) {
+    System.out.printf("swap(): a=%d, b=%d\n", ref.a, ref.b);
+    int temp = ref.a;
+    ref.a = ref.b;
+    ref.b = temp;
+    System.out.printf("swap(): a=%d, b=%d\n", ref.a, ref.b);
+  }
+
+  public static void main(String[] args) {
+    // MyObject 설계도에 따라 int a와 int b 메모리를 만든다.
+    // 그리고 그 메모리(인스턴스=객체)의 주소를 ref 변수에 저장한다.
+    MyObject ref = new MyObject();
+    ref.a = 100;
+    ref.b = 200;
+
+    // a, b 변수가 들어 있는 인스턴스(객체=메모리)의 주소를 
+    // swap()에 넘긴다. => 그래서 "call by reference"인 것이다.
+    swap(ref);
+    System.out.printf("main(): a=%d, b=%d\n", ref.a, ref.b);
+  }
+}
+
+# 메서드 : main() 메서드
+// JVM이 클래스를 실행할 때 main() 메서드를 호출한다.
+  // 메인 메서드는 반드시 다음과 같은 메서드 시그너처(함수 프로토타입)를 가져야 한다.
+  // public static void main(String[] 변수명)
+public static void main(String[] 변수명은상관없다) {
+   // 실행을 위해서는 public static 등을 사용해야 한다
+    System.out.println("Hello!");
+
+# 메서드 : main() 메서드 - 프로그램 아규먼트
+//
+public class Exam0520 {
+
+  // 프로그램 아규먼트
+  // - jvm을 실행할 때 프로그램에 전달하는 값
+  // - 예) 
+  // > java -cp bin Exam05_2 aaa bbb cccc
+  // aaa bbb cccc 가 프로그램 아규먼트이다.
+  // 
+  public static void main(String[] args) {
+    // 프로그램 아규먼트는 스트링 배열에 담겨서 main()를 호출할 때 
+    // 넘어온다.
+    // 프로그램 아규먼트는 공백을 기준으로 문자열을 잘라서 배열을 만든다.
+    // 
+    for (String value : args) {
+      System.out.printf("[%s]\n", value);
+    }
+    System.out.println("종료!");
+  }
+}
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+- 개념 및 기본문법
+(메서드, 아규먼트, 파라메타)
+메서드  - 코드를 관리하기 쉽도록 기능단위로 묶어 놓은것(정의는 암기) 
+  - 메서드의 종류 (4가지)
+  - 가변 파라미터, 배열 파라미터 
+    
+    - 배열 파라미터 주의 사항
+    //hello2("홍길동", "임꺽정", "유관순"); 
+    //System.out.println("-------------------"); 
+
+가변 파라미터의 단점- 가변은 규칙이 엄격하다
+배열은 순서 및 여러개를 사용할 수 있다는 장점
+
+- 기술면접에서 나올 수 있음
+call by value - 값을 넘기는 방법
+call by reference - 주소를 넘기는 방법
+- swap(객체의 주소) swap(배열의 주소) 를 받을 수 있다
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+메서드 : JVM 메모리
+
+실행 순서와 메모리
+ 1) java -classpath bin com.eomcs.basic.ex07.Exam0410
+    => JVM은 클래스 정보를 Method Area 영역에 로드한다.
+ 2) main() 호출
+    => JVM Stack 영역에 main() 메서드가 사용할 로컬 변수를 준비한다.
+ 3) swap() 호출
+    => JVM Stack 영역에 swap() 메서드가 사용할 로컬 변수를 준비한다.
+ 4) swap() 실행 완료
+    => JVM Stack 영역에 있던 swap()이 사용한 메모리를 제거한다.
+ 5) main() 실행 완료
+    => JVM Stack 영역에 있던 main()이 사용한 메모리를 제거한다.
+ 6) JVM 실행 종료
+    => JVM이 사용한 모든 메모리를 OS에 반납한다.
+
+
+ JVM이 메모리를 다루는 방법
+ - 크게 다음 세가지 영역으로 나눠 관리한다.
+ 1) Method Area
+    => 클래스 명령 코드를 둔다.
+    => static 변수를 둔다.
+ 2) Heap
+오후 2:07 2019-12-23//    => new 명령으로 만든 메모리(인스턴스=객체)를 둔다.
+//    => Garbage Collector(GC)가 관리하는 영역이다.
+// 3) JVM Stack
+//    => 스레드 별로 JVM Stack 메모리를 따로 관리한다.
+//    => 메서드의 로컬 변수는 둔다.
+//    => 각 메서드마다 프레임 단위로 관리한다.
+//    => 메서드 호출이 끝나면 그 메서드가 사용한 
+//       프레임 메모리가 제거된다.
+//
+// JVM이 종료하면 JVM이 사용했던 모든 메모리를 OS에 반납한다.
+
+
+// 1) main() 호출
+//    => JVM Stack: args, arr 변수 생성
+// 2) getArray() 호출
+//    => JVM Stack: arr 변수 생성
+//    => Heap: new int[] 배열 생성
+// 3) getArray() 호출 끝
+//    => JVM Stack: getArray() 관련 메모리(arr 변수) 제거
+//    => new int[] 배열 주소 리턴
+// 4) main() 호출 끝
+//    => JVM Stack: main() 관련 메모리 제거 
+// 5) JVM 종료
+//    => JVM이 사용한 모든 메모리(Method Area, JVM Stack, Heap 등)를 OS 반납.
+
+
+JVM Stack 메모리의 사용
+
+메서드 : 스택 메모리 응용 III - 스택 오버플로우
+
+
+
