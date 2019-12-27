@@ -29,8 +29,8 @@ public class Test05 {
   }
   
   static int printTriangle(int base) {
-    if (base == 1)
-      return 1;
+    if (base == 0)
+      return;
     
     return base + printTriangle(base - 1);
   }

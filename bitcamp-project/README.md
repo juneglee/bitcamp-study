@@ -1,45 +1,41 @@
-# 12 - 클래스 필드와 클래스 메서드의 한계
+# 15 - 인스턴스 연산자와 메서드
 
 ## 학습 목표
 
-- 클래스 필드와 클래스 메서드의 한계를 이해한다.
+- 메서드를 활용하여 인스턴스 값을 다루는 연산자를 정의할 수 있다.
+- 캡슐화의 의미를 이해하고, 셋터/겟터를 만들 수 있다.
 
 ## 실습 소스 및 결과
 
-- src/main/java/com/eomcs/lms/handler/BoardHandler2.java 추가
-- src/main/java/com/eomcs/lms/App.java 변경
+- src/main/java/com/eomcs/lms/domain/Lesson.java 변경
+- src/main/java/com/eomcs/lms/domain/Member.java 변경
+- src/main/java/com/eomcs/lms/domain/Board.java 변경
+- src/main/java/com/eomcs/lms/handler/LessonHandler.java 변경
+- src/main/java/com/eomcs/lms/handler/MemberHandler.java 변경
+- src/main/java/com/eomcs/lms/handler/BoardHandler.java 변경
 
 ## 실습
 
-### 작업1) 새 게시판을 추가하라.
+### 작업1) Lesson 인스턴스의 값을 다룰 연산자를 정의하라.
 
-- BoardHandler2.java
-    - `/board2/add`, `/board2/list` 명령을 처리할 클래스를 추가한다.
-- App.java
-    - 새 명령을 처리하는 코드를 추가한다.
+- Lesson.java
+    - 인스턴스 변수(필드)를 비공개(private)로 전환한다.
+    - 값을 설정하고 리턴해주는 세터/게터를 정의한다.
+- LessonHandler.java
+    - Lesson 인스턴스에 값을 넣고 꺼낼 때 세터/겟터를 사용한다.
 
-실행 결과:
+### 작업2) Member 인스턴스의 값을 다룰 연산자를 정의하라.
 
-```
-명령> /board2/add
-번호? 1
-내용? 게시글1
-저장하였습니다.
+- Member.java
+    - 인스턴스 변수(필드)를 비공개(private)로 전환한다.
+    - 값을 설정하고 리턴해주는 세터/게터를 정의한다.
+- MemberHandler.java
+    - Member 인스턴스에 값을 넣고 꺼낼 때 세터/겟터를 사용한다.
 
-명령> /board2/add
-번호? 2
-내용? 게시글2
-저장하였습니다.
+### 작업3) Board 인스턴스의 값을 다룰 연산자를 정의하라.
 
-명령> /board/add
-번호? 100
-내용? 게시글100
-저장하였습니다.
-
-명령> /board2/list
-1, 게시글1                  , 2019-01-01, 0
-2, 게시글2                  , 2019-01-01, 0
-
-명령> /board/list
-100, 게시글100              , 2019-01-01, 0
-```
+- Board.java
+    - 인스턴스 변수(필드)를 비공개(private)로 전환한다.
+    - 값을 설정하고 리턴해주는 세터/게터를 정의한다.
+- BoardHandler.java
+    - Board 인스턴스에 값을 넣고 꺼낼 때 세터/겟터를 사용한다.
