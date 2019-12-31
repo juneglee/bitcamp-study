@@ -1,8 +1,11 @@
 클래스의 사용
 
-## Class Score { 
--      클래스명 = 역할 = 책임 = 데이터 타입 
+## 클래스 선언 -------------------------------------------------------- 
 - Public (default) O , protected X, private X
+
+Class Score { 
+-      클래스명 = 역할 = 책임 = 데이터 타입 
+
 ex) class Score {
       String name;
       int kor;
@@ -11,31 +14,47 @@ ex) class Score {
       int sum;
       float aver;
     }
+    
   다양한 타입의 메모리를 묶어서 Score라는 새로운 형태의 메모리를 만들 수 있는 설계도.
      => 개발자가 새롭게 정의한 데이터 타입이다.
      => "사용자 정의 데이터 타입" 이라 부른다.
      => 다음과 같이 클래스 문법을 사용하여 설계도를 정의한다.
     
-## 필드 선언
+## 필드 선언 --------------------------------------------------------
+- Public (default) O , protected O, private O
+
 (public) (Static) String name ;
-- Public (default) O , protected O, private O
 - Static o : 클래스 소속, 
-- Static x (default) : 인스턴스 소속
+- Static x : 인스턴스 소속
 
-ex)  String name;
+ex) static class A { //필드
+        static int v1; //스태틱 필드
+        int v2; //인스턴스 필드
+    }
+  
+  // 동일한 값이 여러개 일때 스태틱, 다른 값이 여러개 일때 인스턴스로 만든다
 
-## 생산자 선언 
-(public) Score() {
-- Public의 사용으로 패키지에 대한 접근자만 제어할 수 있다
+## 생산자 선언 --------------------------------------------------------
+- only public
+- Public의 사용으로 전체 패키지에 대한 접근자만 제어할 수 있다
 
-ex) Score(){
+ex) class Monitor {
+      int bright;
+      Monitor (){    //생성자
+        bright = 70; //기본을 유지할 수 있도록 유효한 값으로 초기화
+                     //없으면 생성자를 기본적으로 만든다
+      }
+    }
+    
+    Monitor obj = new Monitor(); 
 
 
-## 메소드 선언 
+## 메소드 선언 --------------------------------------------------------
+- Public (default) O , protected O, private O
+
 (public) (Static) void m {
-- Public (default) O , protected O, private O
 - Static o : 클래스 소속, 
-- Static x (default) : 인스턴스 소속
+- Static x : 인스턴스 소속
 
 ex) Static void Score () {
 
@@ -90,7 +109,7 @@ Static {
 
 ## 클래스 사용 - 사용 범위
 
- #패키지 멤버 클래스
+ #패키지 멤버 클래스 --------------------------------------------------------
  => 패키지에 직접 소속된 클래스이다.
  => 다른 클래스들도 A 클래스를 사용할 수 있다.
     bin/main/com/eomcs/oop/ex01/A.class (bin에는 java 폴더가 없다)
@@ -98,7 +117,7 @@ class A {} //A.class
 
    bin/main/com/eomcs/oop/ex01/Exam0420.class
 public class Exam0420 {
-   # 중첩 클래스(nested class)
+   # 중첩 클래스(nested class) --------------------------------------------
   => 다른 클래스 안에 정의된 클래스
   => 그 클래스 안에서만 사용된다.
      bin/main/com/eomcs/oop/ex01/Exam0420$B.class
@@ -106,12 +125,12 @@ public class Exam0420 {
              // class Exam0420안에 중첩되게 class를 생성했지만 class는 다르게 저장된다
              // 즉. class 블록마다 컴파일 하여 클래스 파일을 생성한다 
   public static void main(String[] args) {
-   # 로컬 클래스(local class)
+   # 로컬 클래스(local class) --------------------------------------------
    => 메서드 블록 안에 정의된 클래스
    => 오직 그 메서드 블록 안에서만 사용된다.
     class C {}
     bin/main/com/eomcs/oop/ex01/Exam0420$1C.class
-       메소드 안에서 정의된 클래스는 $1C(첫번쨰 로컬 클래스라는 의미)로 표시
+       - 메소드 안에서 정의된 클래스는 $1C(첫번쨰 로컬 클래스라는 의미)로 표시
   }
 
   public void m1() {
@@ -215,32 +234,32 @@ static X ( 인스턴스 메서드 : S.Calculate(); )
   ##  소스 코드를 관리하기 쉽게 관련된 기능(메서드)을 묶을 때 사용
    
   1) 메서드 분류 - 관련된 기능을 수행하는 메서드를 한 그룹으로 묶는다 
-     #클래스 --------------------------------------------------------
+     # 클래스 --------------------------------------------------------
      public class Calculator {
      public static int plus(int a, int b) {return a + b;}
-     #Test--------------------------------------------------------
+     # Test--------------------------------------------------------
      int result = 0;
      result = Calculator.plus(2, 3);
      result = Calculator.minus(result, 1);
   
   2) 메서드 분류 - 클래스 변수 사용
-     #클래스--------------------------------------------------------
+     # 클래스--------------------------------------------------------
      public class Calculator2 {
      static int result = 0;
      public static void plus(int value) {
      result += value; 
-     #Test--------------------------------------------------------
+     # Test--------------------------------------------------------
      Calculator2.plus(2); 
      //Calculator2의 내부에서 관리하기 때문에 int result = 0;값이 따로 필요 없다
   
-  3) ★인스턴스 변수 사용
-     #클래스--------------------------------------------------------
+  3) ★ 인스턴스 변수 사용
+     # 클래스--------------------------------------------------------
      public class Calculator3 {
      int result = 0; 
      public static void plus(Calculator3 calc, int value) {
      calc.result += value;
      // 인스턴스 변수를 다루는 메서드는 작업을 수행할 때 그 인스턴스 주소를 받아야 한다.
-     #Test--------------------------------------------------------
+     # Test--------------------------------------------------------
      Calculator3 c1 = new Calculator3(); // 식1의 계산 결과를 보관할 메모리 준비
      Calculator3 c2 = new Calculator3(); // 식2의 계산 결과를 보관할 메모리 준비
      // 계산을 수행할 때 계산 결과를 보관할 메모리를 전달하라!
@@ -249,13 +268,13 @@ static X ( 인스턴스 메서드 : S.Calculate(); )
      Calculator3.plus(c2, 3);        // + 3 
    
   4)  ★ 인스턴스 메서드 사용 
-     #클래스--------------------------------------------------------
+     # 클래스--------------------------------------------------------
      public class Calculator4 {
      int result = 0;
    
      public void plus(int value) {
      this.result += value;   
-     #Test--------------------------------------------------------
+     # Test--------------------------------------------------------
      Calculator4 c1 = new Calculator4(); // 식1의 계산 결과를 보관할 메모리 준비
      Calculator4 c2 = new Calculator4(); // 식2의 계산 결과를 보관할 메모리 준비
      // 계산을 수행할 때 계산 결과를 보관할 메모리를 전달하라!
