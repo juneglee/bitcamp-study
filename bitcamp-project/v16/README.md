@@ -8,9 +8,9 @@
 
 ## 실습 소스 및 결과
 
-- src/main/java/com/eomcs/lms/handler/LessonList.java 추가
-- src/main/java/com/eomcs/lms/handler/MemberList.java 추가
-- src/main/java/com/eomcs/lms/handler/BoardList.java 추가
+- src/main/java/com/eomcs/lms/domain/LessonList.java 변경
+- src/main/java/com/eomcs/lms/domain/MemberList.java 변경
+- src/main/java/com/eomcs/lms/domain/BoardList.java 변경
 - src/main/java/com/eomcs/lms/handler/LessonHandler.java 변경
 - src/main/java/com/eomcs/lms/handler/MemberHandler.java 변경
 - src/main/java/com/eomcs/lms/handler/BoardHandler.java 변경
