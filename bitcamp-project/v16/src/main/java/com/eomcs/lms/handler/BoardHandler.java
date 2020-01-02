@@ -9,15 +9,16 @@ public class BoardHandler {
   
   BoardList boardList;
   Scanner input; 
+  // 주소만 있기 때문에 생성자를 생성하여 연결한다
 
   public BoardHandler(Scanner input) {
     this.input = input;
-    boardList = new BoardList();
+    this.boardList = new BoardList();
   }
 
   public BoardHandler (Scanner input, int capacity) {
     this.input = input;
-    boardList = new BoardList(capacity);
+    this.boardList = new BoardList(capacity);
   }
 
   
@@ -34,6 +35,7 @@ public class BoardHandler {
     board.setDate(new Date(System.currentTimeMillis()));
 
     this.boardList.add(board);
+    // board에  값들을 자동으로 저장해줘
     System.out.println("저장하였습니다");
 
   }
@@ -44,7 +46,7 @@ public class BoardHandler {
     int no =input.nextInt();
     input.nextLine(); 
 
-    Board board = boardList.get(no);
+    Board board = this.boardList.get(no);
    
 
     if (board== null) {
@@ -59,6 +61,7 @@ public class BoardHandler {
   }
   public void listBoard() {
     Board[] boards = this.boardList.toArray();
+    // 전체의 배열중에 특정 인스턴스를 값을 리턴하기 위해서 조인한다
     for (int i = 0; i < boardList.size; i++) {
       Board b = boardList.list[i];
       System.out.printf("%d, %s, %s, %d\n", 

@@ -72,4 +72,5 @@ public class BoardHandler {
           b.getNo(), b.getTitle(), b.getDate(), b.getViewCount());
     }
   }
+
 }
