@@ -1,54 +1,40 @@
-// 다형성 - 다형적 변수와 형변환
+// 다형성 - 다형적 변수(polymorphic variables)
 package com.eomcs.oop.ex06.a;
 
-public class Exam02 {
+public class Exam0111 {
 
     public static void main(String[] args) {
-        Vehicle v1 = new Sedan();
+        Vehicle v = new Vehicle();
+        Bike b = new Bike();
+        Car c = new Car();
+        Sedan s = new Sedan();
+        Truck t = new Truck();
         
-        // model과 capacity 변수는 원래 Vehicle 설계도에 있는 변수이기 때문에
-        // 당연히 레퍼런스를 통해 사용할 수 있다.
-        v1.model = "티코";
-        v1.capacity = 5;
+        // 레퍼런스는 같은 타입의 객체를 가리킬 수 있을 뿐만아니라 
+        // 그 클래스의 서브클래스 객체까지 가리킬 수 있다.
+        // 왜? 서브 클래스는 항상 상위 클래스의 모든 것을 사용할 수 있기 때문이다.
+        //
+        // 이런 규칙에 따라, 다음 v2 변수는 Vehicle 객체 뿐만아니라 
+        // Bike, Car, Sedan, Truck 객체까지 다양한 서브클래스의 객체를 가리킬 수 있다.
+        // 그래서 v2를 "다형적 변수"의 기능을 갖고 있다 말한다. 
+        Vehicle v2 = null;
+        v2 = b; // OK
+        v2 = c; // OK
+        v2 = s; // OK
         
-        // 자바 컴파일러는 레퍼런스의 클래스를 보고 사용할 수 있는 변수/메서드 인지 아닌지 
-        // 판단한다. 비록 v1 변수에 Sedan 객체의 주소가 들어 있다 할지라도,
-        // 실제 들어 있는 객체의 주소로 판단하지 않고 레퍼런스가 어떤 클래스냐에 따라 판단한다.
-        /*
-        v1.cc = 1980; // 컴파일 오류!
-        v1.valve = 16; // 컴파일 오류!
-        v1.sunroof = true; // 컴파일 오류!
-        v1.auto = true; // 컴파일 오류!
-        */
+        // 이렇게 상위 클래스 레퍼런스로 하위 클래스의 인스턴스를 가리킬 수 있는 이유는
+        // 하위 클래스의 인스턴스는 상위 클래스의 인스턴스 멤버를 갖고 있기 때문이다.
+        // 그래서 상위 클래스의 레퍼런스로 상위 클래스의 인스턴스 멤버를 사용하는 것을 보장한다
         
-        // 그럼에도 불구하고 레퍼런스가 실제 가리키는 객체의 모든 메모리에 접근하고 싶은가?
-        // => 형변환 하라!
-        ((Sedan)v1).cc = 1980;
-        ((Sedan)v1).valve = 16;
-        ((Sedan)v1).sunroof = true;
-        ((Sedan)v1).auto = true;
-        System.out.printf("%s, %d, %d, %d, %b, %b\n", 
-                v1.model, v1.capacity,
-                ((Sedan)v1).cc, ((Sedan)v1).valve,
-                ((Sedan)v1).sunroof, ((Sedan)v1).auto);
+        // vehicle 변수 v2가 Bike 객체를 가리킨다면,
+        v2 = b;
+        // v2를 통해 vehicle의 인스턴스 변수를 접근할 수 있다.
+        v2.model = "티코";
+        v2.capacity = 10;
+        // 왜?
+        // 바이크 인스턴스에는 슈퍼 클래스인 vehicle 의 인스턴스 변수가 있기 때문이다
         
-        // 각각의 변수에 대해 일일이 형변환해서 사용하기가 불편한가?
-        // => 그냥 레퍼런스를 형변환 해서 사용하라!
-        Sedan s = (Sedan)v1;
-        s.cc = 1980; 
-        s.valve = 16;
-        s.sunroof = true;
-        s.auto = true;
-        System.out.printf("%s, %d, %d, %d, %b, %b\n", 
-                s.model, s.capacity,
-                s.cc, s.valve,
-                s.sunroof, s.auto);
-        
-        
+        // 
     }
 
 }
-
-
-
-

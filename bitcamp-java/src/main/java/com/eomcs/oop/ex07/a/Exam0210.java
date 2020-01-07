@@ -23,12 +23,12 @@ class Score2 {
   // 그리고 이런 getter는 공개모드로 설정한다
   
   //int sumValue() {
-  int getSum() {
+  public int getSum() {
     return this.sum;
   }
   
   //float averValue() {
-  float getAver() {
+  public float getAver() {
     return this.aver;
   }
   

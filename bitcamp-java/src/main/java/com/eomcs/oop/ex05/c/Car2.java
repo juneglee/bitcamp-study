@@ -1,5 +1,6 @@
 // 기존 코드를 복사하여 새 클래스를 만든 후에 코드를 추가했다.
 package com.eomcs.oop.ex05.c;
+// 상속 1. 기본의 코드를 복사하여 복사된 코드에 추가된 코드를 삽입하여 변경한다.
 
 public class Car2 {
     String model;

@@ -1,15 +1,16 @@
 // 오버라이딩(overriding) - 오버라이딩 문법 사용!
 package com.eomcs.oop.ex06.c;
 
-public class Exam03 {
+public class Exam0130 {
     public static void main(String[] args) {
         A3 obj1 = new A3();
+        // 오버라이딩으로 부모와 동일 메서드를 사용하고 이때 호출할 주소를 지정하여 호출하도록 한다
         obj1.name = "홍길동";
         obj1.age = 20;
         
         // A3 클래스에서 A 클래스의 print() 메서드를 재정의 했기 때문에
         // 다음 호출하는 메서드는 A3의 print() 메서드가 된다.
-        obj1.print();
+        obj1.print(); //A2에서 재정의한 호출
     }
 }
 

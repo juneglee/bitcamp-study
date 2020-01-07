@@ -1,5 +1,15 @@
 package com.eomcs.oop.ex06.d;
 
+public class Member {
+  String name;
+  int age;
+  
+  public Member(String name, int age) {
+      this.name = name;
+      this.age = age;
+  }
+}
+
 public class Exam0400 {
     public static void main(String[] args) {
         Member m1 = new Member("홍길동", 20);

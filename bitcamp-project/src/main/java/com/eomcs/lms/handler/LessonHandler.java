@@ -46,6 +46,7 @@ public class LessonHandler {
     this.lessonList.add(lesson);
     System.out.println("저장하였습니다");
   }
+
   public void listLesson() {
     // 수업 객체 목록을 복사 받을 배열을 준비하고, toArray()를 실행한다.
     // toArray()의 리턴 값은 파라미터로 넘겨준 배열의 주소이다.
@@ -60,4 +61,73 @@ public class LessonHandler {
     }
   }
 
+  public void detailLesson() {
+    System.out.println("게시글 인덱스? ");
+    int index = input.nextInt();
+    input.nextLine();
+    
+    Lesson lesson = (Lesson) this.lessonList.get(index);
+    
+    if (lesson == null) 
+      System.out.println("게시물이 유효하지 않습니다");
+    
+    System.out.printf("번호 : %d\n", lesson.getNo());
+    System.out.printf("수업명 : %s\n", lesson.getTitle());
+    System.out.printf("설명 : %s\n", lesson.getDescription());
+    System.out.printf("기간: %s ~ %s\n", lesson.getStartDate(),lesson.getEndDate());
+    System.out.printf("총수업시간 : %d\n", lesson.getTotalHours());
+    System.out.printf("일수업시간 : %d\n", lesson.getDayHours());
+    System.out.printf("조회수 : %d\n", lesson.getViewCount());
+    
+  }
+  
+  public void updateLesson() {
+    System.out.println("게시글 인덱스? ");
+    int index = input.nextInt();
+    input.nextLine();
+    
+    Lesson oldLesson = this.lessonList.get(index);
+    
+    if (oldLesson == null) 
+      System.out.println("게시물이 유효하지 않습니다");
+    
+    System.out.printf("내용(%s) ? ", oldLesson.getTitle());
+    String title = input.nextLine();
+
+    
+    if (title.length() == 0) {
+      System.out.println("게시물 변경을 취소했습니다.");
+      return;
+    }
+    
+    Lesson newLesson = new Lesson();
+    newLesson.setNo(oldLesson.getNo());
+    newLesson.setTitle(title);
+    newLesson.setDescription(oldLesson.getDescription());
+    newLesson.setStartDate(oldLesson.getStartDate());
+    newLesson.setEndDate(oldLesson.getEndDate());
+    newLesson.setTotalHours(oldLesson.getTotalHours());
+    newLesson.setDayHours(oldLesson.getDayHours());
+    newLesson.setViewCount(oldLesson.getViewCount());
+    
+    this.lessonList.set(index,newLesson);
+    System.out.println("게시글을 변경했습니다.");
+    
+  }
+  
+
+  public void deleteLesson() {
+    System.out.println("게시글 인덱스? ");
+    int index = input.nextInt();
+    input.nextLine();
+    
+    Lesson lesson = this.lessonList.get(index);
+    
+    if (lesson == null) 
+      System.out.println("게시물이 유효하지 않습니다");
+    
+    this.lessonList.remove(index);
+    System.out.println("게시글을 변경했습니다.");
+    
+  }
 }

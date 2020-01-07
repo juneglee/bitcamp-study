@@ -8,7 +8,8 @@ public class A /*extends Object*/ {
     // 
     A(int value) {
         this.v1 = value;
-        System.out.println("A() 생성자!");
+        // 기본생성자; 파라미터가 없는 생성자
+        System.out.println("A(int) 생성자!");
     }
 }
 

@@ -1,4 +1,5 @@
 // 상속 - 상속하지 않고 기능 추가 I
+// 기존을 건드리지 않고 변경하기 위해서 상속이 발전
 package com.eomcs.oop.ex05.b;
 
 public class Exam01 {
