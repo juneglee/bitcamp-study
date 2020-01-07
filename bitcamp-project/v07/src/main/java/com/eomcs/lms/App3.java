@@ -38,12 +38,12 @@ public class App3 {
 
       board.date = new Date(System.currentTimeMillis());
       board.viewCount = 0;
-      
+
       // 게시물 데이터가 보관된 Board 인스턴스의 주소를 레퍼런스 배열에 저장한다
       boards[i] = board;
       // 사용하지 않는 공간을 생성하지 않음으로써 공간 낭비를 줄일 수 있다.
       // 인스턴스는 필요할때마다 만들어서 주소에 저장할 수 있다.
-     
+
       count++;
 
       System.out.println();
