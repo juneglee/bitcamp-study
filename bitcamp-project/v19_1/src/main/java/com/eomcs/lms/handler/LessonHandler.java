@@ -14,7 +14,7 @@ public class LessonHandler {
 
   public LessonHandler(Scanner input){
     this.input = input;
-    this.lessonList = new ArrayList<>();
+    lessonList = new ArrayList<>();
   }
 
   public void addLesson() {
@@ -43,7 +43,7 @@ public class LessonHandler {
     lesson.setDayHours(input.nextInt());
     input.nextLine(); 
 
-    lessonList.add(lesson);
+    this.lessonList.add(lesson);
     System.out.println("저장하였습니다");
   }
 
@@ -62,17 +62,14 @@ public class LessonHandler {
   }
 
   public void detailLesson() {
-    System.out.print("번호? ");
-    int no = input.nextInt();
+    System.out.println("게시글 인덱스? ");
+    int index = input.nextInt();
     input.nextLine();
-    
-    int index = indexOfLesson(no);
 
-    if (index == -1) {
+    Lesson lesson = (Lesson) this.lessonList.get(index);
+
+    if (lesson == null) 
       System.out.println("게시물이 유효하지 않습니다");
-      return;
-    }
-    Lesson lesson = this.lessonList.get(index);
 
     System.out.printf("번호 : %d\n", lesson.getNo());
     System.out.printf("수업명 : %s\n", lesson.getTitle());
@@ -81,29 +78,21 @@ public class LessonHandler {
     System.out.printf("총수업시간 : %d\n", lesson.getTotalHours());
     System.out.printf("일수업시간 : %d\n", lesson.getDayHours());
     System.out.printf("조회수 : %d\n", lesson.getViewCount());
+
   }
 
   public void updateLesson() {
-    System.out.print("번호? ");
-    int no = input.nextInt();
+    System.out.print("수업 인덱스? ");
+    int index = input.nextInt();
     input.nextLine();
     
-    int index = indexOfLesson(no);
-    
-    if (index == -1) {
-      System.out.println("해당 번호의 수업이 없습니다.");
-      return;
-    }
-    
     Lesson oldLesson = this.lessonList.get(index);
+    if (oldLesson == null) 
+      System.out.println("수업 인덱스가 유효하지 않습니다");
     
     boolean changed = false;
     String inputStr =null;
     Lesson newLesson = new Lesson();
-    
-    newLesson.setNo(oldLesson.getNo());
-    //해당 no를 받는 셋터값을 주지 않으면 번호의 값이 내려간다 
-    
     System.out.printf("수업명(%s) ? ", oldLesson.getTitle());
     inputStr = input.nextLine();
     if (inputStr.length() == 0) {
@@ -168,27 +157,17 @@ public class LessonHandler {
 
 
   public void deleteLesson() {
-    System.out.print("번호 ? ");
-    int no = input.nextInt();
+    System.out.println("수업 인덱스? ");
+    int index = input.nextInt();
     input.nextLine();
-    
-    int index = indexOfLesson(no);
-    
+
     Lesson lesson = this.lessonList.get(index);
 
-    if (index == -1) 
+    if (lesson == null) 
       System.out.println("수업이 유효하지 않습니다");
 
     this.lessonList.remove(index);
     System.out.println(" 수업을 변경했습니다.");
-  }
-  
-  private int indexOfLesson(int no) {
-    for (int i = 0 ; i < this.lessonList.size() ; i++ ) {
-      if (this.lessonList.get(i).getNo() == no) {
-        return i;
-      }
-    }
-    return -1;
+
   }
 }

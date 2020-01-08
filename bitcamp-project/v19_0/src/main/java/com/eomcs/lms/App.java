@@ -54,7 +54,6 @@ public class App {
           memberHandler.deleteMember(); 
           break;
 
-          
         case "/board/add":
           boardHandler.addBoard();          
           break;

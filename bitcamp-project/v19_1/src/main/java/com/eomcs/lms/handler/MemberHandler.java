@@ -56,15 +56,13 @@ public class MemberHandler {
   }
 
   public void detailMember() {
-    System.out.print("번호? ");
-    int no = input.nextInt();
+    System.out.print("게시글 인덱스? ");
+    int index = input.nextInt();
     input.nextLine(); 
-    
-    int index = indexOfMember(no);
     
     Member member = (Member) this.memberList.get(index);
     
-    if (index == -1) {
+    if (member == null) {
       System.out.println("게시물 인덱스가 유효하지 않습니다");
       return;
     }
@@ -75,20 +73,18 @@ public class MemberHandler {
     System.out.printf("전화번호 : %s\n", member.getTel());
   }
 
-  public void upateMember() {
-      System.out.print("번호?");
-      int no = input.nextInt();
+
+    public void upateMember() {
+      System.out.println("게시글 인덱스?");
+      int index = input.nextInt();
       input.nextLine();
-      
-      int index = indexOfMember(no);
       
       Member oldMember = (Member) this.memberList.get(index);
       
       boolean changed = false;
       String inputStr =null;
-      Member newMember = new Member();
       
-      newMember.setNo(oldMember.getNo());
+      Member newMember = new Member();
      
       System.out.printf("이름(%s)? ", oldMember.getName());
       inputStr = input.nextLine();
@@ -144,30 +140,19 @@ public class MemberHandler {
     } 
 
     public void deleteMember() {
-      System.out.print("번호? ");
-      int no = input.nextInt();
+      System.out.print("게시물 인덱스? ");
+      int index = input.nextInt();
       input.nextLine(); 
-      
-      int index = indexOfMember(no);
 
       Member member = (Member) this.memberList.get(index);
 
-      if (index == -1) {
+      if (member== null) {
         System.out.println("게시글 인덱스가 유효하지 않습니다");
         return; 
       }
 
       this.memberList.remove(index);
       System.out.println("게시글을 삭제하였습니다.");
-    }
-    
-    public int indexOfMember(int no) {
-      for (int i = 0 ; i < this.memberList.size(); i++) {
-        if (this.memberList.get(i).getNo() == no) {
-          return i;
-        }
-      }
-      return -1;
     }
   }
 
