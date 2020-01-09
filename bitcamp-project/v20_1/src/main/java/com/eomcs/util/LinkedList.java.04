@@ -1,0 +1,34 @@
+package com.eomcs.util;
+
+public class LinkedList {
+  
+  // 검색, 삭제, 삽입, 추가를 하기 위해서는 처음과 마지막의 주소를 알아야 한다
+  Node first;
+  Node last;
+  //최소한으로 처음, 마지막, 크기를 알아야 한다
+  int size;
+  
+  public void add (Object value) {
+    Node newNode = new Node();
+    newNode.value = value;
+    // 새로만든벨류에 파라미터 벨류를 집어 넣는다 
+    
+    if(first == null) {
+      last = first = newNode; 
+      // 값이 null이라면 첫번째 ,마지막 노드를 새로 만든 벨류에 넣는다
+    } else {
+      last.next = newNode;
+      // 마지막 노드의 다음 값이 새로 만든 벨류를 넣으므로, 다음 node와 연결된 것이다.
+      last = newNode;
+      // 결국 옮겨진 새로 만든 값이 last값이 되는 것이다
+    }
+    
+    this.size++; // 노드가 만들어졌기 때문에 size는 증가 시켜야 한다 
+  }
+  
+  // 중첩 클랩스 (nested)
+  static class Node {
+    Object value;
+    Node next; //다음 주소를 저장
+  }
+}

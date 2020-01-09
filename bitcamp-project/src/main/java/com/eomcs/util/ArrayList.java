@@ -1,8 +1,9 @@
 package com.eomcs.util;
 
 import java.util.Arrays;
-
 public class ArrayList <E> {
+  
+  
   private static final int DEFAULT_CAPACITY = 3;
   Object[] elementData ;
   int size;
@@ -43,6 +44,9 @@ public class ArrayList <E> {
 
   @SuppressWarnings("unchecked")
   public E get(int index) {
+    // 즉 0 ~ 3의 인덱스는 인덱스 번호는 4개이지만 값을 연결된 것이 3개로 연결되어 있기 때문에 
+    // 3개의 움직인 값을 인덱스로 한다
+
     if (index < 0 || index >= this.size)
       // 유효한 인덱스가 아니면 리턴값을 null 값을 리턴하도록 한다
       return null;
