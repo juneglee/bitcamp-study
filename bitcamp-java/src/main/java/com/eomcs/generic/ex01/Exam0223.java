@@ -6,10 +6,10 @@ import java.util.HashSet;
 import com.eomcs.generic.ex01.Exam0223.A;
 
 public class Exam0223 {
-class A {}
-class B1 extends A{}
-class B2 extends A{}
-class C extends B1{}
+  class A {}
+  class B1 extends A{}
+  class B2 extends A{}
+  class C extends B1{}
 
   public static void main(String[] args) {
     // ArrayList<?> 
@@ -24,7 +24,7 @@ class C extends B1{}
     //m1(new ArrayList<B2>()); // 컴파일 오류!
     //m1(new ArrayList<C>()); // 컴파일 오류!
   }
-  
+
   static void m1 (ArrayList<A> list) {
 
   }

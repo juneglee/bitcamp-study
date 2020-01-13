@@ -26,7 +26,7 @@ static class C extends B1 {}
     m1(new ArrayList<C>());
 
   }
-  static void m1 (ArrayList<A> list) { 
+  static void m1 (ArrayList<?> list) { 
     // A타입에데해서만 가능 하다
     // 정확히 A타입만 와야 한다 
     // 즉 상위나, 하위 모두 불가능하고 정확히 A만 와야 한다

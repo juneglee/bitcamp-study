@@ -6,17 +6,15 @@ import com.eomcs.lms.handler.BoardHandler;
 import com.eomcs.lms.handler.LessonHandler;
 import com.eomcs.lms.handler.MemberHandler;
 import com.eomcs.util.Prompt;
-import com.eomcs.util.Queue;
 import com.eomcs.util.Stack;
 public class App {
 
   static Scanner keyboard = new Scanner(System.in);
-
+  
   static Stack<String> commandStack = new Stack<>();
-  static Queue<String> commandQueue = new Queue<>();
 
   public static void main(String[] args) {
-
+    
     Prompt prompt = new Prompt(keyboard);
 
     BoardHandler boardHandler = new BoardHandler(prompt);
@@ -27,14 +25,13 @@ public class App {
     do {
       System.out.print("\n명령> ");
       command = keyboard.nextLine();
-
+      
       if (command.length() == 0) {
         continue;
       } else {
-        commandStack.push(command);
-        commandQueue.offer(command);
+      commandStack.push(command);
       }
-
+      
       switch (command){
         case "/lesson/add":
           lessonHandler.addLesson();
@@ -51,8 +48,8 @@ public class App {
         case "/lesson/delete":
           lessonHandler.deleteLesson();
           break;
-
-
+          
+          
 
         case "/member/add":
           memberHandler.addMember();
@@ -70,7 +67,7 @@ public class App {
           memberHandler.deleteMember(); 
           break;
 
-
+          
         case "/board/add":
           boardHandler.addBoard();          
           break;
@@ -86,12 +83,9 @@ public class App {
         case "/board/delete":
           boardHandler.deleteBoard();
           break;
-
+          
         case "history":
           printCommandHistory();
-          break;
-        case "history2":
-          printCommandHistory2();
           break;
 
         default:
@@ -105,13 +99,13 @@ public class App {
   }
   private static void printCommandHistory() {
     Stack<String> historyStack = (Stack<String>) commandStack.clone();
-
-
+        
+        
     int count = 0; // 5개씩 끊어서 
     while (! historyStack.empty()) {
       System.out.println(historyStack.pop());
       count ++ ;
-
+      
       if ((count % 5) == 0) { //5배수이며, 5개마다 질문을 던져서 묻는다
         System.out.print(":");
         String str =keyboard.nextLine();  
@@ -121,23 +115,7 @@ public class App {
           break;
         }
       } // pop을 해서 꺼내면 남는게 없어진다
-
-    }
-  }
-
-  private static void printCommandHistory2() {
-    Queue<String> historyStack = (Queue<String>) commandQueue.clone();
-    int count = 0;
-    while (historyStack.size() > 0) {
-      System.out.println(historyStack.poll());
-
-      if ((++count % 5) == 0) {// 카운트의 값을 조사하기 전에 미리 증가 시키자
-        System.out.print(":");
-        String str =keyboard.nextLine();  
-        if (str.equalsIgnoreCase("q")) {
-          break;
-        }
-      }
+      
     }
   }
 }

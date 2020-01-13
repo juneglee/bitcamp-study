@@ -2,25 +2,19 @@
 package com.eomcs.lms.handler;
 
 import java.sql.Date;
-import java.util.Scanner;
 import com.eomcs.lms.domain.Board;
-import com.eomcs.util.ArrayList;
+import com.eomcs.util.LinkedList;
 import com.eomcs.util.Prompt;
 
 
 public class BoardHandler {
 
-  ArrayList<Board> boardList;
+  LinkedList<Board> boardList;
   Prompt prompt; 
 
   public BoardHandler(Prompt prompt) {
     this.prompt = prompt;
-    this.boardList = new ArrayList<>(); // 생략하면 내부에서 사용하는 Board가 된다 
-  }
-
-  public BoardHandler (Prompt prompt, int capacity) {
-    this.prompt = prompt;
-    this.boardList = new ArrayList<>(capacity);
+    this.boardList = new LinkedList<>(); 
   }
 
   public void addBoard() {
@@ -74,6 +68,8 @@ public class BoardHandler {
       System.out.println("해당번호의 게시글이 없습니다.");
       return; 
     }
+    
+    
     
     Board oldBoard = this.boardList.get(index);
     Board newBoard = new Board();
