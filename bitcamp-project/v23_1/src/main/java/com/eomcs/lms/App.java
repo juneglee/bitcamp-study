@@ -25,22 +25,6 @@ public class App {
 
     Prompt prompt = new Prompt(keyboard);
     
-    // 단지 유지보수를 좋게 하기 위해 ArrayList와 LinkedList의 공통 분모를 뽑아서 
-    // 만든 클래스가 List이다 
-    // List는 실제 작업을 하는 클래스가 아니다
-    // 그럼에도 불구하고 개발자가 다음과 같이 List 객체를 사용하려 한다면 막을 수 없다
-    // => 하지만 실행할때 동작 자체를 안한다
-    // why? 클래스에 정의된 메서드는 아무것도 하지 않는다???
-    // 해결책 ? 
-    // 일반화를 통해 만든 클래스의 경우 서브 클래스에게 공통 분모를 물려주기 위한 용도로 사용하며,
-    // 이런 클래스는 직접 인스턴스을 생성하지 못하도록 막아서 막아야 한다
-    // 이때 사용하는 것이 추상 클래스(Abstract)이다
-    
-    // list 클래스를 추상 클래스 만들면 다음과 같이 인스턴스를 생성할 수 없다
-    // 아예 인스턴스 생성을 원천적으로 차단하는 효과가 있다 
-    //AbstractList<Board> boardList = new AbstractList<>();
-    // 반드시 AbstractList의 일반 하위 객체를 정의 해야 한다 
-    
     LinkedList<Board> boardList = new LinkedList<>();
     BoardHandler boardHandler = new BoardHandler(prompt,boardList);
     

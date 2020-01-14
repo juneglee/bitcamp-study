@@ -3,7 +3,7 @@ package com.eomcs.lms.handler;
 
 import java.sql.Date;
 import com.eomcs.lms.domain.Board;
-import com.eomcs.util.AbstractList;
+import com.eomcs.util.List;
 import com.eomcs.util.Prompt;
 
 
@@ -13,10 +13,10 @@ public class BoardHandler {
   // 이들 클래스의 수퍼 클래스를 선언한다.
   // => 대신 이 필드에 들어갈 객체는 생성자에서 파라미터로 받는다
   // => 이렇게 하면 ArrayList나 LinkedList 모두 사용할 수 있어 유지보수에 유리하다 
-  AbstractList<Board> boardList;
+  List<Board> boardList;
   Prompt prompt; 
 
-  public BoardHandler(Prompt prompt,AbstractList<Board> list/* dependency*/) {
+  public BoardHandler(Prompt prompt,List<Board> list/* dependency*/) {
     //ArrayList나 LinkedList 둘다 사용할 수 있어야 한다
     this.prompt = prompt;
     this.boardList = list; 

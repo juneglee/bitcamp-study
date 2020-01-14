@@ -47,6 +47,7 @@ public class LinkedList<E> {
     Node<E> cursor = first;
     for (int i = 0 ; i < index -1 ; i++) {
       // 추가할 값의 인덱스 전에서 찾아야 한다
+     
       cursor = cursor.next;
      }
     if (index == 0) { // 인덱스가 0일때 즉 범위내의 값중에서 가장 작을 때 
