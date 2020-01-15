@@ -26,7 +26,8 @@ public abstract class A4 {
     public abstract void m3();
 }
 
-
+// 추상 클래스를 볼때 일부는 구현되있고, 일부는 내가 만들어서 쓰라고 만들어져 있을 것이다.
+// 그래서 확인해야 할 것이다.
 
 
 

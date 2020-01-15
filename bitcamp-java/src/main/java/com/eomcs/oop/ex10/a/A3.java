@@ -13,4 +13,5 @@ package com.eomcs.oop.ex10.a;
 public class A3 { // 컴파일 오류!
     // 메서드 앞에 abstract를 붙인다.
     public abstract void m1();
+    // 일반 클래스는 추상 메소드를 가지기 힘들다
 }
