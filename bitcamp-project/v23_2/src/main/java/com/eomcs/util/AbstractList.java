@@ -32,9 +32,9 @@ public abstract class AbstractList <E> {
   }
 
   public abstract void add (E e); 
-// 서브 클래스에 정의할 메서드라면 수퍼 클래스에서 정의하지 않는다 
-    // 대시 서브 클래스 반드시 구현하도록 강제한다
-  
+  // 서브 클래스에 정의할 메서드라면 수퍼 클래스에서 정의하지 않는다 
+  // 대시 서브 클래스 반드시 구현하도록 강제한다
+
   public abstract void add (int index, E value);
 
   public abstract E get(int index); 
@@ -42,9 +42,9 @@ public abstract class AbstractList <E> {
   public abstract E set (int index, E value); 
 
   public abstract E remove(int index); 
-  
+
   public abstract Object[] toArray(); 
-  
+
   public abstract E[] toArray(E[] arr); 
 
 }

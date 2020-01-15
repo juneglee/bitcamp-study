@@ -3,38 +3,31 @@ package com.eomcs.lms.handler;
 
 import java.sql.Date;
 import com.eomcs.lms.domain.Board;
-import com.eomcs.util.AbstractList;
+import com.eomcs.util.List;
 import com.eomcs.util.Prompt;
 
 
 public class BoardHandler {
-  // ArrayList나 LinkedList를 마음대로 사용할 수 있도록 
-  // 게시물 목록을 관리하는 필드에 선언할 때 
-  // 이들 클래스의 수퍼 클래스를 선언한다.
-  // => 대신 이 필드에 들어갈 객체는 생성자에서 파라미터로 받는다
-  // => 이렇게 하면 ArrayList나 LinkedList 모두 사용할 수 있어 유지보수에 유리하다 
-  AbstractList<Board> boardList;
+
+  // 목록을 다루는 객체를 지정할 때, 
+  // 특정 클래스(ex: AbstractList, LinkedList, ArrayList)를 지정하지 대신에,
+  // 사용할 규칙(ex: List)을 따르는 객체를 지정함으로써 
+  // 더 다양한 타입의 객체로 교체할 수 있게 만든다
+  // => List 사용 규칙을 구현한 객체라면 어던 클래스의 객체든지 사용할 수 있다 
+  // 결국 유지 보수를 유연하게 하기 위함이다
+  // 
+  List<Board> boardList;
   Prompt prompt; 
 
-  public BoardHandler(Prompt prompt,AbstractList<Board> list/* dependency*/) {
-    //ArrayList나 LinkedList 둘다 사용할 수 있어야 한다
+  public BoardHandler(Prompt prompt,List<Board> list/* dependency*/) {
+    // list  파라미터는 list 인터페이스를 구현한 객체를 받는다
     this.prompt = prompt;
     this.boardList = list; 
-    // Handler가 사용할 list 객체(의존객체)를 생성자에서 직접 만들지 않고
-    // 이렇게 생성자가 호출될 때 파라미터로 받으면,
-    // 필요에 따라 List 객체를 다른 객체로 대체하기가 쉽다
-    // 예를 들어 ArrayList를 사용하다가 LinkedList로 바꾸기 쉽다. 
-    // LinkedList를 사용하다가 다른 객체로 바꾸기가 쉽다.
-    // 즉, 다형적 변수에 법칙에 따라 List의 하위 객체라면 어떤 객체든지 가능하다 
-    // 이런식으로 의존 객체를 외부에서 주입받는 것을 
-    // "dependency injection"(의존성 주입)이라 부른다
-    // - 즉 의존객체를 부품화하여 교체하기 쉽도록 만드는 방식이다 
-    // - 참조 변수를 슈퍼 클래스로 사용하여 의존성 주입을 한다
   }
 
   public void addBoard() {
     Board board = new Board();
-    
+
     board.setNo(prompt.inputInt("번호? "));
     board.setTitle(prompt.inputString("제목? "));
 
@@ -48,7 +41,7 @@ public class BoardHandler {
 
   public void detailBoard() {
     int index = indexOfBoard(prompt.inputInt("번호? "));
-    
+
     if (index == -1) {
       System.out.println("해당 번호의 게시글이 없습니다.");
       return; 
@@ -78,38 +71,38 @@ public class BoardHandler {
 
   public void updateBoard() {
     int index = indexOfBoard(prompt.inputInt("번호? "));
-    
+
     if (index == -1) {
       System.out.println("해당번호의 게시글이 없습니다.");
       return; 
     }
-    
-    
-    
+
+
+
     Board oldBoard = this.boardList.get(index);
     Board newBoard = new Board();
-    
+
     newBoard.setNo(oldBoard.getNo());
     newBoard.setViewCount(oldBoard.getViewCount());
-    
+
     newBoard.setTitle(prompt.inputString(String.format("내용(%s) ? ", oldBoard.getTitle()),
         oldBoard.getTitle()));
-    
+
     newBoard.setDate(new Date(System.currentTimeMillis()));
 
     if (oldBoard.equals(newBoard)) {
       System.out.println("게시물의 변경을 취소했습니다.");
       return;
     } else {
-    this.boardList.set(index,newBoard);
-    System.out.println("게시글을 변경했습니다.");
+      this.boardList.set(index,newBoard);
+      System.out.println("게시글을 변경했습니다.");
     }
 
   }
 
   public void deleteBoard() {
     int index = indexOfBoard(prompt.inputInt("번호? "));
-   
+
 
     if (index == -1) {
       System.out.println("게시글 인덱스가 유효하지 않습니다");

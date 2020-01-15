@@ -17,7 +17,7 @@ public class Stack<E> implements Cloneable {
     if (this.size == elementData.length) { 
       grow();
     }
-    this.elementData[size++] = value; 
+    this.elementData[this.size++] = value; 
     //배열에 사이즈를 증가시키는 것은 배열을 증가 시키고 사이즈를 하나쯕 후위 증가하여 
     //결국 size의 위치는 빈 공간을 가리키게 된다 
   }
@@ -39,7 +39,8 @@ public class Stack<E> implements Cloneable {
       return null;
     }
     E value = (E)this.elementData[--this.size];
-    //--this.size;//element에 대한 배열을 안가르키면 숫자을 가르킨다
+    //--this.size;
+    //element에 대한 배열을 안가르키면 숫자을 가르킨다
     this.elementData[this.size] = null;
     // deep copy를 하지 않기 떄문에 복제한 레퍼런스서는 이전의 인스턴스를 같이 공유하여 사용하게 된다
     // 그래서 복제한 레퍼런스에서 garbage를 제거하기 위해서 null를 사용하면 

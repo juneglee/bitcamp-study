@@ -3,17 +3,25 @@
 package com.eomcs.lms.handler;
 
 import com.eomcs.lms.domain.Lesson;
-import com.eomcs.util.AbstractList;
+import com.eomcs.util.List;
 import com.eomcs.util.Prompt;
 
 
 public class LessonHandler {
 
- AbstractList<Lesson> lessonList;
+  // 목록을 다루는 객체를 지정할 때, 
+  // 특정 클래스(ex: AbstractList, LinkedList, ArrayList)를 지정하지 대신에,
+  // 사용할 규칙(ex: List)을 따르는 객체를 지정함으로써 
+  // 더 다양한 타입의 객체로 교체할 수 있게 만든다
+  // => List 사용 규칙을 구현한 객체라면 어던 클래스의 객체든지 사용할 수 있다 
+  // 결국 유지 보수를 유연하게 하기 위함이다
+  // 
+  List<Lesson> lessonList;
   Prompt prompt;
 
 
-  public LessonHandler(Prompt prompt, AbstractList<Lesson> list){
+  public LessonHandler(Prompt prompt, List<Lesson> list){
+    // list  파라미터는 list 인터페이스를 구현한 객체를 받는다
     this.prompt = prompt;
     this.lessonList = list;
   }
@@ -80,7 +88,7 @@ public class LessonHandler {
         oldLesson.getTitle()));
     // 호출 순서는 안쪽부터 바깥쪽으로 호출하여 출력한다
     // 라벨을 만드는데  String.format 기존의 데이터를 가져와서 문자열을 입력하는 것에 사용하여 출력한다
-    
+
     newLesson.setDescription(prompt.inputString( "설명 ? ", oldLesson.getDescription()));
 
     newLesson.setStartDate(prompt.inputDate(String.format("시작 일(%s) ? ", oldLesson.getStartDate()), 
@@ -94,7 +102,7 @@ public class LessonHandler {
 
     newLesson.setDayHours(prompt.inputInt(String.format("일 수업시간(%d) ? ", oldLesson.getDayHours()), 
         oldLesson.getDayHours()));
-    
+
     /*
     int oldValue = oldLesson.getDayHours();
     String label = "일수업시간(" + oldValue + ")? ";
@@ -105,7 +113,7 @@ public class LessonHandler {
     if (oldLesson.equals(newLesson)) {
       //기존의 값과 새로운 값이 동일할떄 
       System.out.println("수업 변경을 취소했습니다.");
-      
+
     } else {
       //기존의 값과 새로운 값이 다를 때 
       this.lessonList.set(index, newLesson);
@@ -136,5 +144,5 @@ public class LessonHandler {
     return -1;
   }
 
- 
+
 }
