@@ -4,10 +4,10 @@ public class C {
 
   // method
   void m1() {}
-  // 스태틱 멤버는 인스턴스 없이 호출한다.
-  // 즉, 스태틱 멤버(static context)에서는 this를 사용할 수 없다.
 
   static void m3() {
+    // 스태틱 멤버는 인스턴스 없이 호출한다.
+    // 즉, 스태틱 멤버(static context)에서는 this를 사용할 수 없다.
     //Object obj = this // this 변수가 없다
   } 
 

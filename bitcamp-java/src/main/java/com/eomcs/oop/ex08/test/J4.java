@@ -20,7 +20,7 @@ public class J4 {
 
   }
   
-  // 슈퍼 클래스의 수상 메서드를 구현하지 않으면 추상 클래스가 되어야 한다 
+  // 슈퍼 클래스의 추상 메서드를 구현하지 않으면 추상 클래스가 되어야 한다 
   abstract class Student extends Member {
     int grade;
     boolean working;

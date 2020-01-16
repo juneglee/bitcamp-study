@@ -1,7 +1,7 @@
 // static nested class 
 package com.eomcs.oop.ex11.a;
 
-public class Exam0110 {
+public class Exam0111 {
   // 스태틱
   static int sValue;
   int iValue;
