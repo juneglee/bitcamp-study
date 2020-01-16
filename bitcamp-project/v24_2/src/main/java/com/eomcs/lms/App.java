@@ -124,7 +124,7 @@ public class App {
 
         default:
           if (!command.equalsIgnoreCase("quit")) {
-            System.out.println("명령을 실행할 수 없습니다.");
+            System.out.println("명령을 실행할 수 없니다.");
           } 
       }
     } while (!command.equalsIgnoreCase("quit"));

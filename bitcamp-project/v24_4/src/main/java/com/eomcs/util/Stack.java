@@ -36,7 +36,7 @@ public class Stack<E> implements Cloneable {
     }
     E value = (E)this.elementData[--this.size];
     this.elementData[this.size] = null;
-
+   
     return value;
   }
 
@@ -61,26 +61,26 @@ public class Stack<E> implements Cloneable {
       return null;
     }
 
-
+    
   }
   public Iterator<E> iterator() {
-    // anonymous class :인스턴스를 한 개만 생성한다면 로컬 클래스를 익명 클래스로 정의하라 
-    // 익명 클래스의 코드를 리턴하는 것이 아니라 
-    // 이터레이터 규칙에 의해서 만들어진 객체들을 생성하고
-    // 만들어진 객체을 담은 주소를 리턴한다
-    return  new Iterator<E>() { 
-      Stack<E> Stack;
-      {
-        this.Stack = (Stack<E>) Stack.this.clone();
-      } // 익명 클래스는 생성자가 없기 때문에 초기화 블록으로 만든다 
+    // local class : 특정 메서드 안에서만 사용하는 중첩 클래스라면
+    // 그 메서드 안으로 위치를 옮긴
+    class StackIterator<T> implements Iterator<T> {
+      Stack<T> Stack;
 
+      @SuppressWarnings("unchecked")
+      public StackIterator() {
+        this.Stack = (Stack<T>) Stack.this.clone();
+      }
       public boolean hasNext() {
         return !Stack.empty(); 
       }
-      public E next() {
+      public T next() {
         return Stack.pop(); 
       }
-    };
+    }
+    return new StackIterator<>();
   }
 }
 
