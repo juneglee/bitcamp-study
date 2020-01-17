@@ -1,4 +1,4 @@
-package com.eomcs.oop.ex08.test;
+ckage com.eomcs.oop.ex08.test;
 
 // public 이 아니라면 여러개를 만들 수 있지만, 
 // 하나의 클래스에 하나의 파일을 만든는 것을 추천한다

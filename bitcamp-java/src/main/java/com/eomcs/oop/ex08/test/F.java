@@ -25,7 +25,7 @@ class testF {
     
     F2 obj2 = new F2();
     obj2 = new F3();
-    // obj2 = new F1(); // 컴파일 오류
+    // obj2 = new F(); // 컴파일 오류
   }
 }
 

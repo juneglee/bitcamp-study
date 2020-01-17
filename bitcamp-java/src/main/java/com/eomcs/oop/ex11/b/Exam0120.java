@@ -12,11 +12,12 @@ public class Exam0120 {
   // => 패키지 멤버 클래스로 선언하면 같은 이름으로 패키지 멤버를 중복해서 만들 수 없지만,
   //    클래스 안에 선언하면, 같은 이름으로 자신만의 기능을 수행하는 
   //    중첩 클래스를 여러 클래스 안에 만들 수 있다.
-  //
   // 1) static nested class
-  //    => 인스턴스 메서드를 사용하지 않는 때 선언 
   // 2) non-static nested class = inner class
-  //    => 인스턴스 메서드를 사용할 때 선언 
+  
+  // static nested class
+  // => 바깥 클래스의 인스턴스를 사용하지 않는다면 static nested class 로 정의하라! 
+  // => 인스턴스 필드를 사용하지 않는 메서드를 스태틱으로 선언하는 것과 같다.
   //
   static class JavaFilter implements FilenameFilter {
     public boolean accept(File dir, String name) {
