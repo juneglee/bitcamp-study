@@ -1,4 +1,5 @@
-package com.eomcs.oop.ex11.c;
+// 카테고리에서 각 그룹별로 세분화
+package com.eomcs.oop.ex11.c.step6;
 
 public class Computer {
   public static final int CPU = 1;

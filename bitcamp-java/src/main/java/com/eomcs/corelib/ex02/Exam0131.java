@@ -8,12 +8,10 @@ public class Exam0131 {
     // 원래의 문자열을 변경하고 싶을 때 사용하는 클래스이다.
     //
     StringBuffer buf = new StringBuffer("Hello");
-    buf.replace(2, 4, "xx");
+    buf.replace(2, 4, "xxxx");
+    // 2이상 4미만 을 대체해라 (꼭 2이상 4미만이라고 2개만 적는게 아니다)
     System.out.println(buf); // 원본을 바꾼다.
   }
 }
-
-
-
 
 

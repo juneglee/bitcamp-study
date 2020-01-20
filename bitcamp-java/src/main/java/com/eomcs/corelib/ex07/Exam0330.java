@@ -3,9 +3,9 @@ package com.eomcs.corelib.ex07;
 
 import java.util.HashSet;
 
-public class Exam0320 {
+public class Exam0330 {
 
-  // 사용자 정의 데이터 타입 - equals만
+  // 사용자 정의 데이터 타입 - hashCode만
   static class Member {
     String name;
     int age;
@@ -21,24 +21,13 @@ public class Exam0320 {
     }
 
     @Override
-    public boolean equals(Object obj) {
-      if (this == obj)
-        return true;
-      if (obj == null)
-        return false;
-      if (getClass() != obj.getClass())
-        return false;
-      Member other = (Member) obj;
-      if (age != other.age)
-        return false;
-      if (name == null) {
-        if (other.name != null)
-          return false;
-      } else if (!name.equals(other.name))
-        return false;
-      return true;
+    public int hashCode() {
+      final int prime = 31;
+      int result = 1;
+      result = prime * result + age;
+      result = prime * result + ((name == null) ? 0 : name.hashCode());
+      return result;
     }
-
 
   }
 
@@ -49,7 +38,7 @@ public class Exam0320 {
     Member v4 = new Member("안중근", 20);
     Member v5 = new Member("유관순", 16);
 
-    System.out.printf("equals() :%b \n", v3.equals(v5));
+    System.out.printf("hashCode() :%d , %d \n", v3.hashCode(), v5.hashCode());
     System.out.println("-----------------");
 
     HashSet set = new HashSet();

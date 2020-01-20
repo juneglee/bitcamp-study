@@ -2,10 +2,10 @@
 package com.eomcs.corelib.ex03;
 
 // 배열을 이용하여 컬렉션 클래스 만들기 : ArrayList
-// => 단점: 배열의 크기가 고정되기 때문에 배열을 초과하여 값을 넣으려면
-//         더 큰 새 배열을 만들고, 기존 값을 복사해야 한다.
-//         배열의 크기가 늘 때마다 가비지(garbage)가 생기는 문제가 있다.
-//         기본 배열의 값을 복사하기 때문에 속도가 느린 문제도 있다.
+// => 단점: 1. 배열의 크기가 고정되기 때문에 배열을 초과하여 값을 넣으려면
+// 더 큰 새 배열을 만들고, 기존 값을 복사해야 한다.
+// 2. 배열의 크기가 늘 때마다 가비지(garbage)가 생기는 문제가 있다.
+// 3. 기본 배열의 값을 복사하기 때문에 속도가 느린 문제도 있다.
 public class Exam0110 {
   public static void main(String[] args) {
     ArrayList list = new ArrayList();
@@ -14,11 +14,11 @@ public class Exam0110 {
     list.add("ccc"); // aaa, bbb, ccc,
     list.add("ddd"); // aaa, bbb, ccc, ddd,
 
-    print(list); 
+    print(list);
 
     list.remove(2); // aaa, bbb, ddd,
-
-    print(list); 
+    // 우리가 작성한 코드로 실행하면 유효한 값이 벗어나면 무시한다
+    print(list);
 
     list.remove(0); // bbb, ddd,
 
@@ -51,10 +51,6 @@ public class Exam0110 {
     }
     System.out.println();
   }
-}   
-
-
-
-
+}
 
 

@@ -1,4 +1,7 @@
 // java.util.concurrent.ArrayBlockingQueue 사용
+// Queue는 인터페이스이기 때문에 인스턴스 생성 불가???
+// Queue는 인터페이스이기 때문에 queue를 구현한 클래스를 사용해야 한다
+
 package com.eomcs.corelib.ex06;
 
 import java.util.concurrent.ArrayBlockingQueue;
@@ -13,8 +16,10 @@ public class Exam0120 {
     String s5 = new String("eee");
 
     ArrayBlockingQueue queue = new ArrayBlockingQueue(100);
+    // deque, ArrayBlockingQueue (멀티쓰레드:하나가 참조할때 다른것이 참조할수 없다)
+    // linkedList
     queue.offer(s1); // aaa,
-    print(queue); 
+    print(queue);
     queue.offer(s2); // aaa, bbb,
     print(queue);
     queue.offer(s3); // aaa, bbb, ccc,
@@ -42,26 +47,7 @@ public class Exam0120 {
       System.out.print(value + ", ");
     }
     System.out.println();
-  }    
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
