@@ -44,6 +44,7 @@ public class App {
 
     Prompt prompt = new Prompt(keyboard);
     HashMap<String, Command> CommandMap = new HashMap<>();
+    // 제네릭을 사용하여 유효한 값을 입력하도록 하였다
 
 
     LinkedList<Board> boardList = new LinkedList<>();
@@ -99,16 +100,17 @@ public class App {
       }
 
       Command commandHandler = CommandMap.get(command);
+      // hashmap의 레퍼런스에 저장된 command값을 리턴하여
+      // commandhandler에 레퍼런스로 저장한다
+      // commandhandler을 레퍼런스 값으로 정하여 잘못된 명령을 입력헀을 때
+      // 이때 값이 null이 아니면 계속 실행하고, 그밖의는 문구를 출력한다
 
       if (commandHandler != null) {
-        try {
-          commandHandler.execute();
-        } catch (Exception e) {
-          System.out.printf("명령어 실행 중 오류 발생 : %s\n", e.getMessage());
-        }
+        commandHandler.execute();
       } else {
         System.out.println("실행할 수 없는 명령입니다. ");
       }
+      // 왜 not을 이용한 if문인지 궁금함....????
     }
     keyboard.close();
   }

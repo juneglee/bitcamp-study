@@ -14,7 +14,7 @@ public class ComputePlusCommand implements Command {
     int no1 = prompt.inputInt("수1? ");
     int no2 = prompt.inputInt("수2? ");
 
-    System.out.printf("계산결과는 %d 입니다\n", (no1 + no2));
+    System.out.printf("계간결과는 %d 입니다\n", (no1 + no2));
   }
 
 }
