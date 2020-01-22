@@ -23,10 +23,9 @@ public class LessonListCommand implements Command {
 
     while (iterator.hasNext()) {
       Lesson l = iterator.next();
-      System.out.printf(
-          "번호: %d\n수업명: %s\n설명: %s\n기간: %s ~ %s\n총수업시간: %d 시간" + "\n일수업시간: %d 시간\n조회수: %d\n ",
+      System.out.printf("번호: %d 수업명: %s 설명: %s 기간: %s ~ %s\n총수업시간: %d 시간 일수업시간: %d 시간\n ",
           l.getNo(), l.getTitle(), l.getDescription(), l.getStartDate(), l.getEndDate(),
-          l.getTotalHours(), l.getDayHours(), l.getViewCount());
+          l.getTotalHours(), l.getDayHours());
     }
   }
 
