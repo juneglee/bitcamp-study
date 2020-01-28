@@ -80,12 +80,11 @@ public class App {
       System.out.print("\n명령> ");
       command = keyboard.nextLine();
 
-      if (command.length() == 0) {
+      if (command.length() == 0) 
         continue;
-      } else {
+      
         commandStack.push(command);
         commandQueue.offer(command);
-      }
 
       if (command.equals("quit")) {
         System.out.println("안녕");
