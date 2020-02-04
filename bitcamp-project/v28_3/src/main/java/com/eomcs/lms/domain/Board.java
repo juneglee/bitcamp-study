@@ -1,13 +1,9 @@
 package com.eomcs.lms.domain;
 
-import java.io.Serializable;
 // VO(=value object) or domain의 폴도로 사용한다
 import java.sql.Date;
 
-public class Board implements Serializable {
-
-  private static final long serialVersionUID = 20200131L;
-
+public class Board {
   private int no; // 공개하고자할때는 public을 각각 붙인다
   private String title;
   private Date date;

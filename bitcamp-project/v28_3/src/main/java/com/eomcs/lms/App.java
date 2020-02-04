@@ -1,19 +1,20 @@
 
 package com.eomcs.lms;
 
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Deque;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 import java.util.Queue;
 import java.util.Scanner;
-import java.util.Set;
-import com.eomcs.lms.context.ApplicationContextListener;
 import com.eomcs.lms.domain.Board;
 import com.eomcs.lms.domain.Lesson;
 import com.eomcs.lms.domain.Member;
@@ -36,48 +37,31 @@ import com.eomcs.lms.handler.MemberDetailCommand;
 import com.eomcs.lms.handler.MemberListCommand;
 import com.eomcs.lms.handler.MemberUpdateCommand;
 import com.eomcs.util.Prompt;
+import com.google.gson.Gson;
 
 public class App {
 
-  Scanner keyboard = new Scanner(System.in);
+  static Scanner keyboard = new Scanner(System.in);
 
-  Deque<String> commandStack = new ArrayDeque<>();
-  Queue<String> commandQueue = new LinkedList<>();
+  static Deque<String> commandStack = new ArrayDeque<>();
+  static Queue<String> commandQueue = new LinkedList<>();
 
-  List<Lesson> lessonList = new ArrayList<>();
-  List<Member> memberList = new ArrayList<>();
-  List<Board> boardList = new ArrayList<>();
+  static List<Lesson> lessonList = new ArrayList<>();
+  static List<Board> boardList = new ArrayList<>();
+  static List<Member> memberList = new ArrayList<>();
 
-  Set<ApplicationContextListener> listeners = new HashSet<>();
-  Map<String, Object> context = new HashMap<>();
-
-  public void addApplicationContextListener(ApplicationContextListener listener) {
-    listeners.add(listener);
-  }
-
-  public void removeApplicationContextListener(ApplicationContextListener listener) {
-    listeners.remove(listener);
-  }
-
-  private void notifyApplicationInitialized() {
-    for (ApplicationContextListener listener : listeners) {
-      listener.contextInitialized(context);
-    }
-  }
-
-  private void notifyApplicationDestroyed() {
-    for (ApplicationContextListener listener : listeners) {
-      listener.contextDestroyed(context);
-    }
-  }
-
-  public void service() {
+  public static void main(String[] args) {
+    // 파일에서 데이터 로딩
+    loadLessonData();
+    loadBoardData();
+    loadMemberData();
 
     Prompt prompt = new Prompt(keyboard);
     HashMap<String, Command> CommandMap = new HashMap<>();
     // 사용자의 명령을 받을 맵을 준비 한다
 
     CommandMap.put("/board/add", new BoardAddCommand(prompt, boardList));
+    // 게시물 등록을 처리하기 위한 명령어를 처리한다
     CommandMap.put("/board/list", new BoardListCommand(boardList));
     CommandMap.put("/board/detail", new BoardDetailCommand(prompt, boardList));
     CommandMap.put("/board/update", new BoardUpdateCommand(prompt, boardList));
@@ -110,7 +94,8 @@ public class App {
       if (command.equals("quit")) {
         System.out.println("안녕");
         break;
-      } else if (command.equals("History")) {
+      }
+      if (command.equals("History")) {
         printCommandHistory(commandStack.iterator());
         continue;
       } else if (command.equals("History2")) {
@@ -134,10 +119,13 @@ public class App {
     }
     keyboard.close();
 
-    notifyApplicationDestroyed();
+    // 데이터 파일에 저장
+    saveLessonData();
+    saveBoardData();
+    saveMemberData();
   }
 
-  private void printCommandHistory(Iterator<String> iterator) {
+  private static void printCommandHistory(Iterator<String> iterator) {
 
     int count = 0;
     while (iterator.hasNext()) {
@@ -154,12 +142,80 @@ public class App {
     }
   }
 
-  public static void main(String[] args) {
-    App app = new App();
+  private static void loadLessonData() {
+    File file = new File("./lesson.json");
 
-    app.addApplicationContextListener(new DataLoaderListener());
-    app.addApplicationContextListener(new GreetingListener());
+    try (FileReader in = new FileReader(file)) {
+      lessonList.addAll(Arrays.asList(new Gson().fromJson(in, Lesson[].class)));
+      // null값이여도 위세 만들어 놓은 빈공간의 배열에 집어 넣어서 오류를 잡는다
+      // asList ; list로 만들어진 모든 객체를 넘겨 받는다/ 반복문 대신
+      // 하지만 읽기기능만 있고 쓰기 기능이 없기 때문에 오류 발생함
+      // ArrayList와 LinkedList는 리스트를 받아서 초기화 시키는게 가능하다
+      System.out.printf("총 %d 개의 수업 데이터를 로딩했습니다  \n", lessonList.size());
 
-    app.service();
+    } catch (IOException e) {
+      System.out.println("파일 읽기중 오류발생! -" + e.getMessage());
+    }
+  }
+
+  private static void saveLessonData() {
+    File file = new File("./lesson.json");
+    try (FileWriter out = new FileWriter(file)) {
+      out.write(new Gson().toJson(lessonList));
+      System.out.printf("총 %d 개의 수업 데이터를 저장했습니다 \n", lessonList.size());
+
+    } catch (IOException e) {
+      System.out.println("파일 쓰기중 오류발생! -" + e.getMessage());
+    }
+  }
+
+
+  private static void loadBoardData() {
+    File file = new File("./board.json");
+
+    try (FileReader in = new FileReader(file)) {
+      boardList.addAll(Arrays.asList(new Gson().fromJson(in, Board[].class)));
+      System.out.printf("총 %d 명의 게시판 데이터를 로딩했습니다\n", boardList.size());
+
+    } catch (IOException e) {
+      System.out.println("파일 읽기 중 오류 발생" + e.getMessage());
+    }
+  }
+
+  private static void saveBoardData() {
+    File file = new File("./board.json");
+
+    try (FileWriter out = new FileWriter(file)) {
+      out.write(new Gson().toJson(boardList));
+      System.out.printf("총 %d 명의 게시판 데이터를 저장했습니다\n", boardList.size());
+
+    } catch (IOException e) {
+      System.out.println("파일 쓰기중 오류발생! -" + e.getMessage());
+    }
+  }
+
+  private static void loadMemberData() {
+    File file = new File("./member.json");
+
+    try (FileReader in = new FileReader(file)) {
+      memberList.addAll(Arrays.asList(new Gson().fromJson(in, Member[].class)));
+
+      System.out.printf("총 %d 명의 멤버의 데이터를 로딩했습니다.\n ", memberList.size());
+    } catch (IOException e) {
+      System.out.println("파일 읽기 중 오류 발생\n" + e.getMessage());
+    }
+  }
+
+  private static void saveMemberData() {
+    File file = new File("./member.json");
+    try (FileWriter out = new FileWriter(file)) {
+      out.write(new Gson().toJson(memberList));
+      System.out.printf("총 %d 명의 멤버의 데이터를 저장했습니다.\n ", memberList.size());
+
+    } catch (IOException e) {
+      System.out.println("파일 쓰기 중 오류 발생\n" + e.getMessage());
+    }
   }
 }
+
+
