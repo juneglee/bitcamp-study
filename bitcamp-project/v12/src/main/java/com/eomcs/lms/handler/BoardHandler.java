@@ -9,6 +9,7 @@ public class BoardHandler {
 
   static final int boardSIZE = 100;
   static Board[] boards = new Board[boardSIZE]; 
+  //배별을 스태틱으로 만들었기 때문에 하나의 데이터를 하나의 메서드로 할수 있다
   static int boardCount = 0;
 
   // default :즉 public이 없거나, 아무것도 없으면 default이며 같은 패키지는 공유할 수 있다 

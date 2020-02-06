@@ -3,12 +3,7 @@ package com.eomcs.lms.domain;
 import java.io.Serializable;
 import java.sql.Date;
 
-// 객체를 serialize 하려면 이 기능을 활성화시켜야 한다.
-// - java.io.Serializable을 구현하라!
-// - serialize 데이터를 구분하기 위해 버전 번호를 명시하라.
-//
 public class Lesson implements Serializable {
-
   private static final long serialVersionUID = 20200131L;
 
   private int no;
@@ -18,6 +13,15 @@ public class Lesson implements Serializable {
   private Date endDate;
   private int totalHours;
   private int dayHours;
+  private int viewCount;
+
+
+  @Override
+  public String toString() {
+    return "Lesson [no=" + no + ", title=" + title + ", description=" + description + ", startDate="
+        + startDate + ", endDate=" + endDate + ", totalHours=" + totalHours + ", dayHours="
+        + dayHours + ", viewCount=" + viewCount + "]";
+  }
 
   public static Lesson valueOf(String csv) {
     String[] data = csv.split(",");
@@ -34,7 +38,7 @@ public class Lesson implements Serializable {
     return lesson;
   }
 
-  public String toCsvString() {
+  public String toCSVString() {
     return String.format("%d,%s,%s,%s,%s,%d,%d", this.getNo(), this.getTitle(),
         this.getDescription(), this.getStartDate(), this.getEndDate(), this.getTotalHours(),
         this.getDayHours());
@@ -51,6 +55,7 @@ public class Lesson implements Serializable {
     result = prime * result + ((startDate == null) ? 0 : startDate.hashCode());
     result = prime * result + ((title == null) ? 0 : title.hashCode());
     result = prime * result + totalHours;
+    result = prime * result + viewCount;
     return result;
   }
 
@@ -88,6 +93,8 @@ public class Lesson implements Serializable {
     } else if (!title.equals(other.title))
       return false;
     if (totalHours != other.totalHours)
+      return false;
+    if (viewCount != other.viewCount)
       return false;
     return true;
   }
@@ -147,6 +154,12 @@ public class Lesson implements Serializable {
   public void setDayHours(int dayHours) {
     this.dayHours = dayHours;
   }
+
+  public int getViewCount() {
+    return viewCount;
+  }
+
+  public void setViewCount(int viewCount) {
+    this.viewCount = viewCount;
+  }
 }
-
-

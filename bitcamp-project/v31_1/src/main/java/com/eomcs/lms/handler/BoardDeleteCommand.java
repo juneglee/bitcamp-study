@@ -4,11 +4,8 @@ import java.util.List;
 import com.eomcs.lms.domain.Board;
 import com.eomcs.util.Prompt;
 
-// "/board/delete" 명령 처리
 public class BoardDeleteCommand implements Command {
-
   List<Board> boardList;
-
   Prompt prompt;
 
   public BoardDeleteCommand(Prompt prompt, List<Board> list) {
@@ -20,14 +17,14 @@ public class BoardDeleteCommand implements Command {
   public void execute() {
     int index = indexOfBoard(prompt.inputInt("번호? "));
 
+
     if (index == -1) {
-      System.out.println("해당 번호의 게시글이 없습니다.");
+      System.out.println("게시글 인덱스가 유효하지 않습니다");
       return;
     }
-
     this.boardList.remove(index);
+    System.out.println("게시글을 삭제하였습니다.");
 
-    System.out.println("게시글을 삭제했습니다.");
   }
 
   private int indexOfBoard(int no) {
@@ -38,7 +35,4 @@ public class BoardDeleteCommand implements Command {
     }
     return -1;
   }
-
 }
-
-

@@ -1,25 +1,22 @@
 package com.eomcs.lms.domain;
 
 import java.io.Serializable;
+// VO(=value object) or domain의 폴도로 사용한다
 import java.sql.Date;
 
-// 객체를 serialize 하려면 이 기능을 활성화시켜야 한다.
-// - java.io.Serializable을 구현하라!
-// - serialize 데이터를 구분하기 위해 버전 번호를 명시하라.
-//
 public class Board implements Serializable {
 
   private static final long serialVersionUID = 20200131L;
 
-  private int no;
+  private int no; // 공개하고자할때는 public을 각각 붙인다
   private String title;
   private Date date;
   private int viewCount;
   private String writer;
 
-  // CSV 포맷:
-  // - 번호,제목,등록일,조회수,작성자
-  //
+
+  // csv 포맷 ;
+  // - 번호, 제목, 등록일, 조회수, 등록자
   public static Board valueOf(String csv) {
     String[] data = csv.split(",");
 
@@ -29,12 +26,17 @@ public class Board implements Serializable {
     board.setDate(Date.valueOf(data[2]));
     board.setViewCount(Integer.parseInt(data[3]));
     board.setWriter(data[4]);
+
     return board;
   }
 
-  public String toCsvString() {
+  // 특정 작업을 수행하기 위해서static을 사용하지 않는다
+  public String toCSVString() {
     return String.format("%d,%s,%s,%d,%s", this.getNo(), this.getTitle(), this.getDate(),
         this.getViewCount(), this.getWriter());
+    // 순수한 문자열이기 때문에 \n 삭제
+    // 내부에서 문자열을 만들어서 리턴한다
+
   }
 
   @Override
@@ -113,5 +115,6 @@ public class Board implements Serializable {
   public void setWriter(String writer) {
     this.writer = writer;
   }
+
 
 }
