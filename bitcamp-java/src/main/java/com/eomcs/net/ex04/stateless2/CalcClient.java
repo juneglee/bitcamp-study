@@ -1,4 +1,4 @@
-// stateful 방식 - 계산기 클라이언트 만들기
+// stateless 방식에서 클라이언트를 구분하고 작업 결과를 유지하는 방법
 package com.eomcs.net.ex04.stateless2;
 
 import java.io.DataInputStream;
@@ -37,6 +37,7 @@ public class CalcClient {
         // => 서버에서 보낸 클라이언트 아이디를 읽는다
         clientId = in.readLong();
 
+        // => 서버에서 보낸 결과를 읽는다.
         int result = in.readInt();
         System.out.printf("계산 결과 : %d\n", result);
 

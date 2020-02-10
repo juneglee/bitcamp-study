@@ -1,4 +1,4 @@
-// stateful 방식
+// stateless 방식에서 클라이언트를 구분하고 작업 결과를 유지하는 방법
 package com.eomcs.net.ex04.stateless2;
 
 import java.io.DataInputStream;
@@ -37,13 +37,16 @@ public class CalcServer {
         DataInputStream in = new DataInputStream(socket.getInputStream());
         DataOutputStream out = new DataOutputStream(socket.getOutputStream());) {
 
-
+      // 클라이언트를 구분하기 위한 아이디
+      // => 0: 아직 클라이언트 아이디가 없다는 의미
+      // => x: 서버가 클라이언트에게 아이디를 부여했다는 의미
       long clientId = in.readLong();
 
-
+      // 연산자와 값을 입력 받는다.
       String op = in.readUTF();
       int value = in.readInt();
 
+      // 클라이언트는 위한 기존 값 꺼내기
       Integer obj = resultMap.get(clientId);
       int result = 0;
 
