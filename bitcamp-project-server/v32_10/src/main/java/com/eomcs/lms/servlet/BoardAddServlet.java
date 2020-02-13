@@ -9,7 +9,7 @@ public class BoardAddServlet implements Servlet {
 
   // Dao 클래스를 구체적으로 저장하기 보다는
   // 인터페이스를 지정함으로써
-  // 향후 다른 구현체로 교체하기 쉽도록 한다
+  // 향후 다른 구현체(json, ser2 등) 로 교체하기 쉽도록 한다
   BoardDao boardDao;
 
   public BoardAddServlet(BoardDao boardDao) {

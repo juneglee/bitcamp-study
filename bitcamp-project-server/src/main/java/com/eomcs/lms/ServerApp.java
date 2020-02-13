@@ -36,10 +36,10 @@ public class ServerApp {
   // 커맨드 디지안 패턴과 관련된 코드
   Map<String, Servlet> servletMap = new HashMap<>();
 
-
   // 옵저버 관련된 코드
   Set<ApplicationContextListener> listeners = new HashSet<>();
   Map<String, Object> context = new HashMap<>();
+
 
   // subject
   public void addApplicationContextListener(ApplicationContextListener listener) {
@@ -92,24 +92,20 @@ public class ServerApp {
     servletMap.put("/member/update", new MemberUpdateServlet(memberDao));
     servletMap.put("/member/delete", new MemberDeleteServlet(memberDao));
 
-    try (
-        // 서버쪽 연결 준비
-        // => 클라이언트의 연결을 9999번 포트에서 기다린다.
-        ServerSocket serverSocket = new ServerSocket(9999)) {
+    try (ServerSocket serverSocket = new ServerSocket(9999)) {
 
       System.out.println("클라이언트 연결 대기중...");
-
       while (true) {
         Socket socket = serverSocket.accept();
         System.out.println("클라이언트와 연결되었음!");
 
-        if (processRequest(socket) == 9) {
-          // processRequest 에서 "/server/stop" 의 리턴 값을 9로 정했기 때문에
-          // 9와 동일한 값이 나오면 서버의 연결을 해제하도록 만들었음
-          break;
-        }
-
-        System.out.println("--------------------------------------");
+        // 클라이언트의 요청을 처리하는 부분만
+        // main 스레드에서 분리하여 별도의 스레드로 분리하여 실행한다
+        // 따라서 스레드의 응답 지연에 다른 스레드가 영향을 받지 않는다
+        new Thread(() -> {
+          processRequest(socket);
+          System.out.println("--------------------------------------");
+        }).start();
       }
 
     } catch (Exception e) {
@@ -130,45 +126,39 @@ public class ServerApp {
 
       System.out.println("통신을 위한 입출력 스트림을 준비하였음!");
 
-      while (true) {
-        String request = in.readUTF();
-        System.out.println("클라이언트가 보낸 메시지를 수신하였음!");
+      String request = in.readUTF();
+      System.out.println("클라이언트가 보낸 메시지를 수신하였음!");
 
-        switch (request) {
-          case "quit": // 클라이언트와 연결을 종료
-            quit(out);
-            return 0;
-          case "/server/stop": // 서버를 종료한다
-            quit(out);
-            return 9;
-        }
-        Servlet servlet = servletMap.get(request);
-        // 명령어를 처리할 객체를 찾아본다
-        // 클라이언트의 요청을 처리할 객체를 찾는다
-
-        // 없다면 간단한 안내 메시지를 응답한다
-        if (servlet != null) {
-
-          try {
-            // 클라이언트 요청을 처리할 객체를 찾았으면 작업을 실행시킨다.
-            servlet.service(in, out);
-          } catch (Exception e) {
-            // 요청한 작업을 수행하다가 오류 발생할 경우 그 이유를 간단히 응답
-            out.writeUTF("FAIL");
-            out.writeUTF(e.getMessage());
-
-            // 서버에는 더 자세한 오류 내용을 출력
-            System.out.println("클라이언트 요청 처리 중 오류 발생");
-            e.printStackTrace();
-          }
-        } else {
-          NotFound(out);
-        }
-
-        out.flush();
-        System.out.println("클라이언트에게 응답하였음");
-        System.out.println("--------------------------------");
+      if (request.equalsIgnoreCase("/server/stop")) { // 서버를 종료한다
+        quit(out);
+        return 9;
       }
+      Servlet servlet = servletMap.get(request);
+      // 명령어를 처리할 객체를 찾아본다
+      // 클라이언트의 요청을 처리할 객체를 찾는다
+
+      // 없다면 간단한 안내 메시지를 응답한다
+      if (servlet != null) {
+
+        try {
+          // 클라이언트 요청을 처리할 객체를 찾았으면 작업을 실행시킨다.
+          servlet.service(in, out);
+        } catch (Exception e) {
+          // 요청한 작업을 수행하다가 오류 발생할 경우 그 이유를 간단히 응답
+          out.writeUTF("FAIL");
+          out.writeUTF(e.getMessage());
+
+          // 서버에는 더 자세한 오류 내용을 출력
+          System.out.println("클라이언트 요청 처리 중 오류 발생");
+          e.printStackTrace();
+        }
+      } else {
+        NotFound(out);
+      }
+
+      out.flush();
+      System.out.println("클라이언트에게 응답하였음");
+      return 0;
 
     } catch (Exception e) {
       System.out.println("예외 발생:");
