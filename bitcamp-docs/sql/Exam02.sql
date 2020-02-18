@@ -27,9 +27,8 @@ alter table test1
 
 - 전체 컬럼 값 입력하기
 ```
-/* 컬럼을 지정하지 않으면 
- * 테이블을 생성할 때 선언한 컬럼 순서대로 
- * 값을 지정해야 한다.*/
+/* 테이블을 생성할 때 컬럼을 지정하지 않으면 
+ * 이전에 선언한 컬럼 순서대로 값을 지정해야 한다.*/
 insert into 테이블명 value(값,....);
 insert into test1 values(null,'aaa','111','222','10101','seoul');
 
@@ -39,7 +38,8 @@ insert into test1(name,fax,tel,no,pstno,addr)
     values('bbb','222','111',null,'10101','seoul');
 ```
 
-- 값을 입력할 컬럼을 선택하기. 단 필수 입력 컬럼은 반드시 선택해야 한다.
+- 값을 입력할 컬럼을 선택하기. 
+- 단 필수 입력 컬럼은 반드시 선택해야 한다.
 ```
 /* no 컬럼은 필수 입력 컬럼이지만, 
   자동 증가 컬럼이기 때문에 값을 입력하지 않아도 된다.*/
@@ -56,6 +56,7 @@ create table test2 (
   eng int,
   math int
 );
+
 insert into test2(name,tel)
   select name, tel from test1 where addr='seoul'; 
 ```
@@ -75,7 +76,8 @@ update test1 set fax='333';
 mysql은 autocommit의 기본 값이 true이다. 따라서 명령창에서 SQL을 실행하면 바로 실제 테이블에 
 적용된다. 수동으로 처리하고 싶다면 autocommit을 false로 설정하라!
 ```
-> set autocommit=false;
+> set autocommit=false;  //임시 저장 변수에 저장되기 때문에 commit을 하기 전까지는 rollback을 통해 불러 들일 수 있다 
+>  set autocommit=ture; // delete, drop등의 명령을 실행할때마다 저장되기 때문에 True를 사용할 때는 신중해야 한다
 ```
 
 insert/update/delete을 수행한 후 승인을 해야만 실제 테이블에 적용된다.

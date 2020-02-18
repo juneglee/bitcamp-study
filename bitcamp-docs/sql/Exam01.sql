@@ -7,6 +7,7 @@ DB 객체(테이블, 뷰, 함수, 트리거 등)를 생성, 변경, 삭제하는
 - 트리거(trigger)
   - 특정 조건에서 자동으로 호출되는 함수
   - 특정 조건? SQL 실행 전/후 등
+  - OOP 디자인 패턴의 옵저버에 해당한다
 - 함수(function)
 - 프로시저(procedure)
 - 인덱스(index)
@@ -28,7 +29,7 @@ DB 객체(테이블, 뷰, 함수, 트리거 등)를 생성, 변경, 삭제하는
   컬럼명 타입 NULL여부 옵션,
   ...
   컬럼명 타입 NULL여부 옵션
-  );
+  ); //주의 마무리할때는 세미콜론을 붙여야 한다
 
 예) 
 > create table test01 (
@@ -38,7 +39,7 @@ DB 객체(테이블, 뷰, 함수, 트리거 등)를 생성, 변경, 삭제하는
     math int not null,
     sum int not null,
     aver float not null
-  );
+  ); 
 
 테이블 정보 보기
 > describe 테이블명;
@@ -69,7 +70,7 @@ DB 객체(테이블, 뷰, 함수, 트리거 등)를 생성, 변경, 삭제하는
 #### not null
 데이터를 입력하지 않으면 실행 거절!
 > create table test1(
-    no int not null, 
+    no int not null,  /* not null을 지정하면, 반드시 입력값이 있어야 한다. */
     name varchar(20)
   );
 
@@ -82,7 +83,7 @@ DB 객체(테이블, 뷰, 함수, 트리거 등)를 생성, 변경, 삭제하는
 입력할 때 컬럼을 생략하면 지정된 기본값이 대신 입력된다.
 > create table test1(
     no int not null,
-    name varchar(20) default 'noname',
+    name varchar(20) default 'noname', /* default는 값을 입력하지 않으면 기본값으로 출력된다 */
     age int default 20
   );
 
@@ -112,34 +113,38 @@ DB 객체(테이블, 뷰, 함수, 트리거 등)를 생성, 변경, 삭제하는
   c1 int, 
   c2 float, 
   c3 numeric(6,2), /* 소수점 자릿수를 지정하면 부동소수점으로 사용 */
+  /* (6,2) ; 전체 자릿수가 최대 6자리에서 2자리 소수점 자리*/
   c4 numeric /* int와 같다 */
   );
   
 > insert into test1(c1) values(100);
 > insert into test1(c1) values(3.14); /* 소수점 이하 반올림하고 짜름 */
 > insert into test1(c1) values(100.98); /* 소수점 이하 반올림하고 짜름 */
+
 > insert into test1(c2) values(100);
 > insert into test1(c2) values(3.14);
 > insert into test1(c2) values(3.14159); 
+
 > insert into test1(c3) values(100);
 > insert into test1(c3) values(123456789); /* 입력 오류. 5자리 초과 */
-> insert into test1(c3) values(12345); /* 입력 오류. 1자리 초과 */
-> insert into test1(c3) values(1234);
+> insert into test1(c3) values(12345); /* 입력 오류. 12345.00 전체 자릿수가 7자리 이기 때문에 1자리 초과 */
+> insert into test1(c3) values(1234);/* 가능. 1234.00 */
 > insert into test1(c3) values(3.14);
-> insert into test1(c3) values(3.14159); /* 2자리를 초과한 값은 반올림. */
-> insert into test1(c3) values(3.14551); /* 2자리를 초과한 값은 반올림. */
+> insert into test1(c3) values(3.14159); /* 2자리를 초과한 값은 반올림(3자리에서 반올림). */
+> insert into test1(c3) values(3.14551); /* 2자리를 초과한 값은 반올림(3자리에서 반올림). */
+
 > insert into test1(c4) values(1234567890); 
 > insert into test1(c4) values(12.34567890); /* 소수점은 반올림 처리됨 */
 > insert into test1(c4) values(12345678.90); /* 소수점은 반올림 처리됨 */
 
-#### char(n)
+#### char(n) ; 고정크기
 - 최대 n개의 문자를 저장.
 - 0 <= n <= 255 
 - 고정 크기를 갖는다. 
 - 한 문자를 저장하더라도 n자를 저장할 크기를 사용한다.
 - 메모리 크기가 고정되어서 검색할 때 빠르다.  
 
-#### varchar(n)
+#### varchar(n) ; 가변크기
 - 최대 n개의 문자를 저장.
 - 0 ~ 65535 바이트 크기를 갖는다.
 - n 값은 문자집합에 따라 최대 값이 다르다.
@@ -177,16 +182,18 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
 - 긴 텍스트를 저장할 때 사용하는 컬럼 타입이다.
 - 오라클의 경우 long 타입과 CLOB(character large object) 타입이 있다.
 
-#### date
+#### date (날짜)
 - 날짜 정보를 저장할 때 사용한다.
 - 년,월,일 정보를 저장한다.
-- 오라클의 경우 날짜 뿐만 아니라 시간 정보도 저장한다.
 
-#### time
+- 오라클의 경우 날짜 뿐만 아니라 시간 정보도 저장한다.
+- MariaDB는 날짜만 저장
+
+#### time (시간)
 - 시간 정보를 저장할 때 사용한다.
 - 시, 분, 초 정보를 저장한다.
 
-#### datetime
+#### datetime (날짜 + 시간)
 - 날짜와 시간 정보를 함께 저장할 때 사용한다.
 
 > create table test1(
@@ -212,20 +219,21 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
   c3 boolean
   );
 
-
+/* char */
 > insert into test1(c1) values('Y'); /* yes */
 > insert into test1(c1) values('N'); /* no */
 > insert into test1(c1) values('T'); /* true */
 > insert into test1(c1) values('F'); /* false */
 > insert into test1(c1) values('1'); /* true */
 > insert into test1(c1) values('0'); /* false */
+
 > insert into test1(c2) values(1); /* true */
 > insert into test1(c2) values(0); /* false */
-
+/* boolean */
 > insert into test1(c3) values('Y'); /* error */
 > insert into test1(c3) values('N'); /* error */
-> insert into test1(c3) values('T'); /* error */
-> insert into test1(c3) values('F'); /* error */
+> insert into test1(c3) values('T'); /* error, 정식으로 ture 하면 됌 */
+> insert into test1(c3) values('F'); /* error, 정식으로 false 하면 됌 */
 
 > insert into test1(c3) values(true);
 > insert into test1(c3) values(false);
@@ -241,7 +249,7 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
 - 줄여서 PK라고 표시한다.
 - PK 컬럼을 지정하지 않으면 데이터가 중복될 수 있다.
 
-- PK를 지정하기 전:
+- PK를 지정하기 전: 
 > create table test1(
   name varchar(20),
   kor int,
@@ -336,6 +344,18 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
   math int,
   constraint test1_uk unique (name, age)
   );
+  
+  /* 다음과 같이 제약 조건을 모두 뒤에 놓을 수 있다.*/
+create table test1(
+  no int,
+  name varchar(20),
+  age int,
+  kor int,
+  eng int,
+  math int,
+  constraint test1_uk primary key(no),
+  constraint test1_uk unique (name, age)  /* mysql에는 MUL로 하나만 표시 될 수 있다 .*/
+  );
 
 - 입력 테스트:
 > insert into test1(no,name,age,kor,eng,math) values(1,'a',10,90,90,90);
@@ -350,10 +370,15 @@ DBMS 중에는 고정 크기인 컬럼의 값을 비교할 때 빈자리까지 �
    때문에 중복저장될 수 없다.*/
 > insert into test1(no,name,age,kor,eng,math) values(5,'c',20,81,81,81);
 
-
 ##### index
 - 검색 조건으로 사용되는 컬럼은 정렬되어야만 데이터를 빨리 찾을 수 있다.
 - 특정 컬럼의 값을 A-Z 또는 Z-A로 정렬시키는 문법이 인덱스이다.
+- DBMS는 행당 컬럼의 값으로 정렬한 데이터 정보를 별도로 생성한다 
+- 인덱스로 지정된 컬럼의 값이 추가/변경/삭제 될 때 인덱스 정보도 갱신한다 
+- 즉, 책 맨 뒤에 있는 인덱스 정보와 같다 
+- 따라서 입력/변경/삭제가 자주 발생하는 테이블에 대해 인덱스 컬럼을 지정하면,
+  입력/변경/삭제 시 인덱스 정보를 갱신해야 하기 때문에 속도가 느리다.
+- 대신 조회 속도는 빠르다.
 ```
 create table test1(
   no int primary key,
@@ -459,15 +484,18 @@ create table test1(
   name varchar(20) not null
 );
 ``` 
-
+/* auto_increment: 번호를 입력하지 않고 자동으로 1부터 증가한다 */
 - 특정 컬럼의 값을 자동으로 증가하게 선언한다.
-- 단 반드시 primary key여야 한다.
+- 단 반드시 key(ex primary key 나 unique)여야  한다.
 ```
 alter table test1
   modify column no int not null auto_increment; /* 아직 no가 pk가 아니기 때문에 오류*/
   
 alter table test1
   add constraint primary key (no); /* 일단 no를 pk로 지정한다.*/
+  
+alter table test1
+  add constraint unique (no); /* no를 unique로 지정해도 된다.*/
 
 alter table test1
   modify column no int not null auto_increment; /* 그런 후 auto_increment를 지정한다.*/
@@ -475,11 +503,29 @@ alter table test1
 
 - 입력 테스트
 ```
+/* auto_increment의 coulmn의 값을 직접 지정할 수 있다 */
+insert into test1(no,name) values(1, 'xxx');
+
+/* auto_increment 컬럼의 값을 생략하면 마지막 값을 증가시켜서 입력한다  */
 insert into test1(name) values('aaa');
+
+insert into test1(no,name) values(100, 'yyy');
+/* no을 다시 지정하면 그 값에서 증가된 값으로 저정된다   */
 insert into test1(name) values('bbb');
-insert into test1(name) values('ccc');
-insert into test1(name) values('ddd');
-insert into test1(name) values('eee');
+
+insert into test1(name) values('ccc'); /* no = 102 */
+insert into test1(name) values('ddd'); /* no = 103 */
+
+/* 값을 삭제하더라도 auto_increment는 계속 증가한다 */
+delete from test1 where no = 103;
+insert into test1(name) values('eee'); /* no = 104 */
+
+/* 다른 DBMS 의 경우 입력 오류가 발생하더라도 번호는 자동 증가하기 때문에 
+ * 다음 값을 입력할 때는 장가된 값이 들어간다 
+ * 그러나 MySQL(MariaDB)는 증가되지 않는다  */
+insert into test1(name) values('123456789012345678901234'); /* error */
+insert into test1(name) values('fff'); /* no = 104 */
+
 ```
 
 ## 뷰(view)
@@ -520,8 +566,10 @@ create view worker
 
 - view가 참조하는 테이블에 데이터를 입력한 후 view를 조회하면?
   => 새로 추가된 컬럼이 함께 조회된다.
+  
 - 뷰를 조회할 때 마다 매번 select 문장을 실행한다.
   => 미리 결과를 만들어 놓는 것이 아니다.
+  
 - 일종의 조회 함수 역할을 한다.
 - 목적은 복잡한 조회를 가상의 테이블로 표현할 수 있어 SQL문이 간결해진다.
 ```

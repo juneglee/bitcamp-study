@@ -34,6 +34,11 @@ select * from test1;
 select 컬럼명,컬럼명 from 테이블;
 select no, name, tel from test1;
 
+/* 특정 컬럼의 값을 조건의 데이터에 따라  => "셀렉션(selection)"이라 부른다.*/
+select no, name, tel from test1 where working ='y';
+
+
+
 /* 가상의 컬럼 값을 조회하기*/
 select no, concat(name,'(',class,')') from test1;
 ```
@@ -85,6 +90,17 @@ where working='Y' or class='java100';
 
 /* java100기 학생 중에 재직자만 조회하라!*/
 select no, name, class, working
+from test1
+where working='Y' and class='java100';
+
+
+/* 주의 !
+ *  Where 절을 통해 결과 데이터를 먼저 선택(selection) 한 다음
+ * 결과 데이터에서 가져올 컬럼을 선택(projection)한다.
+ * 따라서 실행순서는 ;
+ * from > where > selection
+ */
+select no, name
 from test1
 where working='Y' and class='java100';
 
@@ -199,7 +215,7 @@ select *
 from test1
 where name like 's0%';
 
-/* => _는 딱 1자를 의미한다.*/
+/* => _는 딱 1자를 의미한다. (s01 o, s011 x) */
 select *
 from test1
 where name like 's0_';
@@ -278,6 +294,7 @@ select datediff(curdate(), '2018-3-19');
 
 /* 날짜에서 특정 형식으로 값을 추출하기 */
 date_format(날짜, 형식)
+/* 대소문자 구분하여 출력값이 달라진다 */
 select date_format(now(), '%m/%e/%Y'); /* 09/7/2017 */
 select date_format(now(), '%M/%d/%y'); /* September/07/17 */
 select date_format(now(), '%W %w %a'); /* Thursday 4 Thu */
