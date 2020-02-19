@@ -1,4 +1,4 @@
-# DDL(Data Definition Language)
+ㅣ# DDL(Data Definition Language)
 DB 객체(테이블, 뷰, 함수, 트리거 등)를 생성, 변경, 삭제하는 SQL 명령이다.
 
 - 데이터베이스(database) = 스키마(schema)

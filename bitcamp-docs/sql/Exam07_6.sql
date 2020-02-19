@@ -1,7 +1,9 @@
 /* 서브 쿼리
+ * select from where의 안에 select를 사용 
 => 쿼리문 안에 쿼리문을 실행하는 기법
 => 성능 문제를 생각하면서 사용해야 한다.
 */
+-- 간단한 데이터는 서브쿼리를 사용하고 대용량은 조인을 사용한다 
 
 /* join이용하여 데이터를 추출한 방법 */
 select la.lano, l.titl, m.name, s.work, la.rdt, r.name, m2.name, mr.posi
@@ -16,7 +18,11 @@ from lect_appl la
 /* select 절에 서브쿼리 사용하기 */
 
 /* => 1단계: 수강신청 데이터를 출력 */
-select la.lano, la.lno, la.mno, la.rdt
+select 
+  la.lano, 
+  la.lno, 
+  la.mno,
+  date_format(la.rdt, '%Y-%m-%d') as reg_dt
 from lect_appl la; 
 
 /* => 2단계 : 서브 쿼리를 이용하여 강의명을 가져오기 */
@@ -52,13 +58,13 @@ select
     (select name from room where rno=l.rno) as room_name, 
     (select name from memb where mno=l.mno) as manager_name,
     (select posi from mgr where mno=l.mno) as manager_posi
-from lect l
+from lect l;
 
 /* 2단계: 위에서 준비한 select 결과를 가상 테이블로 사용하여 
              기존의 lect_appl 테이블과 조인한다.*/
 select 
     la.lano, 
-    (select titl from lect where lno=la.lno) as lect_title, 
+    /* (select titl from lect where lno=la.lno) as lect_title */ 
     (select name from memb where mno=la.mno) as stud_name,
     lec.titl,
     lec.room_name,
@@ -96,7 +102,7 @@ select
     lec.manager_name,
     lec.manager_posi
 from lect_appl la 
-    join lect2 as lec on la.lno=lec.lno;
+    join lect2 lec on la.lno=lec.lno;
             
             
 /* where 절에 서브쿼리 사용하기 */

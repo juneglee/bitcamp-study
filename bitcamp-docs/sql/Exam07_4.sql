@@ -1,4 +1,7 @@
 /* union 과 union all */
+-- 중복을 유무에 따라서 달라진다
+-- all 모두 포함되는 가
+
 
 /* select 결과 합치기 
    union : 중복 값 자동 제거*/

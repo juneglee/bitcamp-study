@@ -100,6 +100,7 @@ ALTER TABLE lect
         );
 
 -- 강의 인덱스
+-- 자주검색하는 색인표 이기 때문에 unique를 지정하지 않음
 CREATE INDEX IX_lect
     ON lect( -- 강의
         titl ASC -- 강의명
@@ -128,7 +129,7 @@ ALTER TABLE room
 CREATE UNIQUE INDEX UIX_room
     ON room ( -- 강의실
         loc ASC,  -- 지점명
-        name ASC  -- 강의실명
+        name ASC  -- 강의실명 : 강의실 명은 지점이 달라도 같을 수 있기 때문에 묶어서 유니크로 설정
     );
 
 ALTER TABLE room
