@@ -1,8 +1,10 @@
 package com.eomcs.lms.servlet;
 
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.PrintStream;
+import java.util.List;
+import java.util.Scanner;
 import com.eomcs.lms.dao.LessonDao;
+import com.eomcs.lms.domain.Lesson;
 
 public class LessonListServlet implements Servlet {
 
@@ -13,9 +15,16 @@ public class LessonListServlet implements Servlet {
   }
 
   @Override
-  public void service(ObjectInputStream in, ObjectOutputStream out) throws Exception {
-    out.writeUTF("OK");
-    out.reset();
-    out.writeObject(lessonDao.findAll());
+  public void service(Scanner in, PrintStream out) throws Exception {
+
+    List<Lesson> lessons = lessonDao.findAll();
+    for (Lesson l : lessons) {
+      out.printf("%d, %s, %s ~ %s, %d\n", //
+          l.getNo(), //
+          l.getTitle(), //
+          l.getStartDate(), //
+          l.getEndDate(), //
+          l.getTotalHours());
+    }
   }
 }
