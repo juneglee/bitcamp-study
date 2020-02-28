@@ -1,7 +1,6 @@
 package com.eomcs.lms.servlet;
 
 import java.io.PrintStream;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,18 +8,21 @@ import com.eomcs.lms.dao.PhotoBoardDao;
 import com.eomcs.lms.dao.PhotoFileDao;
 import com.eomcs.lms.domain.PhotoBoard;
 import com.eomcs.lms.domain.PhotoFile;
-import com.eomcs.util.ConnectionFactory;
+import com.eomcs.sql.PlatformTransactionManager;
+import com.eomcs.sql.TransactionTemplate;
 import com.eomcs.util.Prompt;
 
 public class PhotoBoardUpdateServlet implements Servlet {
-
-  ConnectionFactory conFactory;
+  // 트랜잭션 관리자는 이용하여 작업을 실해시켜줄 도우미 객체
+  TransactionTemplate transactionTemplate;
   PhotoBoardDao photoBoardDao;
   PhotoFileDao photoFileDao;
 
-  public PhotoBoardUpdateServlet(ConnectionFactory conFactory, PhotoBoardDao photoBoardDao,
+  public PhotoBoardUpdateServlet(PlatformTransactionManager txManager, PhotoBoardDao photoBoardDao,
       PhotoFileDao photoFileDao) {
-    this.conFactory = conFactory;
+    // 우리가 직접 트랜잭션 관리자를 사용하지 않고,
+    // 도우미 객체를 이용하여 트랜잭션 작업을 처리할 것이다.
+    this.transactionTemplate = new TransactionTemplate(txManager);
     this.photoBoardDao = photoBoardDao;
     this.photoFileDao = photoFileDao;
 
@@ -29,7 +31,7 @@ public class PhotoBoardUpdateServlet implements Servlet {
 
   @Override
   public void service(Scanner in, PrintStream out) throws Exception {
-    int no = Prompt.getInt(in, out, "사진 게시물 번호?");
+    int no = Prompt.getInt(in, out, "번호? ");
 
     PhotoBoard old = photoBoardDao.findByNo(no);
     if (old == null) {
@@ -42,46 +44,33 @@ public class PhotoBoardUpdateServlet implements Servlet {
         Prompt.getString(in, out, String.format("제목(%s)? \n ", old.getTitle()), old.getTitle()));
     photoBoard.setNo(no);
 
-    // 트랜잭션 시작
-    Connection con = conFactory.getConnection();
-    // => ConnectionFactory는 스레드에 보관된 Connection 객체를 찾을 것이다.
-    // 있으면 스레드에 보관된 Connection 객체를 리턴해 줄것이고
-    // 없으면 새로 만들어 리턴핼 줄것이다.
-    con.setAutoCommit(false);
-
-    try {
+    transactionTemplate.execute(() -> {
       if (photoBoardDao.update(photoBoard) == 0) {
         throw new Exception("사진 게시글의 변경에 실패 했습니다.");
       }
+      printPhotoFiles(out, no);// 첨부파일을 화면에 뿌린다
       out.println();
       out.println("사진 일부만 변경할 수 없습니다");
       out.println("전체를 새로 등록해야 합니다");
 
-      printPhotoFiles(out, no);// 첨부파일을 화면에 뿌린다
 
       String response = Prompt.getString(in, out, "사진을 변경하시겠습니까?(y/n)");
       if (response.equalsIgnoreCase("y")) {
-
         // 이 사진 게시글에 첨부 되었던 기존 파일을 모두 삭제 한다
         photoFileDao.deleteAll(no);
+        // 첨부파일을 입력 받는다
+        List<PhotoFile> photoFiles = inputPhotoFiles(in, out);
+        for (PhotoFile photoFile : photoFiles) {
+          photoFile.setBoardNo(no);
+          // 어느 게시물인지 번호가 들어있지 않기 때문에
+          // 번호로 어떤 게시물인지 확인하고 데이터베이스에 넣는다
+          photoFileDao.insert(photoFile);
+        }
       }
-      // 첨부파일을 입력 받는다
-      List<PhotoFile> photoFiles = inputPhotoFiles(in, out);
-      for (PhotoFile photoFile : photoFiles) {
-        photoFile.setBoardNo(no);
-        // 어느 게시물인지 번호가 들어있지 않기 때문에
-        // 번호로 어떤 게시물인지 확인하고 데이터베이스에 넣는다
-        photoFileDao.insert(photoFile);
-      }
-      con.commit();
       out.println("사진 게시글을 변경했습니다.");
+      return null;
 
-    } catch (Exception e) {
-      con.rollback();
-      out.println(e.getMessage());
-    } finally {
-      con.setAutoCommit(true);
-    }
+    });
   }
 
   private void printPhotoFiles(PrintStream out, int boardNo) throws Exception {
