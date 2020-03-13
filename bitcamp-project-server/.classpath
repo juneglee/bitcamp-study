@@ -44,6 +44,11 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="C:/Users/user/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis/3.5.4/e4534e49f9b6ac293d7aac7e5c129e40c7ec45df/mybatis-3.5.4-sources.jar" kind="lib" path="C:/Users/user/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis/3.5.4/83853443357d61258d2634758079f355a0db69ee/mybatis-3.5.4.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry sourcepath="C:/Users/user/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1d064e61aad6c51cc77f9b59dc2cccc78e792f5a/failureaccess-1.0.1-sources.jar" kind="lib" path="C:/Users/user/.gradle/caches/modules-2/files-2.1/com.google.guava/failureaccess/1.0.1/1dcf1de382a0bf95a3d8b0849546c88bac1292c9/failureaccess-1.0.1.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>

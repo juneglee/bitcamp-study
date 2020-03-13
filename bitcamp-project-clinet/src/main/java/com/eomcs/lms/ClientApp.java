@@ -10,8 +10,6 @@ import java.util.Queue;
 import java.util.Scanner;
 import com.eomcs.util.Prompt;
 
-
-
 public class ClientApp {
 
   Scanner keyboard = new Scanner(System.in);

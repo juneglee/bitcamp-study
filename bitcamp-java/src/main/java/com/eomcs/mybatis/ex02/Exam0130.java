@@ -26,7 +26,6 @@ public class Exam0130 {
 
     sqlSession.close();
   }
-
 }
 
 

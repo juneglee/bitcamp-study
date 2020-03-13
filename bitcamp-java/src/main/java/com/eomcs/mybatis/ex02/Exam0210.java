@@ -24,7 +24,7 @@ public class Exam0210 {
 
     // 예) 게시글에 xxx를 포함한
     List<Board> list = sqlSession.selectList("BoardMapper.selectBoard1", 3);
-    // Object 이지만 오토 박싱으로 인하여 3으로 사용이 가능하다
+    // Object 이지만 오토 박싱(Integer.valueOf(3))으로 인하여 3으로 사용이 가능하다
 
     for (Board board : list) {
       System.out.printf("%d, %s, %s, %s\n", board.getNo(), board.getTitle(), board.getContent(),

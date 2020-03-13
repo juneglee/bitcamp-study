@@ -55,6 +55,7 @@ public class Exam0110 {
     // => 이떄 공장 객체를 만들 때 사용할 설정 파일을 지정한다
     // 설정 파일의 경로를 직접 지정하지 말고, 해당 파일을 읽을 때 사용할 inputStream을 넘겨줘라
     SqlSessionFactory factory = factoryBuilder.build(mybatisConfigInputStream);
+    // 공통서버에 둬서 SQL의 설정을 가져다 쓰게 만들기 위해
 
     // 4. SQL을 실행 시키는 객체 준비
     // => SqlSessionFactory 객체로 부터 SqlSession를 얻는다
@@ -64,6 +65,7 @@ public class Exam0110 {
     //
 
     SqlSession sqlSession = factory.openSession();
+    // sqlSession은 Mybatis에서 내부적으로 만들어진 구조로 하기 위해서 위의 경로를 따라서 만듬
 
     System.out.println("mybatis 준비 완료!");
 

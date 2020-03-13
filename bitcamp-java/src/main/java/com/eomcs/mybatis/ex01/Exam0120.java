@@ -37,7 +37,10 @@ public class Exam0120 {
     // - SQL 문장 아이디 : <select id = "SQL 문장 아이디">...</select>
     // - 파라미터 값 = primitive type 및 모든 자바 객체가 가능하다.
     // 여러 개의 값을 전달할 때는 Map에 담아 넘겨라!
+
     List<Board> list = sqlSession.selectList("BoardMapper.selectBoard");
+    // <mapper namespace="BoardMapper">
+    // <select id="selectBoard" resultType="com.eomcs.mybatis.ex01.Board">
 
 
     for (Board board : list) {
@@ -50,14 +53,14 @@ public class Exam0120 {
 
 }
 
-// selectList() 동작 원리 
-//=--------------------------------------------
-// => resultType에 지정한 클래스의 인스턴스를 생성한다 
-// => 컬럼 이름과 일치하는 프로퍼티를 찾아 값을 입력한다 
-//    board_id ==> setBoard_id(컬럼값)
-//    title    ==> setTitle(컬럼값)
-//    contents ==> setContents(컬럼값)
-// => 컬럼 이름과 일치하는 프로퍼티(setter)가 없다면 값을 넣지 못한다 
-// 그 컬럼의 값은 객체에 담을 수 없다 
-// => 이 예제에서 컬럼 이름과 일치하는 프로퍼티는 title 밖에 없다  
+// selectList() 동작 원리
+// =--------------------------------------------
+// => resultType에 지정한 클래스의 인스턴스를 생성한다
+// => 컬럼 이름과 일치하는 프로퍼티를 찾아 값을 입력한다
+// board_id ==> setBoard_id(컬럼값)
+// title ==> setTitle(컬럼값)
+// contents ==> setContents(컬럼값)
+// => 컬럼 이름과 일치하는 프로퍼티(setter)가 없다면 값을 넣지 못한다
+// 그 컬럼의 값은 객체에 담을 수 없다
+// => 이 예제에서 컬럼 이름과 일치하는 프로퍼티는 title 밖에 없다
 

@@ -20,6 +20,8 @@ public class Exam0111 {
     // => 이를 간편하게 하기 위해서 mybatis는 도우미 객체를 제공한다
     // => resources 클래스의 메서드를 이용하면
     // 자바 클래스가 있는 패키지 폴더에서 Mybatis 설정 파팅르 찾을 수 있다
+
+    // 자바클래스 안에 있을때 Resources
     InputStream mybatisConfigInputStream =
         Resources.getResourceAsStream("com/eomcs/mybatis/ex01/Mybatis-config.xml");
     // => 파라미터에 Mybatis-config 파일의 경로를 지정할 때

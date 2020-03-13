@@ -42,7 +42,7 @@
       created_date, <!-- Board.setCreateddate() 호출 -->
       view_count    <!-- Board.setViewcount() 호출 -->
     from x_board
-    where board_id > #{ohora}
+    where board_id > #{ohora}  <!-- #{ohora}은 파라미터를 넘긴다  -->
   </select>
   
   <!-- selectList(문자열) -->

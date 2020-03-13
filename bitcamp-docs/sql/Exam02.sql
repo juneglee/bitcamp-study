@@ -46,6 +46,15 @@ insert into test1(name,fax,tel,no,pstno,addr)
 insert into test1(name,tel) values('ccc','333');
 ```
 
+### 어러 개의 값을 한번에 insert하기 
+
+insert into test1(name,tel) values
+('aaa','111'),
+('bbb','222'),
+('ccc','333');
+
+
+
 ### select 결과를 테이블에 insert하기
 ```
 create table test2 (
