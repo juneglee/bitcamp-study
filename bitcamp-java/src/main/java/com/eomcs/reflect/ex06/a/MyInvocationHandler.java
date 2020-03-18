@@ -9,5 +9,4 @@ public class MyInvocationHandler implements InvocationHandler {
     System.out.println("호출됨!");
     return null;
   }
-
 }

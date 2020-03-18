@@ -4,7 +4,6 @@ package com.eomcs.reflect.ex06.e;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import com.eomcs.reflect.ex06.e.Calculator;
 
 public class Exam0110 {
 

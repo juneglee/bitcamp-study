@@ -10,9 +10,8 @@ public class MyInvocationHandler implements InvocationHandler {
       case "m1":
         return 100;
       case "m2":
-        return "hello";
+        return "Hello!";
     }
     return null;
   }
-
 }
