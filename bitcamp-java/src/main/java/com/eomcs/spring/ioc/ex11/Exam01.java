@@ -3,23 +3,17 @@ package com.eomcs.spring.ioc.ex11;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import com.eomcs.spring.ioc.SpringUtils;
 
 public class Exam01 {
 
   public static void main(String[] args) {
-    ApplicationContext iocContainer = 
-        new AnnotationConfigApplicationContext(AppConfig01.class);
+    ApplicationContext iocContainer = //
+        new AnnotationConfigApplicationContext(AppConfig.class);
 
-    SpringUtils.printBeanNames(iocContainer);
+    SpringUtils.printBeanList(iocContainer);
 
-    System.out.println(iocContainer.getBean("car"));
   }
-
 }
-
-
-
 
 
