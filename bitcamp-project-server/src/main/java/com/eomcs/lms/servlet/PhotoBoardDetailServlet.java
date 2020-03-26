@@ -1,12 +1,11 @@
 package com.eomcs.lms.servlet;
 
 import java.io.PrintStream;
-import java.util.Scanner;
+import java.util.Map;
 import org.springframework.stereotype.Component;
 import com.eomcs.lms.domain.PhotoBoard;
 import com.eomcs.lms.domain.PhotoFile;
 import com.eomcs.lms.service.PhotoBoardService;
-import com.eomcs.util.Prompt;
 import com.eomcs.util.RequestMapping;
 
 @Component
@@ -20,25 +19,40 @@ public class PhotoBoardDetailServlet {
   }
 
   @RequestMapping("/photoboard/detail")
-  public void service(Scanner in, PrintStream out) throws Exception {
-    int no = Prompt.getInt(in, out, "사진 게시글 번호? ");
+  public void service(Map<String, String> params, PrintStream out) throws Exception {
+    int no = Integer.parseInt(params.get("no"));
 
     PhotoBoard photoBoard = photoBoardService.get(no);
 
+    out.println("<!DOCTYPE html>");
+    out.println("<html>");
+    out.println("<head>");
+    out.println("<meta charset='UTF-8'>");
+    out.println("<meta http-equiv='refresh' content='2;url=/photoboard/list'>");
+    out.println("<title>포토보드 상세 정보</title>");
+    out.println("</head>");
+    out.println("<body>");
+    out.println("<h1>포토보드 상세 정보</h1>");
+
     if (photoBoard != null) {
-      out.printf("번호: %d\n", photoBoard.getNo());
-      out.printf("제목: %s\n", photoBoard.getTitle());
-      out.printf("등록일: %s\n", photoBoard.getCreatedDate());
-      out.printf("조회수: %d\n", photoBoard.getViewCount());
-      out.printf("수업: %s\n", photoBoard.getLesson().getTitle());
-      out.println("사진 파일:");
+      out.printf("번호: %d<br>\n", photoBoard.getNo());
+      out.printf("제목: %s<br>\n", photoBoard.getTitle());
+      out.printf("등록일: %s<br>\n", photoBoard.getCreatedDate());
+      out.printf("조회수: %d<br>\n", photoBoard.getViewCount());
+      out.printf("수업: %s<br>\n", photoBoard.getLesson().getTitle());
+      out.println("사진 파일: <br>");
 
       for (PhotoFile photoFile : photoBoard.getFiles()) {
-        out.printf("> %s\n", photoFile.getFilepath());
+        out.printf("> %s<br>\n", photoFile.getFilepath());
       }
 
+      out.printf("<p><a href='/photoboard/delete?no=%d'>삭제</a>\n", photoBoard.getNo());
+      out.printf("<a href='/photoboard/updateForm?no=%d'>변경</a></p>\n", photoBoard.getNo());
+
     } else {
-      out.println("해당 번호의 사진 게시글이 없습니다.");
+      out.println("<p> 해당 번호의 강의가 없습니다.</p>");
     }
+    out.println("</body>");
+    out.println("</html>");
   }
 }

@@ -246,10 +246,14 @@ public class ServerApp {
       for (String entry : entres) {
         logger.debug(String.format("parameter => %s", entry));
         String[] kv = entry.split("=");
-        // 웹 브라우저가 URL 인코딩으로 데이터를 디코딩한다.
-        String value = URLDecoder.decode(kv[1], "UTF-8");
-        params.put(kv[0], value);
 
+        if (kv.length > 1) {
+          // 웹 브라우저가 URL 인코딩으로 데이터를 디코딩한다.
+          String value = URLDecoder.decode(kv[1], "UTF-8");
+          params.put(kv[0], value);
+        } else {
+          params.put(kv[0], "");
+        }
       }
     }
     return params;

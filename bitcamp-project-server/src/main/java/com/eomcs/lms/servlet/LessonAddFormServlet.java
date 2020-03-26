@@ -27,17 +27,17 @@ public class LessonAddFormServlet {
     out.println("<h1>게시물 입력</h1>");
     out.println("<form action='/lesson/add'>");
     out.println("내용:<br> ");
-    out.println("<textarea name='title' rows='2' cols='60'></textarea><br>");
+    out.println("<textarea name='title' rows='1' cols='60'></textarea><br>");
     out.println("설명:<br> ");
-    out.println("<textarea name='description' rows='2' cols='60'></textarea><br>");
+    out.println("<textarea name='description' rows='1' cols='60'></textarea><br>");
     out.println("시작일:<br> ");
-    out.println("<textarea name='startDate' rows='2' cols='60'></textarea><br>");
+    out.println("<textarea name='startDate' rows='1' cols='60'></textarea><br>");
     out.println("종료일:<br> ");
-    out.println("<textarea name='endDate' rows='2' cols='60'></textarea><br>");
+    out.println("<textarea name='endDate' rows='1' cols='60'></textarea><br>");
     out.println("총 수업시간:<br> ");
-    out.println("<textarea name='totalHours' rows='2' cols='60'></textarea><br>");
+    out.println("<textarea name='totalHours' rows='1' cols='60'></textarea><br>");
     out.println("일 수업시간:<br> ");
-    out.println("<textarea name='dayHours' rows='2' cols='60'></textarea><br>");
+    out.println("<textarea name='dayHours' rows='1' cols='60'></textarea><br>");
     out.println("<button>제출</button><br>");
 
     out.println("</form>");

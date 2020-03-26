@@ -41,8 +41,8 @@ public class LessonDetailServlet {
       out.printf("총수업시간: %d<br>\n", lesson.getTotalHours());
       out.printf("일수업시간: %d<br>\n", lesson.getDayHours());
 
-      // out.printf("<p><a href='/lesson/delete?no=%d'>삭제</a>\n", lesson.getNo());
-      // out.printf("<a href='/lesson/updateForm?no=%d'>변경</a></p>\n", lesson.getNo());
+      out.printf("<p><a href='/lesson/delete?no=%d'>삭제</a>\n", lesson.getNo());
+      out.printf("<a href='/lesson/updateForm?no=%d'>변경</a></p>\n", lesson.getNo());
     } else {
       out.println("<p> 해당 번호의 강의가 없습니다.</p>");
     }

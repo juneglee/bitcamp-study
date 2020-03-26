@@ -32,8 +32,7 @@ public class LessonListServlet {
     out.println("<tr>");
     out.println(" <th>번호</th>");
     out.println(" <th>주제</th>");
-    out.println(" <th>시작일</th>");
-    out.println(" <th>종료일</th>");
+    out.println(" <th>기간</th>");
     out.println(" <th>총 수업 시간</th>");
     out.println("</tr>");
 
@@ -43,8 +42,7 @@ public class LessonListServlet {
       out.printf(" <tr>"//
           + "<td>%d</td> "//
           + "<td><a href='/lesson/detail?no=%d'>%s</a></td> "//
-          + "<td>%s</td> "//
-          + "<td>%s</td> "//
+          + "<td>%s ~ %s</td> "//
           + "<td>%d</td>" //
           + "</tr>\n", //
           l.getNo(), //
@@ -55,6 +53,18 @@ public class LessonListServlet {
           l.getTotalHours()//
       );
     }
+    out.println("</table>");
+
+    out.println("<hr>");
+
+    out.println("<form action='/lesson/search'>");
+    out.println("강의명: <input name='title' type='text'><br>");
+    out.println("강의 시작일: <input name='startDate' type='date'><br>");
+    out.println("강의 종료일: <input name='endDate' type='date'><br>");
+    out.println("총 강의시간: <input name='totalHours' type='number'><br>");
+    out.println("일 강의시간: <input name='dayHours' type='number'><br>");
+    out.println("<button>검색</button>");
+
     out.println("</body>");
     out.println("</html>");
   }
