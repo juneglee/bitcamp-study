@@ -30,7 +30,6 @@ public class BoardDeleteServlet {
     int no = Integer.parseInt(params.get("no"));
     if (boardService.delete(no) > 0) { // 삭제했다면,
       out.println("<p>게시글을 삭제했습니다.</p>");
-
     } else {
       out.println("<p>해당 번호의 게시물이 없습니다.</p>");
     }

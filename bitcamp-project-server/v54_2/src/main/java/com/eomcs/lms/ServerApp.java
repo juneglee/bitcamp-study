@@ -37,7 +37,6 @@ public class ServerApp {
   // 서버 멈춤 여부 설정 변수
   boolean serverStop = false;
 
-
   // IoC 컨테이너 준비
   ApplicationContext iocContainer;
 
@@ -53,7 +52,6 @@ public class ServerApp {
   }
 
   private void notifyApplicationInitialized() {
-
     for (ApplicationContextListener listener : listeners) {
       listener.contextInitialized(context);
     }
@@ -142,8 +140,7 @@ public class ServerApp {
         PrintStream out = new PrintStream(socket.getOutputStream())) {
 
       String[] requestLine = in.nextLine().split(" ");
-      // 기타 나머지 요청 데이터는 버린다.
-      // 빈 문자열을 받으면 멈추겠다.
+      // 기타 나머지 요청 데이터를 버린다.
       while (true) {
         String line = in.nextLine();
         if (line.length() == 0) {
@@ -153,12 +150,11 @@ public class ServerApp {
 
       String method = requestLine[0];
       String requestUri = requestLine[1];
-
       logger.info(String.format("method => %s", method));
-      logger.info(String.format("request-Uri => %s", requestUri));
+      logger.info(String.format("request-uri => %s", requestUri));
 
       String servletPath = getServletPath(requestUri);
-      logger.debug(String.format("servlet Path => %s", servletPath));
+      logger.debug(String.format("servlet path => %s", servletPath));
 
       Map<String, String> params = getParameters(requestUri);
 
@@ -213,9 +209,7 @@ public class ServerApp {
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>실행 오류!</h1>");
-
     out.println("<p>요청한 명령을 처리할 수 없습니다.</p>");
-
     out.println("</body>");
     out.println("</html>");
   }
@@ -233,33 +227,36 @@ public class ServerApp {
     out.println();
   }
 
+  private String getServletPath(String requestUri) {
+    // requestUri => /member/add?email=aaa@test.com&name=aaa&password=1111
+    return requestUri.split("\\?")[0]; // 예) /member/add
+  }
+
   private Map<String, String> getParameters(String requestUri) throws Exception {
-    String[] items = requestUri.split("\\?");
-
-    // 데이터(query String)는 따로 저장
-    // 예) member/list => email=aaa@test.com&name=aaa&password=1111
-
+    // 데이터(Query String)는 따로 저장
+    // => /member/list?email=aaa@test.com&name=aaa&password=1111
     Map<String, String> params = new HashMap<>();
+    String[] items = requestUri.split("\\?");
     if (items.length > 1) {
-      logger.debug(String.format("query String => %s", items[1]));
-      String[] entres = items[1].split("&");
-      for (String entry : entres) {
+      logger.debug(String.format("query string => %s", items[1]));
+      String[] entries = items[1].split("&");
+      for (String entry : entries) {
         logger.debug(String.format("parameter => %s", entry));
         String[] kv = entry.split("=");
-        // 웹 브라우저가 URL 인코딩으로 데이터를 디코딩한다.
-        String value = URLDecoder.decode(kv[1], "UTF-8");
-        params.put(kv[0], value);
 
+        if (kv.length > 1) {
+          // 웹브라우저가 URL 인코딩하여 보낸 데이터를
+          // 디코딩하여 String 객체로 만든다.
+          String value = URLDecoder.decode(kv[1], "UTF-8");
+
+          params.put(kv[0], value);
+        } else {
+          params.put(kv[0], "");
+        }
       }
     }
     return params;
   }
-
-  private String getServletPath(String requestUri) {
-    // requestUri => /member/add?email=aaa@test.com&name=aaa&password=1111
-    return requestUri.split("\\?")[0];
-  }
-
 
   public static void main(String[] args) {
     logger.info("서버 수업 관리 시스템입니다.");

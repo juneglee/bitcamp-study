@@ -8,11 +8,11 @@ import com.eomcs.lms.service.BoardService;
 import com.eomcs.util.RequestMapping;
 
 @Component
-public class BoardupdateFormServlet {
+public class BoardUpdateFormServlet {
 
   BoardService boardService;
 
-  public BoardupdateFormServlet(BoardService boardService) {
+  public BoardUpdateFormServlet(BoardService boardService) {
     this.boardService = boardService;
   }
 
@@ -33,19 +33,19 @@ public class BoardupdateFormServlet {
     out.println("<h1>게시물 변경</h1>");
 
     if (board == null) {
-      out.println("<p> 해당 번호의 개시글이 없습니다. </p>");
+      out.println("<p>해당 번호의 게시글이 없습니다.</p>");
     } else {
       out.println("<form action='/board/update'>");
-      out.printf("번호 : <input name='no' readonly type='text' value='%d'><br>\n", //
+      out.printf("번호: <input name='no' readonly type='text' value='%d'><br>\n", //
           board.getNo());
       out.println("내용:<br>");
       out.printf("<textarea name='title' rows='5' cols='60'>%s</textarea><br>\n", //
           board.getTitle());
-      out.printf("등록일 : %s<br>\n", //
+      out.printf("등록일: %s<br>\n", //
           board.getDate());
-      out.printf("조회수 : %d<br>\n", //
+      out.printf("조회수: %d<br>\n", //
           board.getViewCount());
-      out.println("<button>변경</button><br>");
+      out.println("<button>변경</button>");
       out.println("</form>");
     }
     out.println("</body>");

@@ -27,9 +27,9 @@ public class PhotoBoardServiceImpl implements PhotoBoardService {
   }
 
   // @Transactional
-  // => 메서드 전체를 트랜잭션으로 묶는다
-  // => 예외 없이 실행하면 자동으로 Commit() 한다
-  // => 예외가 발생하면 자동으로 rollback() 한다
+  // => 메서드 전체를 트랜잭션으로 묶는다.
+  // => 예외 없이 실행하면 자동으로 commit() 한다.
+  // => 예외가 발생하면 자동으로 rollback() 한다.
   @Transactional
   @Override
   public void add(PhotoBoard photoBoard) throws Exception {
@@ -55,11 +55,13 @@ public class PhotoBoardServiceImpl implements PhotoBoardService {
     if (photoBoardDao.update(photoBoard) == 0) {
       throw new Exception("사진 게시글 변경에 실패했습니다.");
     }
-    photoFileDao.deleteAll(photoBoard.getNo());
-    photoFileDao.insert(photoBoard);
+    if (photoBoard.getFiles() != null) {
+      photoFileDao.deleteAll(photoBoard.getNo());
+      photoFileDao.insert(photoBoard);
+    }
   }
 
-
+  @Transactional
   @Override
   public void delete(int no) throws Exception {
     photoFileDao.deleteAll(no);

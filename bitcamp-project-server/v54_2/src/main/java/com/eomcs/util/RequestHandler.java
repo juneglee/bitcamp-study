@@ -8,7 +8,7 @@ public class RequestHandler {
   Method method;
 
   public RequestHandler() {
-    // TODO Auto-generated constructor stub
+
   }
 
   public RequestHandler(Method method, Object bean) {
@@ -18,6 +18,7 @@ public class RequestHandler {
   }
 
   private String getPath(Method method) {
+    // 메서드에 붙은 @RequestMapping 애노테이션을 추출한다.
     RequestMapping requestMapping = method.getAnnotation(RequestMapping.class);
     return requestMapping.value();
   }
@@ -30,15 +31,6 @@ public class RequestHandler {
     this.bean = bean;
   }
 
-
-  public String getPath() {
-    return path;
-  }
-
-  public void setPath(String path) {
-    this.path = path;
-  }
-
   public Method getMethod() {
     return method;
   }
@@ -47,4 +39,11 @@ public class RequestHandler {
     this.method = method;
   }
 
+  public String getPath() {
+    return path;
+  }
+
+  public void setPath(String path) {
+    this.path = path;
+  }
 }
