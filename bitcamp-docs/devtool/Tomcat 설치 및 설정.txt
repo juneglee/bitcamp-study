@@ -1,4 +1,4 @@
-# 리눅스에 톰캣 설정
+# 톰켓 설치 및 설정
 
 ## tomcat 관리자 아이디 등록하기
 - conf/tomcat-users.xml 파일에 role 및 user 추가
