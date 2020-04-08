@@ -2,33 +2,34 @@ package com.eomcs.lms.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.GenericServlet;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.context.ApplicationContext;
 import com.eomcs.lms.domain.Lesson;
 import com.eomcs.lms.service.LessonService;
 
 @WebServlet("/lesson/detail")
-public class LessonDetailServlet extends GenericServlet {
+public class LessonDetailServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   @Override
-  public void service(ServletRequest req, ServletResponse res)
+  protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    try {
-      res.setContentType("text/html;charset=UTF-8");
-      PrintWriter out = res.getWriter();
 
-      ServletContext servletContext = req.getServletContext();
+    try {
+      response.setContentType("text/html;charset=UTF-8");
+      PrintWriter out = response.getWriter();
+
+      ServletContext servletContext = getServletContext();
       ApplicationContext iocContainer =
           (ApplicationContext) servletContext.getAttribute("iocContainer");
       LessonService lessonService = iocContainer.getBean(LessonService.class);
 
-      int no = Integer.parseInt(req.getParameter("no"));
+      int no = Integer.parseInt(request.getParameter("no"));
       Lesson lesson = lessonService.get(no);
 
       out.println("<!DOCTYPE html>");
@@ -41,7 +42,7 @@ public class LessonDetailServlet extends GenericServlet {
       out.println("<h1>수업 상세정보</h1>");
 
       if (lesson != null) {
-        out.println("<form action='/lesson/update'>");
+        out.println("<form action='update' method='post'>"); //
         out.printf("번호: <input name='no' readonly type='text' value='%d'><br>\n", //
             lesson.getNo());
         out.printf("강의명: <input name='title' type='text' value='%s'><br>\n", //
@@ -59,7 +60,7 @@ public class LessonDetailServlet extends GenericServlet {
             lesson.getDayHours());
         out.println("<p>");
         out.println("<button>변경</button>");
-        out.printf("<a href='/lesson/delete?no=%d'>삭제</a>\n", //
+        out.printf("<a href='delete?no=%d'>삭제</a>\n", //
             lesson.getNo());
         out.printf("<a href='/photoboard/list?lessonNo=%d'>사진게시판</a>\n", //
             lesson.getNo());
