@@ -17,7 +17,6 @@ import com.eomcs.lms.service.LessonService;
 public class LessonListServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
@@ -67,7 +66,7 @@ public class LessonListServlet extends HttpServlet {
 
       out.println("<hr>");
 
-      out.println("<form action='search' method='get'>"); //
+      out.println("<form action='search' method='get'>");
       out.println("강의명: <input name='title' type='text'><br>");
       out.println("강의 시작일: <input name='startDate' type='date'><br>");
       out.println("강의 종료일: <input name='endDate' type='date'><br>");
@@ -77,10 +76,10 @@ public class LessonListServlet extends HttpServlet {
 
       out.println("</body>");
       out.println("</html>");
-
     } catch (Exception e) {
-      throw new ServletException(e);
+      request.setAttribute("error", e);
+      request.setAttribute("url", "list");
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
-
 }

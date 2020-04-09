@@ -19,7 +19,6 @@ public class LessonDetailServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
     try {
       response.setContentType("text/html;charset=UTF-8");
       PrintWriter out = response.getWriter();
@@ -42,7 +41,7 @@ public class LessonDetailServlet extends HttpServlet {
       out.println("<h1>수업 상세정보</h1>");
 
       if (lesson != null) {
-        out.println("<form action='update' method='post'>"); //
+        out.println("<form action='update' method='post'>");
         out.printf("번호: <input name='no' readonly type='text' value='%d'><br>\n", //
             lesson.getNo());
         out.printf("강의명: <input name='title' type='text' value='%s'><br>\n", //
@@ -62,7 +61,7 @@ public class LessonDetailServlet extends HttpServlet {
         out.println("<button>변경</button>");
         out.printf("<a href='delete?no=%d'>삭제</a>\n", //
             lesson.getNo());
-        out.printf("<a href='/photoboard/list?lessonNo=%d'>사진게시판</a>\n", //
+        out.printf("<a href='../photoboard/list?lessonNo=%d'>사진게시판</a>\n", //
             lesson.getNo());
         out.println("</p>");
         out.println("</form>");
@@ -71,9 +70,10 @@ public class LessonDetailServlet extends HttpServlet {
       }
       out.println("</body>");
       out.println("</html>");
-
     } catch (Exception e) {
-      throw new ServletException(e);
+      request.setAttribute("error", e);
+      request.setAttribute("url", "list");
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
 }

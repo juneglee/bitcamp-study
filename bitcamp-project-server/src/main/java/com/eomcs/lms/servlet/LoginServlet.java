@@ -19,25 +19,31 @@ public class LoginServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    response.setContentType("text/html;charset=UTF-8");
-    PrintWriter out = response.getWriter();
+    try {
+      response.setContentType("text/html;charset=UTF-8");
+      PrintWriter out = response.getWriter();
 
-    out.println("<!DOCTYPE html>");
-    out.println("<html>");
-    out.println("<head>");
-    out.println("<meta charset='UTF-8'>");
-    out.println("<title>로그인</title>");
-    out.println("</head>");
-    out.println("<body>");
-    out.println("<h1>로그인</h1>");
-    out.println("<form action='login' method='post'>");
-    out.println("이메일: <input name='email' type='email'><br>");
-    out.println("암호: <input name='password' type='password'><br>");
-    out.println("<button>로그인</button>");
-    out.println("</form>");
-    out.println("</body>");
-    out.println("</html>");
+      out.println("<!DOCTYPE html>");
+      out.println("<html>");
+      out.println("<head>");
+      out.println("<meta charset='UTF-8'>");
+      out.println("<title>로그인</title>");
+      out.println("</head>");
+      out.println("<body>");
+      out.println("<h1>로그인</h1>");
+      out.println("<form action='login' method='post'>");
+      out.println("이메일: <input name='email' type='email'><br>");
+      out.println("암호: <input name='password' type='password'><br>");
+      out.println("<button>로그인</button>");
+      out.println("</form>");
+      out.println("</body>");
+      out.println("</html>");
 
+    } catch (Exception e) {
+      request.setAttribute("error", e);
+      request.setAttribute("url", "list");
+      request.getRequestDispatcher("/error").forward(request, response);
+    }
   }
 
   @Override
@@ -62,7 +68,7 @@ public class LoginServlet extends HttpServlet {
       out.println("<head>");
       out.println("<meta charset='UTF-8'>");
       if (member != null) {
-        out.println("<meta http-equiv='refresh' content='2;url=/board/list'>");
+        out.println("<meta http-equiv='refresh' content='2;url=../board/list'>");
       } else {
         out.println("<meta http-equiv='refresh' content='2;url=login'>");
       }
@@ -80,7 +86,9 @@ public class LoginServlet extends HttpServlet {
       out.println("</body>");
       out.println("</html>");
     } catch (Exception e) {
-      throw new ServletException(e);
+      request.setAttribute("error", e);
+      request.setAttribute("url", "login");
+      request.getRequestDispatcher("/error").forward(request, response);
     }
   }
 }
