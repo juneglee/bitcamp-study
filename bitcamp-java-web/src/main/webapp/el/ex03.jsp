@@ -22,7 +22,7 @@ application.setAttribute("name", null);
 
 pageContext.setAttribute("name", "홍길동");
 request.setAttribute("name", "임꺽정");
-session.setAttribute("name", "유관순");
+ession.setAttribute("name", "유관순");
 application.setAttribute("name", "안중근");
 %>
 
