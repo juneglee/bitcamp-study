@@ -1,13 +1,13 @@
-<%@ page language="java" 
-    contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <jsp:include page="/header.jsp"/>
 
 <h1>게시물 상세정보(JSP + EL + JSTL)</h1>
 
-<c:if test="${not empty requestScope.board}">
+<c:if test="${not empty board}">
 번호: ${board.no}<br>
 제목: ${board.title}<br>
 등록일: ${board.date}<br>

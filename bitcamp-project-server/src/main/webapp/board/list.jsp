@@ -16,6 +16,7 @@
     <th>등록일</th>
     <th>조회수</th>
   </tr>
+  
 <c:forEach items="${list}" var="item">
   <tr>
     <td>${item.no}</td> 
@@ -23,7 +24,8 @@
     <td>${item.date}</td> 
     <td>${item.viewCount}</td>
   </tr>
-  </c:forEach>
+</c:forEach>
+
 </table>
 
 <jsp:include page="/footer.jsp"/>

@@ -13,11 +13,12 @@
 <body>
 <h1>JSTL - fmt:parseDate</h1>
 <pre>
-- 문자열로 지정된 날짜 값을 java.util.Date 객체로 만들기
+- 문자열로 지정된 날짜 값을 java.util.Date 객체로 만들기 
+- util은 Tue Apr 14 00:00:00 KST 2020으로 출력하기 때문에 잘 사용안한다.
 </pre>
-
-<fmt:parseDate value="2018-10-08" pattern="yyyy-MM-dd" var="d1"/>
-<fmt:parseDate value="10/08/2018" pattern="MM/dd/yyyy" var="d2"/>
+<%--MM은 대문자로 해야한다. --%>
+<fmt:parseDate value="2020-04-14" pattern="yyyy-MM-dd" var="d1"/>
+<fmt:parseDate value="04/14/2020" pattern="MM/dd/yyyy" var="d2"/>
 
 <%
 Date date1 = (Date)pageContext.getAttribute("d1");

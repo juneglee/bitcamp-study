@@ -27,10 +27,10 @@ pageContext.setAttribute("today", new Date());
 <fmt:formatDate value="${pageScope.today}" 
     pattern="yyyy-MM-dd hh:mm:ss"/><br>
     
+<%-- str1이라는 이름으로 저장한다. 그래서 이름에 대한 값을 출력한다. --%>
 <fmt:formatDate value="${pageScope.today}" 
     pattern="yyyy-MM-dd"
     var="str1"/>
-    
 <p>오늘 날짜는 '${pageScope.str1}'입니다.</p>    
         
 </body>

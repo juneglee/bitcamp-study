@@ -14,12 +14,12 @@
 <pre>
 - 복잡한 형식의 URL을 만들 수 있다.
 </pre>
-
+<%-- url을 효과적으로 사용할 수 있다. --%>
 <h2>네이버 검색 URL 만들기</h2>
 <pre>
 https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=1&ie=utf8&query=%ED%99%8D%EA%B8%B8%EB%8F%99
 </pre>
-
+<%--var 별명 --%>
 <c:url value="https://search.naver.com/search.naver" var="naverUrl">
     <c:param name="where" value="nexearch"/>
     <c:param name="sm" value="top_hty"/>
