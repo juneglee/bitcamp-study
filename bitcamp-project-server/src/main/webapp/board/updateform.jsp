@@ -5,27 +5,15 @@
 
 <jsp:include page="/header.jsp"/>
 
-<h1>게시물 변경(JSP)</h1>
-<%
-Board board = (Board) request.getAttribute("board");
-if(board == null) {
-  %>
-    <p>해당 번호의 게시글이 없습니다.</p>
-  <%
-} else {
+<h1>게시물 변경(JSP + EL + JSTL)</h1>
 
-%>
 <form action='update' method='post'>
-번호: <input name='no' readonly type='text' value='<%=board.getNo()%>'>
+번호: <input name='no' readonly type='text' value='${board.no}'><br>
 내용:<br>
-<textarea name='title' rows='5' cols='60'><%=board.getTitle()%></textarea><br>
-등록일:<%=board.getDate()%><br>
-조회수:<%=board.getViewCount()%><br>
-
+<textarea name='title' rows='5' cols='60'>${board.title}</textarea><br>
+등록일: ${board.date}<br>
+조회수: ${board.viewCount}<br>
 <button>변경</button>
 </form>
-<%
-}
-%>
-
 <jsp:include page="/footer.jsp"/>
+    

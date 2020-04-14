@@ -18,7 +18,6 @@ public class BoardDetailServlet extends HttpServlet {
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-
     try {
       ServletContext servletContext = getServletContext();
       ApplicationContext iocContainer =
@@ -27,13 +26,11 @@ public class BoardDetailServlet extends HttpServlet {
 
       int no = Integer.parseInt(request.getParameter("no"));
       Board board = boardService.get(no);
-
-
-      // JSP 가 출력할 떄 사용할 수 있도록
+      // JSP가 출력할 때 사용할 수 있도록
       // 조회 결과를 ServletRequest 보관소에 담는다.
       request.setAttribute("board", board);
 
-      // 출력을 담당할 JSP를 인크루딩 한다.
+      // 출력을 담당할 JSP를 인클루딩 한다.
       response.setContentType("text/html;charset=UTF-8");
       request.getRequestDispatcher("/board/detail.jsp").include(request, response);
 

@@ -4,7 +4,7 @@
 
 <jsp:include page="/header.jsp"/>
 
-<jsp:useBean id="board" class="com.eomcs.lms.domain.Board" scope="request"/>
+<jsp:useBean id="board" class="com.keep.lms.domain.Board" scope="request"/>
 
 <h1>게시물 상세정보(JSP)</h1>
 번호: <%=board.getNo()%><br>

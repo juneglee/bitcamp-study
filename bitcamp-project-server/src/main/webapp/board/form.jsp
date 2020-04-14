@@ -4,7 +4,7 @@
 
 <jsp:include page="/header.jsp"/>
 
-<h1>게시물 입력(JSP)</h1>
+<h1>게시물 입력(JSP + EL + JSTL)</h1>
 <form action='add' method='post'>
 내용:<br>
 <textarea name='title' rows='5' cols='60'></textarea><br>
@@ -12,3 +12,4 @@
 </form>
 
 <jsp:include page="/footer.jsp"/>
+    

@@ -1,4 +1,4 @@
-<%@page import="com.eomcs.lms.domain.Board"%>
+<%@page import="com.keep.root.domain.Board"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
     trimDirectiveWhitespaces="true"%>
@@ -7,9 +7,9 @@
 
 <h1>게시물 변경(JSP)</h1>
 <%
-Board board = (Board) request.getAttribute("board");
+  Recruit board = (Recruit) request.getAttribute("board");
 if(board == null) {
-  %>
+%>
     <p>해당 번호의 게시글이 없습니다.</p>
   <%
 } else {

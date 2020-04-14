@@ -1,4 +1,4 @@
-<%@page import="com.eomcs.lms.domain.Member"%>
+<%@page import="com.keep.root.domain.Member"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 

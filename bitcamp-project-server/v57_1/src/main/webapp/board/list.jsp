@@ -1,4 +1,4 @@
-<%@page import="com.eomcs.lms.domain.Board"%>
+<%@page import="com.keep.root.domain.Board"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"
@@ -16,9 +16,9 @@
     <th>조회수</th>
   </tr>
 <%
- List<Board> list =(List<Board>) request.getAttribute("list");
+  List<Recruit> list =(List<Recruit>) request.getAttribute("list");
 
- for(Board item: list) {
+ for(Recruit item: list) {
 %>    
   <tr>
     <td><%=item.getNo()%></td> 
