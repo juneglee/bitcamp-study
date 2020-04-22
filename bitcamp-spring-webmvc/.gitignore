@@ -1,0 +1,29 @@
+node_modules/
+.vscode/
+.gradle/
+.settings/
+bin/
+build/
+temp/
+Debug/
+Release/
+html-exam/
+
+package-lock.json
+.DS_Store
+.classpath
+.project
+*.class
+*.log
+*.ctxt
+.mtj.tmp/
+*.war
+*.ear
+*.out
+*.exe
+hs_err_pid*
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build

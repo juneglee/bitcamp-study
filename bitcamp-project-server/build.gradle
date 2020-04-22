@@ -25,6 +25,10 @@ repositories {
 }
 
 dependencies {
+
+  // reflection API를 좀더 쉽게 사용하게 도와주는 유틸리티
+  implementation 'org.reflections:reflections:0.9.12'
+  
   // log 4j 1.2.x 라이브러리
   // implementation 'log4j:log4j:1.2.17'
   
@@ -35,10 +39,15 @@ dependencies {
   implementation 'org.mybatis:mybatis-spring:2.0.4'
   
   // Spring JDBC 관련 라이브러리 
-  implementation 'org.springframework:spring-jdbc:5.2.4.RELEASE'
+  implementation 'org.springframework:spring-jdbc:5.2.5.RELEASE'
+  
+  //spring-webmvc 라이브러리 
+  implementation 'org.springframework:spring-webmvc:5.2.5.RELEASE'
   
   // Spring IoC 컨테이너
-  implementation 'org.springframework:spring-context:5.2.4.RELEASE'
+  // => Spring webMVC 라이브러리를 Spring-context 라이브러리를 사용하기 때문에 자동으로 추가된다. 
+  // 따라서 그래이들 스크립트 파일에 명시할 필요가 없다.
+  // implementation 'org.springframework:spring-context:5.2.5.RELEASE'
   
   implementation 'org.mariadb.jdbc:mariadb-java-client:2.5.4'
 
@@ -63,6 +72,12 @@ dependencies {
   compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
   
   implementation 'jstl:jstl:1.2'
+  
+  // spring의 multipartresolver를 사용하려면 
+  // Servlet 3.0에서 제공하는 multipart 처리기를 등록하거나
+  // 또는 Apache에서 제공하는 multipart 처리기를 등록해야 한다.
+  // apache의 multipart 처리기 등록.
+  implementation 'commons-fileupload:commons-fileupload:1.4'
   
   implementation 'com.google.guava:guava:28.1-jre'
   testImplementation 'junit:junit:4.12'
