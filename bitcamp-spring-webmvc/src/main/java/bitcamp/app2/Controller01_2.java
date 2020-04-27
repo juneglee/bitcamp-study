@@ -21,11 +21,18 @@ public class Controller01_2 {
     map.put("name", "홍길동");
     map.put("age", 20);
 
+    // ViewResolver?
+    // 실행할 view를 찾는 일을 한다.
+    // View?
+    // 뷰를 실행하는 일을 한다.
     //
     // ViewResolver?
     // => 페이지 컨트롤러가 리턴한 뷰 이름에 해당하는 뷰 콤포넌트를 찾아 실행하는 역할.
+
     // => ResourceBundleViewResolver
     // - *.properties 에서 뷰 이름에 해당하는 콤포넌트의 URL을 찾는다.
+    // return properties.url?
+
     // => InternalResouceViewResolver
     // - 미리 지정된 접두사, 접미사를 사용하여 뷰이름으로 콤포넌트의 URL을 완성한다.
     //
@@ -34,15 +41,16 @@ public class Controller01_2 {
     // => FreeMarker, JSP/JSTL, Tiles, RSS/Atom, PDF, Excel 등의
     // 엔진을 이용하여 콘텐트를 생성하는 뷰가 있다.
     //
-    // ViewResolver 교
+    // ViewResolver
     // => InternalResourceViewResolver를 사용하여
     // JSP URL의 접두어와 접미사를 미리 설정해 둘 수 있어 URL을 지정하기 편리하다.
-    // => 교체 방법은 XML에서 설정하는 방법과 Java Config로 설정하는 방법이 있다.
+    // => 교체 방법은 XML에서 설정하는 방법과
+    // Java Config로 설정하는 방법이 있다.
     // 자세한 것은 App2Config 클래스를 참고하라!
     //
     // ViewResolver 실행 과정?
-    // => 페이지 컨트롤러는 클라이언트가 요청한 작업을 실행한 후 그 결과를 출력할
-    // 뷰의 이름을 리턴한다.
+    // => 페이지 컨트롤러는 클라이언트가 요청한 작업을 실행한 후
+    // 그 결과를 출력할 뷰의 이름을 리턴한다.
     // => 프론트 컨트롤러는 request handler가 리턴한 URL을
     // view resolver에게 전달한다.
     // => view resolver는 자신의 정책에 맞춰서 뷰 URL을 준비한다.
@@ -54,7 +62,9 @@ public class Controller01_2 {
     // 최종 JSP URL은,
     // "/WEB-INF/jsp2/c01_2/h1.jsp"
     // 이다.
-    //
+
+    // => 프론트 컨트롤러는 viewResolver가 준비한
+    // 해당 URL을 가지고 view 객체를 통해 실행한다.
     return "c01_2/h1"; // WEB-INF/jsp2/c01_2/h1.jsp
   }
 
@@ -74,7 +84,7 @@ public class Controller01_2 {
     // request handler의 URL을 뷰 이름으로 사용한다.
     // 즉 이 핸들러의 URL은 "/c01_2/h2" 이기 때문에 뷰 이름도 "/c01_2/h2"가 된다.
     // InternalResourceViewResolver는 바로 이 URL을 사용하여 다음과 같이 최종 URL을 만든다.
-    // => "/WEB-INF/jsp2/" + "/c01_2/h2" + ".jsp"
+    // => "/WEB-INF/jsp2/" + "/c01_2/h2" + ".jsp" // /가 두개여도 통합함
     // => "/WEB-INF/jsp2/c01_2/h2.jsp"
     //
     // 실무에서는 이 방법을 많이 사용한다.
@@ -84,7 +94,7 @@ public class Controller01_2 {
   // http://localhost:8080/java-spring-webmvc/app2/c01_2/h3
   @GetMapping("h3")
   public Map<String, Object> handler3() {
-
+    // request handlerd에 객체를 담아 리턴
     HashMap<String, Object> map = new HashMap<>();
     map.put("name", "홍길동3");
     map.put("age", 40);
@@ -104,6 +114,7 @@ public class Controller01_2 {
     mv.addObject("name", "홍길동3");
     mv.addObject("age", 40);
     mv.setViewName("c01_2/h4");
+
 
     // ModelAndView 객체에 값과 뷰 이름을 담아 리턴하면
     // 프론트 컨트롤러는 ModelAndView 객체에 보관되어 있는 값들을

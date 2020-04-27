@@ -15,29 +15,31 @@
     => 우선 순위에 낮은 스타일부터 작성하라!
     => 아래로 내려 갈수록 우선 순위가 높은 스타일을 작성하라.
     => 예)
-    * {...}
-    태그명 {...}
+    *         {...}
+    태그명    {...}
     .클래스명 {...}
     #아이디명 {...}
    */
 
+   
+
   div {
-    border: 1px solid black;
+    border: 1px solid white;
     margin: 10px;
   }
 
 
+  
+  /* specificity = 100 + 100 = 200 */
+  #d1 #d3 {
+    background-color: blue;
+  }
+  
   /* specificity = 100 + 1 + 100 = 201 */
   #d2 div#d3 {
     background-color: red;
     color: white;
   }
-
-  /* specificity = 100 + 100 = 200 */
-  #d1 #d3 {
-    background-color: blue;
-  }
-
 
   </style>
 </head>

@@ -16,7 +16,8 @@ public class Controller01_1 {
   @GetMapping("h1")
   // @ResponseBody // 뷰 이름을 리턴 할 때는 이 애노테이션을 붙이면 안된다.
   public String handler1(Model model) {
-
+    // Model은 담는 역할만 한다.
+    // servlet request 보관소에 저장한다 (session아님)
     model.addAttribute("name", "홍길동");
     model.addAttribute("age", 20); // auto-boxing : 주소가 담기는 것이다
 
@@ -43,7 +44,7 @@ public class Controller01_1 {
     // InternalReSourceViewResolver를 교체한 다음은?
     // 리턴 값이 없으면 요청 URL은 /c01_1/h2 을 리턴값으로 사용한다.
     // 따라서 viewResolver가 계산한 최종 URL은
-    // /WEB-INF/jsp2/c01_1/h2.jsp
+    // void : return /WEB-INF/jsp2/c01_1/h2.jsp 이 없음
 
   }
 

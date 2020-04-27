@@ -13,17 +13,23 @@
         대상자:상태명 {...}
         대상자[속성명] {...}
    */
+  h1{
+    padding-left:10px;
+  }
   h1:nth-child(2) { /* 첫 번째 대상을 지정한다 */
+     /* h1이 부모의 2번째 자식이라면 실행해라. */
     background-color: gray;
   }
   h1:nth-child(10) {
+    /* h1이 부모의 10번째 자식이라면 실행해라. */
     background-color: red;
   }
   h1:nth-child(2n) {
-    border-left: 10px solid black;
+    /* h1이 부모의 짝수(2부터) 자식이라면 실행해라. */
+    border-left: 20px solid white;
   }
-
   h1:nth-child(2n + 1) {
+     /* h1이 부모의 홀수(3부터) 자식이라면 실행해라. */
     border-right: 10px solid yellow;
   }
   </style>
