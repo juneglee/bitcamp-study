@@ -22,7 +22,7 @@ var tag1 = document.getElementById("btn1");
 tag1.onclick = function() {
   // 서버에 요청
   var xhr = new XMLHttpRequest();
-  xhr.open("GET", "exam06.jsp", false);
+  xhr.open("GET", "exam06.jsp", false); // false 명령을 내리면 시작해라 
   xhr.send();
   
   // 서버가 보낸 데이터를 div 태그에 넣기

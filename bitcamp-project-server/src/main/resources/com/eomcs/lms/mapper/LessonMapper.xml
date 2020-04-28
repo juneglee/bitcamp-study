@@ -6,8 +6,8 @@
 <mapper namespace="com.eomcs.lms.dao.LessonDao">
 
   <resultMap type="Lesson" id="LessonMap">
-    <id column="lesson_id"   property="no"/>
-    <result column="titl"  property="title"/>
+    <id column="lesson_id"  property="no"/>
+    <result column="titl"   property="title"/>
     <result column="conts"  property="description"/>
     <result column="sdt"    property="startDate"/>
     <result column="edt"    property="endDate"/>
