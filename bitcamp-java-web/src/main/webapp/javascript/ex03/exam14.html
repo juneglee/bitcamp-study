@@ -11,7 +11,9 @@
 // arrow function이나 익명 함수나 같다. 
 // 
 function closureMaker(fnType, count) { 
+	
 	switch (fnType) {
+	
 	case "sum":
 	    return () => { 
 	        var sum = 0;     
@@ -20,6 +22,7 @@ function closureMaker(fnType, count) {
 	        }
 	        console.log("합계 =", sum);
 	    };
+	    
 	case "factorial":
         return () => {
 	        var sum = 1;
@@ -28,15 +31,17 @@ function closureMaker(fnType, count) {
 	        }
 	        console.log("팩토리얼 =", sum);
 	    };
+	    
 	default:
 	    return () => {
 		    console.log("해당 연산을 지원하지 않습니다.");
 		};
+		
 	}
 }
 
 var fn1 = closureMaker("sum", 10);
-var fn2 = closureMaker("sum", 100);
+var fn2 = closureMaker("factorial", 10);
 
 fn1();
 fn2();
