@@ -13,6 +13,7 @@
 <h1>JSTL - c:remove</h1>
 <pre>
 - 보관소에 저장된 값을 제거한다.
+- page < request < session < application
 </pre>
 <%
 pageContext.setAttribute("name", "홍길동");

@@ -12,6 +12,7 @@
 <body>
 <h1>JSTL - c:forTokens</h1>
 <pre>
+- forTokens은 문자열을 분리해서 사용할 수 있다 .
 - 반복문을 만든다.
 </pre>
 

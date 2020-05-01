@@ -9,6 +9,14 @@ select distinct bank from stnt
 union 
 select distinct bank from tcher;
 
+/* 
+ * 
+select distinct user_no from points
+union 
+select distinct user_no from users;
+ * */
+
+
 /* union all: 중복 값 제거 안함*/
 select distinct bank from stnt
 union all

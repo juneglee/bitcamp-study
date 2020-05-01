@@ -14,6 +14,10 @@
 <pre>
 - 다중 조건문을 만든다.
 - 자바의 switch와 유사하다.
+- c:choose 
+- c:when test
+- c:otherwise 
+
 </pre>
 
 <c:set var="name" value="홍길동"/>

@@ -20,6 +20,11 @@
 </pre>
 
 <h2>배열</h2>
+<pre>
+- setAttribute
+- c:forEach
+</pre>
+
 <%
 pageContext.setAttribute("names", new String[]{"홍길동", "임꺽정", "유관순"});
 
@@ -38,6 +43,10 @@ for (String n : names) {
 </ul>
 
 <h2>Collection 객체</h2>
+
+<pre>
+- 반복문을 만든다.
+</pre>
 <%
 List<String> names2 = new ArrayList<>();
 names2.add("홍길동");
@@ -53,6 +62,9 @@ pageContext.setAttribute("names2", names2);
 </ul>
 
 <h2>Map 객체</h2>
+<pre>
+- 반복문을 만든다.
+</pre>
 <%
 Map<String,Object> names3 = new HashMap<>();
 names3.put("s01", "홍길동");
@@ -70,6 +82,9 @@ pageContext.setAttribute("names3", names3);
 </ul>
 
 <h2>CVS(comma separated value) 문자열</h2>
+<pre>
+- 반복문을 만든다.
+</pre>
 <%
 pageContext.setAttribute("names4", "홍길동,임꺽정,유관순,김구");
 %>

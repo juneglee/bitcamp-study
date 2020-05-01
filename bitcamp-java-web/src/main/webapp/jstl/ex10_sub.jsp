@@ -11,7 +11,7 @@
 <body>
 <h1>JSTL - c:import 테스트</h1>
 name = ${param.name}<br>
-age = ${param.age}<br>
+age2222 = ${param.age2222}<br>
 gender = ${param.gender}<br>
 </body>
 </html>

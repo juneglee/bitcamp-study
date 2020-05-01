@@ -13,11 +13,13 @@
 <h1>JSTL - c:if</h1>
 <pre>
 - 조건문을 만든다.
+- test를 써야 한다 
+- var 보관소
 </pre>
 
 <c:set var="name" value="홍길동"/>
-<c:set var="age" value="16"/>
-<c:set var="gender" value="man"/>
+<c:set var="age" value="20"/>
+<c:set var="gender" value="woman"/>
 
 <c:if test="${not empty name}">
     <p>${name}님 환영합니다!
@@ -33,9 +35,9 @@
 <pre>
 var 속성으로 변수이름을 설정하면, 조건문의 테스트 결과는 지정된 이름으로 보관소에 저장된다.
 </pre>
-<c:if test="${gender == 'woman'}" var="r1"/>
+<c:if test="${age >= 19}" var="r1"/>
 
-${pageScope.r1 ? "여성" : "남성"}<br>
+${pageScope.r1 ? "성년입니다." : "미성년입니다."}<br>
 
 </body>
 </html>

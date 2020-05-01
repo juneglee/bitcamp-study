@@ -36,6 +36,7 @@
 3: ${name3}<br>
 
 <h2>객체의 프로퍼티 값 설정하기</h2>
+<%--useBean으로 정의하고 값을 저장하여 출력 --%>>
 <jsp:useBean id="m1" class="com.eomcs.web.vo.Member"/>
 <%--
 Member m1 = (Member) pageContext.getAttribute("m1");
@@ -44,11 +45,14 @@ if (m1 == null) {
   pageContext.setAttribute("m1", m1);
 }
  --%>
-<jsp:setProperty name="m1" property="no" value="100"/>
 <%-- 
 m1.setNo(100);
 --%>
 
+<%--
+<jsp:setProperty name="m1" property="no" value="200"/>
+ --%>
+<c:set target="${pageScope.m1}" property="no" value="300"/>
 <c:set target="${pageScope.m1}" property="email" value="hong@test.com"/>
 <%--
  객체의 경로를 설정하는 대신 위에는 한줄의 코드로 설정한다. 
