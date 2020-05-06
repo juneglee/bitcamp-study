@@ -27,7 +27,7 @@ button {padding: 30px;}
 // 부모 태그에 등록된 리스너까지 호출되는 문제가 발생한다.
 // 
 // 방법1: Event.stopPropagation()을 호출하라!
-// => 이벤트 bubbling을 막는다. 
+// => 이벤트 bubbling(자식에서 부모로 올라가는 거)을 막는다. 
 // => 단 target에 등록된 함수는 모두 호출된다.
 //
 document.getElementById("btn1").addEventListener("click", function(e) {

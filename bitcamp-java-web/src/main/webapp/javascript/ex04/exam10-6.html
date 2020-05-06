@@ -14,7 +14,7 @@ function createScore(name, kor, eng, math) {
 	// 자바스크립트의 일반 함수를 생성자처럼 사용할 때는 
 	// new 명령을 사용하여 외부에서 빈 객체를 생성한 후, 
 	// 이 함수를 호출한다.
-	// 외부에서 생성한 객체는 this를 통해 접근할 수 있다.
+	// 외부에서 생성한 객체는 this(주소를 저장)를 통해 접근할 수 있다.
 	// 만약 new 명령없이 이 함수를 호출한다면 this는 undefined 이다.
 	console.log(this);
 	
@@ -51,18 +51,17 @@ scores[2] = new createScore("유관순", 80, 80, 80);
 // 과목의 점수를 변경하더라도 합계와 평균은 다시 계산되기 때문에 편하다!
 scores[2].kor = 100;
 
-for (var score of scores) {
-    console.log(score.name, score.kor, score.eng, score.math, 
-    		score.sum(), score.aver());
+for (var s of scores) {
+    console.log(s.name, s.kor, s.eng, s.math, s.sum(), s.aver());
 }
 
-console.log(scores[0]);
-console.log(scores[1]);
-console.log(scores[2]);
-console.log(scores[0].toString());
+console.log("------------------------------------");
+var obj = new Object;
+// 객체 주소 = 함수 (이때 new는 생성자 함수를 의미하며 , 
+		// 객체를 초기화하여 주소를 넘겨줄려할때 new 가 없으면 error발생)
 
 // 생성자로 쓰이는 함수를 그냥 호출한다면?
-//var obj = createScore("오호라", 100, 100, 100);
+// var obj = createScore("오호라", 100, 100, 100);
 // 객체 없이 createScore()를 호출하면 
 // this 변수는 undefined 상태가 되어 내부에서 실행 오류가 발생할 것이다.
 // 자바스크립트는 컴파일 방식이 아니기 때문에 
@@ -70,6 +69,12 @@ console.log(scores[0].toString());
 // 대신에 개발자 사이에 암묵적으로 지키는 관례가 있다.
 // 생성자로 쓰이는 함수는 이름을 대문자로 시작하게 짓는다.
 // 그래서 다른 개발자가 바로 알아볼 수 있도록 한다.
+
+console.log(scores[0]);
+console.log(scores[1]);
+console.log(scores[2]);
+console.log(scores[0].toString());
+
 
 
 

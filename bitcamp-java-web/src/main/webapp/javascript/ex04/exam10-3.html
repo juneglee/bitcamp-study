@@ -24,16 +24,17 @@ function createScore(name, kor, eng, math) {
 var scores = []; //new Array();
 scores[0] = createScore("홍길동", 100, 100, 100);
 scores[1] = createScore("임꺽정", 90, 90, 90);
-scores[2] = createScore("유관순", 80, 80, 80);
+scores[2] = createScore("유관순", 80, 80, 90);
 
 // 아직 부족한 점!
 // => 특정 과목의 점수가 바뀌면 다시 합계와 평균을 계산해야 한다.
-scores[2].kor = 100;
+scores[2].kor = 90;
+scores[2].eng = 90;
 scores[2].sum = scores[2].kor + scores[2].eng + scores[2].math;
 scores[2].aver = scores[2].sum / 3;
 
-for (var score of scores) {
-    console.log(score.name, score.kor, score.eng, score.math, score.sum, score.aver);
+for (var s of scores) {
+    console.log(s.name, s.kor, s.eng, s.math, s.sum, s.aver);
 }
 </script>
 </body>

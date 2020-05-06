@@ -33,9 +33,9 @@ scores[2] = createScore("유관순", 80, 80, 80);
 // 과목의 점수를 변경하더라도 합계와 평균은 다시 계산되기 때문에 편하다!
 scores[2].kor = 100;
 
-for (var score of scores) {
-    console.log(score.name, score.kor, score.eng, score.math, 
-    		score.sum(), score.aver());
+
+for (var s of scores) {
+    console.log(s.name, s.kor, s.eng, s.math, s.sum(), s.aver());
 }
 </script>
 </body>

@@ -38,8 +38,9 @@ function Score(name, kor, eng, math) {
 }
 
 // 1) 자바스크립트 함수는 객체이다. 즉 "함수 = 객체 + 함수코드" 이다.
-// 2) 함수 객체는 prototype 이라는 공용 저장소를 갖고 있다.
+// 2) 각각의 함수 객체는 prototype 이라는 공용 저장소를 갖고 있다.
 // 3) prototype에 저장된 프로퍼티는 그 함수를 통해 초기화된 모든 객체가 공통으로 사용할 수 있다.
+// 주의 this 사용
 Score.prototype.sum = function() { 
     return this.kor + this.eng + this.math
 }
@@ -53,6 +54,11 @@ var scores = []; //new Array();
 scores[0] = new Score("홍길동", 100, 100, 100);
 scores[1] = new Score("임꺽정", 90, 90, 90);
 scores[2] = new Score("유관순", 80, 80, 80);
+
+// Score() 생성자가 초기화시킨 객체에 어떤 프로퍼티가 있는지 알아보자
+console.log(scores[0]);
+
+console.log("-----------------------------------");
 
 for (var score of scores) {
     // Score() 함수로 초기화시킨 객체에는 sum()과 aver() 함수가 들어 있지 않다.

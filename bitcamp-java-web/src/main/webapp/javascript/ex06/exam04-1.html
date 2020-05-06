@@ -4,7 +4,11 @@
 <meta charset="UTF-8">
 <title>ex06</title>
 <style>
-body, div {
+body {
+border: 1px solid blue;
+padding :30px;
+}
+ div {
     border: 1px solid red;
     padding: 30px; 
 }
@@ -31,11 +35,9 @@ button {padding: 30px;}
 //    => 다시 목적지에서 부모 태그로 올라가는 단계
 //
 // 일반적인 방법으로 이벤트 리스너를 등록하면,
-// 이벤트가 발생했을 때 
-// target과 bubble 단계에서 호출된다. 
+// 이벤트가 발생했을 때 target과 bubble 단계에서 호출된다. 
 // => 따라서 #btn1이나 #btn2를 클릭하면, 
-//    버튼에 등록된 함수 뿐만 아니라 
-//    그 부모들에 등록된 함수가 있다면 그 함수들도 호출된다.
+//    버튼에 등록된 함수 뿐만 아니라 그 부모들에 등록된 함수가 있다면 그 함수들도 호출된다.
 document.getElementById("btn1").addEventListener("click", function(e) {
 	console.log("버튼1...");
 });
