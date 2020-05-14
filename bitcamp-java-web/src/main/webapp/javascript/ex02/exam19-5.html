@@ -36,11 +36,11 @@ for (var x of obj2) { // 배열인 x는 x[0]:key와 x[1]:value를 저장한 배�
     console.log(x);
     console.log(x[0], "=", x[1]);
 }
-console.log("-----------------")
 
+console.log("-----------------")
 // destructuring 문법을 사용하여 key와 value를 분해하여 받는다.
 for (var [key, value] of obj2) { 
-    console.log(key, "=", value);
+    console.log(key, "=", value); // , 를 붙이면 여러개 사용가능
 }
 
 

@@ -20,6 +20,7 @@ public class Controller04_2 {
   // 그리고 클라이언트가 보낸 파라미터 이름을 지정한다.
   // 테스트:
   // http://localhost:9999/eomcs-spring-webmvc/app1/c04_2/h1?name=kim
+
   @GetMapping("h1")
   @ResponseBody
   public void handler1(//
@@ -27,13 +28,14 @@ public class Controller04_2 {
       ServletRequest request, //
       @RequestParam(value = "name") String name1, //
       @RequestParam(name = "name") String name2, // value와 name은 같은 일을 한다.
-      @RequestParam("name") String name3, // value 이름을 생략할 수 있다.
+      @RequestParam("name") String name3,
+      // value 이름을 생략할 수 있다.
       // 파라미터의 값이 안들어가면 오류가 난다.
-      String name // 요청 파라미터 이름과 메서드 파라미터(아규먼트)의 이름이 같다면
-                  // 애노테이션을 생략해도 된다.
+      String name
+  // 요청 파라미터 이름과 메서드 파라미터(아규먼트)의 이름이 같다면
+  // 애노테이션을 생략해도 된다.
   // 값이 없으면 null
   ) {
-
     out.printf("name=%s\n", request.getParameter("name"));
     out.printf("name=%s\n", name1);
     out.printf("name=%s\n", name2);
@@ -53,8 +55,10 @@ public class Controller04_2 {
                                            // 발생한다.
       String name2, // 애노테이션을 붙이지 않으면 선택 항목으로 인지한다.
                     // 따라서 파라미터 값이 없으면 null을 받는다.
+
       @RequestParam(value = "name3", required = false) String name3, //
       // required 프로퍼티를 false로 설정하면 선택 항목으로 인지한다.
+      // true로 설정하면 값이 없기 때문에 에러가 발생한다.
       @RequestParam(value = "name4", defaultValue = "ohora") String name4//
   // 기본 값을 지정하면 파라미터 값이 없어도 된다.
   ) {

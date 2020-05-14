@@ -1,4 +1,5 @@
 // request handler를 구분하는 방법 - 파라미터 이름으로 구분하기
+// request handler : request가 있고, response로 반응할때 두개를 연결하기 위한 연결 통로 역할을 한다.
 package bitcamp.app1;
 
 import org.springframework.stereotype.Controller;

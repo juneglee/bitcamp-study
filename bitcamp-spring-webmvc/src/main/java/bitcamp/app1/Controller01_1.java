@@ -17,6 +17,7 @@ public class Controller01_1 {
 
   // URL 한 개 당 한 개의 핸들러만 연결할 수 있다.
   // 같은 URL에 대해 다른 메서드를 또 정의하면 실행 오류가 발생한다.
+
   @RequestMapping
   @ResponseBody
   public String handler2() {

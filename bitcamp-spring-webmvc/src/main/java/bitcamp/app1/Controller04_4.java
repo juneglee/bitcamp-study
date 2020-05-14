@@ -72,13 +72,11 @@ public class Controller04_4 {
   // 그리고 이 준비된 값 변환기(프로퍼티 에디터)를 이용하여 파라미터 값을
   // request handler의 아규먼트가 원하는 타입의 값을 바꾼다.
   // request handler의 아규먼트 개수 만큼 이 메서드를 호출한다.
-  // => 따라서 프로퍼티 에디터를 적용하기에
-  // @InitBinder가 표시된 메서드가 적절한 지점이다.
+  // => 따라서 프로퍼티 에디터를 적용하기에 @InitBinder가 표시된 메서드가 적절한 지점이다.
   // 즉 이 메서드에 프로퍼티 에디터를 등록하는 코드를 둔다.
   //
   @InitBinder
-  // 메서드를 호출하기 전에 front controller에게 요청
-  // 파라미터 갯수에 따라 실행한다.
+  // 메서드를 호출하기 전에 front controller에게 요청 파라미터 갯수에 따라 실행한다.
   public void initBinder(WebDataBinder binder) {
     System.out.println("Controller04_4.initBinder()...");
     // 프로퍼티 에디터를 등록하려면 그 일을 수행할 객체(WebDataBinder)가 필요하다.

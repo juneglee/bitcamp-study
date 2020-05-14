@@ -19,7 +19,7 @@ public class Controller05_3 {
   public String handler1(ServletRequest request) {
 
     // JSP가 꺼내 쓸 수 있도록 ServletRequest 객체에 직접 담는다.
-    request.setAttribute("name", "홍길동");
+    request.setAttribute("name", "홍길동1");
     request.setAttribute("age", 20); // auto-boxing
     request.setAttribute("working", true); // auto-boxing
 
@@ -43,7 +43,7 @@ public class Controller05_3 {
     // ServletRequest로 복사한다.
     // 따라서 ServletRequest에 값을 담는 것과 같다.
     //
-    map.put("name", "홍길동");
+    map.put("name", "홍길동2");
     map.put("age", 20); // auto-boxing
     map.put("working", true); // auto-boxing
 
@@ -59,7 +59,7 @@ public class Controller05_3 {
     // 프론트 컨트롤러는 모델 객체를 만들어 넘겨준다.
     // 이 객체의 용도는 Map 객체와 같다.
     //
-    model.addAttribute("name", "홍길동");
+    model.addAttribute("name", "홍길동3");
     model.addAttribute("age", 20); // auto-boxing
     model.addAttribute("working", true); // auto-boxing
 

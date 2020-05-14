@@ -21,8 +21,7 @@ public class Controller04_9 {
   @PostMapping(value = "h1", produces = "text/html;charset=UTF-8")
   @ResponseBody
   public String handler1(String name, int age,
-      // 클라이언트가 보낸 데이터를 통째로 받으려면
-      // @RequestBody 애노테이션을 붙인다.
+      // 클라이언트가 보낸 데이터를 통째로 받으려면 @RequestBody 애노테이션을 붙인다.
       @RequestBody String data) throws Exception {
 
     StringWriter out0 = new StringWriter();
