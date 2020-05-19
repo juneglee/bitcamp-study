@@ -8,12 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/test")
-public class testController {
+public class TestController {
 
-  static Logger logger = LogManager.getLogger(testController.class);
+  static Logger logger = LogManager.getLogger(TestController.class);
 
+  @GetMapping("exam01")
+  public void exam01() throws Exception {}
 
-  @GetMapping("t1/exam01")
-  public void form() throws Exception {}
+  @GetMapping("exam02")
+  public void exam02() throws Exception {}
+
+  @GetMapping("exam03")
+  public void exam03() throws Exception {}
+
+  @GetMapping("exam04")
+  public void exam04() throws Exception {}
 
 }
