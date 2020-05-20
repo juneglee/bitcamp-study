@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='UTF-8'>
+<title>jquery 만들기</title>
+</head>
+<body>
+<h1>jquery 사용</h1>
+<div id='d1'>이전값</div>
+<div id='d2'></div>
+
+<script src="jquery04.js"></script>
+<script>
+// var tag = document.getElementById('d1');
+var tag = $('#d1');
+var tag2 = $('#d2');
+
+var content = tag.html();
+tag2.html(content);
+tag.innerHTML = '바꾼 값!';
+// () 비워 있으면 get, () 채워져 있으면 set
+
+var divList = $('div');
+for (var d of divList){
+d.style.border="5px dashed black";
+d.style.margin= "10px";
+}
+
+tag.style.color='red';
+tag.style['background-color'] = 'gray';
+//tag.style.backgroundColor = 'blue';
+tag.onclick = function() {
+	alert('okok1')
+};
+
+
+</script>
+</body>
+</html>
