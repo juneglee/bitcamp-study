@@ -1,11 +1,11 @@
 arguments=
 auto.sync=false
 build.scans.enabled=false
-connection.gradle.distribution=GRADLE_DISTRIBUTION(WRAPPER)
+connection.gradle.distribution=GRADLE_DISTRIBUTION(VERSION(6.3))
 connection.project.dir=
 eclipse.preferences.version=1
 gradle.user.home=
-java.home=C\:/bitcamp/graalvm-ce-java11-windows-amd64-19.3.0
+java.home=C\:/tool/graalvm-ce-java11-windows-amd64-20.1.0/graalvm-ce-java11-20.1.0
 jvm.arguments=
 offline.mode=false
 override.workspace.settings=true
