@@ -5,24 +5,25 @@
 
 ## bitcamp-java
 * [Java 관련 문법](bitcamp-java/src/main/java/com/eomcs)
-- [algorithm](bitcamp-java/src/main/java/com/eomcs/algorithm/data_structure) / annotation / basic / concurrent / corelib / design / exception / generic / http / io
+- algorithm/ annotation / basic / concurrent / corelib / design / exception / generic / http / io
 / jdbc / mybatis / net / ok / oop / reflect / spring 
 
 ## bitcamp-java-web
-* 자바 웹 프로그래밍 예제
-- servlet, filter
+* [자바 웹 프로그래밍 예제1](bitcamp-java-web/src/main/java/com/eomcs/web)
+- servlet
+* [자바 웹 프로그래밍 예제2](bitcamp-java-web/src/main/webapp)
 - bootstrap / css / el / facebook / file / handlebars / javascript / jquery / jsp / jstl / npm
 
 ## bitcamp-java-webmvc
-* Spring WebMVC 프레임워크 학습
+* [Spring WebMVC 프레임워크 학습](bitcamp-spring-webmvc/src/main/java/bitcamp)
 
 ## bitcamp-project
-* Java를 학습한 내용으로 프로젝트 진행 (version 01 ~ version 31)
+* [Java를 학습한 내용으로 프로젝트 진행](bitcamp-project) (version 01 ~ version 31)
 
 ## bitcamp-project-client
-* Java를 학습한 내용으로 프로젝트 진행 (version 32 ~ version 37)
+* [Java를 학습한 내용으로 프로젝트 진행](bitcamp-project-client) (version 32 ~ version 37)
 
 ## bitcamp-project-server
-* Java를 학습한 내용으로 프로젝트 진행 (version 32 ~ version 61)
+* [Java를 학습한 내용으로 프로젝트 진행](bitcamp-project-server) (version 32 ~ version 61)
 
 
