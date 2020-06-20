@@ -4,8 +4,8 @@
 * DB modeling 관련 자료
 
 ## bitcamp-java
-* Java 관련 문법
-- [algorithm](src/main/java/com/eomcs/algorithm/data_structure) / annotation / basic / concurrent / corelib / design / exception / generic / http / io
+* [Java 관련 문법](bitcamp-java/src/main/java/com/eomcs)
+- [algorithm](bitcamp-java/src/main/java/com/eomcs/algorithm/data_structure) / annotation / basic / concurrent / corelib / design / exception / generic / http / io
 / jdbc / mybatis / net / ok / oop / reflect / spring 
 
 ## bitcamp-java-web
