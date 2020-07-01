@@ -1,74 +1,74 @@
- - 32_1 - 자바 서버 프로젝트 만들기
- - 32_2 - 클라이언트로부터 메시지를 수신 받고 응답하기
- - 32_3 - LMS 관리 데이터를 파일에서 로딩하고, 파일로 저장하기 
- - 32_4 - 클라이언트의 데이터 관리 요청을 처리하기 
- - 32_5 - 특정 기능을 수행하는 코드를 메서드로 분리하기 
- - 32_6 - 커맨드 패턴을 적용하여 요청 처리 메서드를 객체화 하기 
- - 32_7 - 데이터 처리 코드를 별도의 클래스로 정의하여 객체화 시키기
- - 32_8 - DAO 클래스의 공통점을 뽑아 수퍼 클래스로 정의하기(generalization 수행하기)
- - 32_9 - 파일에 데이터를 저장할 때 JSON 형식을 사용하기
- - 32_10 - 인터페이스를 이용하여 DAO 호출 규칙을 통일하기 
- - 32_11 - 프록시 패턴을 적용하여 서버에 요청하는 부분을 간결하기 만들기 
- - 33 - 동일한 자원으로 더 많은 클라이언트의 요청을 처리하는 방법
- - 34 - 다중 클라이언트 요청을 동시에 처리하기
- - 35 - 스레드풀을 이용하여 스레드를 재사용하기
- -  37_1 - Application Server 구조로 변경: 규칙1에 따라 통신하는 서버 만들기
- - 37_2 - Application Server 구조로 변경: Servlet + DAO 적용 + 통신 규칙1
- - 37_3 - Application Server 구조로 변경: 통신 규칙2 추가 및 Servlet, DAO에 적용 
- - 37_4 - Application Server 구조로 변경: 검색 기능 추가
- - 37_5 - Application Server 구조로 변경: 서버 종료 명령 처리하기
- - 38_1 - 트랜잭션 적용 전: 사진 게시판 추가하기
- - 38_2 - 트랜잭션 적용 전: 사진 게시글에 첨부파일 추가하기
- - 38_3 - 트랜잭션 적용 전: 코드 리팩토링하기
- - 38_4 - 트랜잭션 적용 후: 사진 게시글 입력과 첨부 파일 입력을 한 단위로 다루기
- - 39_1 - Connection 개별화하기: 메서드 호출마다 DBMS와 연결하기
- - 39_2 - Connection 개별화하기: 커넥션 객체 생성에 Factory Method 패턴 적용하기
- - 40_1 - Connection을 스레드에 보관하기: ThreadLocal을 사용하여 Connection 보관하기
- - 40_2 - Connection을 스레드에 보관하기: 한 스레드에서 Connection 을 여러 번 사용할 때 발생하는 문제점 해결하기
- - 40_3 - Connection을 스레드에 보관하기: 트랜잭션 적용하기
- - 40_4 - Connection을 스레드에 보관하기: 트랜잭션 관리자 도입하기
- - 41_1 - Connection Pool 도입하기
- - 41_2 - 트랜잭션 관리자를 사용하는 코드를 캡슐화하기
- - 42_1 - SQL 삽입 공격과 자바 시큐어 코딩: 사용자 로그인 기능 추가
- - 42_2 - SQL 삽입 공격과 자바 시큐어 코딩: PreparedStatement로 전환하기
- - 43_1 - MyBatis SQL 맵퍼 프레임워크를 사용하여 JDBC 코드를 대체하기
- - 43_2 - MyBatis + 트랜잭션 적용
- - 43_3 - MyBatis의 dynamic sql 문법 사용하기
- - 44_1 - UI 객체에서 비즈니스 로직 분리하기
- - 45_1 - Java Proxy를 이용하여 DAO 구현체 자동 생성하기
- - 45_2 - Mybatis를 이용하여 DAO 구현체 자동 생성하기
- - 46_1 - 객체 생성을 자동화하는 IoC 컨테이너 만들기
- - 48_1 - 인터페이스 대신 애노테이션으로 메서드 구분하기
- - 50_1 - Spring IoC 컨테이너 도입하기
- - 51_1 - Spring IoC 컨테이너와 MyBatis 연동하기
- - 51_2 - 관리하기 쉽게 Spring IoC 설정 파일(Java Config)을 분리하기
- - 52_1 - 애노테이션을 이용하여 트랜잭션 제어하기
- - 53_1 - Log4j 1.2.x 를 사용하여 애플리케이션 로그 처리하기
- - 53_2 - Log4j 2.x 를 사용하여 애플리케이션 로그 처리하기
- - 54_1 - HTTP 프로토콜 적용하기
- - 54_2 - 출력 콘텐트에 HTML 형식 적용하기
- - 54_3 - Apache HttpComponents 라이브러리를 이용하여 웹서버 구현하기
- - 55_1 - JavaEE 의 Servlet 기술 도입하기
- - 55_2 - 이클립스 웹 프로젝트로 전환하기
- - 56_1 - HttpServlet 클래스를 상속 받아서 서블릿 만들기
- - 56_2 - 서블릿을 이용하여 스프링 IoC 컨테이너 준비하기
- - 56_3 - 리다이렉트와 리프래시 활용
- - 56_4 - 포워딩과 인클루딩 활용
- - 56_5 - HttpSession을 활용하여 로그인, 로그아웃 구현하기
- - 56_6 - Cookie를 활용하여 사용자 이메일을 보관하기
- - 56_7 - 필터를 사용하여 사용자 접근 제어하기 
- - 56_8 - 파일 업로드 기능 추가 
- - 57_1 - JSP를 활용하여 서블릿에서 출력 기능을 분리하기  
- - 57_2 - JSP에 EL을 적용하기 
- -  57_3 - JSP에 JSTL 적용하기
- - 58_1 - Front Controller 설계 기법 적용하기
- - 58_2 - Page Controller를 POJO로 전환하고 Spring IoC 컨테이너에서 관리하기
- - 58_3 - CRUD 페이지 컨트롤러를 한 클래스로 합친다.
- - 58_4 - request handler의 파라미터 값을 자동 주입하기
- - 59_1 - Spring WebMVC 적용하기
- - 59_2 - Spring WebMVC 적용하기 II : MultipartResolver, ViewResolver 등
- - 59_3 - Spring WebMVC 적용하기 III : DispatcherServlet 여러 개 설정하기
- - 60_1 - 뷰 컴포넌트에 Tiles 기술 적용하기
- - 61_1 - NPM 도입하여 JavaScript, CSS 라이브러리 관리하기
- - 62_1 - Facebook SNS 로그인 적용 + sidebar 레이아웃 템플릿 적용
- - 63_1 - Tiles 템플릿을 관리자 모드와 일반 모드로 구분하기
+- [32_1](bitcamp-project-server/version/v32_1)] - 자바 서버 프로젝트 만들기
+- [32_2](bitcamp-project-server/version/v32_2)] - 클라이언트로부터 메시지를 수신 받고 응답하기
+- [32_3](bitcamp-project-server/version/v32_3)] - LMS 관리 데이터를 파일에서 로딩하고, 파일로 저장하기 
+- [32_4](bitcamp-project-server/version/v32_4)] - 클라이언트의 데이터 관리 요청을 처리하기 
+- [32_5](bitcamp-project-server/version/v32_5)] - 특정 기능을 수행하는 코드를 메서드로 분리하기 
+- [32_6](bitcamp-project-server/version/v32_6)] - 커맨드 패턴을 적용하여 요청 처리 메서드를 객체화 하기 
+- [32_7](bitcamp-project-server/version/v32_7)] - 데이터 처리 코드를 별도의 클래스로 정의하여 객체화 시키기
+- [32_8](bitcamp-project-server/version/v32_8)] - DAO 클래스의 공통점을 뽑아 수퍼 클래스로 정의하기(bitcamp-project-server/version/v32_1)] - generalization 수행하기)
+- [32_9](bitcamp-project-server/version/v32_9)] - 파일에 데이터를 저장할 때 JSON 형식을 사용하기
+- [32_10](bitcamp-project-server/version/v32_10)] - 인터페이스를 이용하여 DAO 호출 규칙을 통일하기 
+- [32_11](bitcamp-project-server/version/v32_11)] - 프록시 패턴을 적용하여 서버에 요청하는 부분을 간결하기 만들기 
+- [33](bitcamp-project-server/version/v33)] - 동일한 자원으로 더 많은 클라이언트의 요청을 처리하는 방법
+- [34](bitcamp-project-server/version/v34)] - 다중 클라이언트 요청을 동시에 처리하기
+- [35](bitcamp-project-server/version/v35)] - 스레드풀을 이용하여 스레드를 재사용하기
+- [37_1](bitcamp-project-server/version/v37_1)] - Application Server 구조로 변경: 규칙1에 따라 통신하는 서버 만들기
+- [37_2](bitcamp-project-server/version/v37_2)] - Application Server 구조로 변경: Servlet + DAO 적용 + 통신 규칙1
+- [37_3](bitcamp-project-server/version/v37_3)] - Application Server 구조로 변경: 통신 규칙2 추가 및 Servlet, DAO에 적용 
+- [37_4](bitcamp-project-server/version/v37_4)] - Application Server 구조로 변경: 검색 기능 추가
+- [37_5](bitcamp-project-server/version/v37_5)] - Application Server 구조로 변경: 서버 종료 명령 처리하기
+- [38_1](bitcamp-project-server/version/v38_1)] - 트랜잭션 적용 전: 사진 게시판 추가하기
+- [38_2](bitcamp-project-server/version/v38_2)] - 트랜잭션 적용 전: 사진 게시글에 첨부파일 추가하기
+- [38_3](bitcamp-project-server/version/v38_3)] - 트랜잭션 적용 전: 코드 리팩토링하기
+- [38_4](bitcamp-project-server/version/v38_4)] - 트랜잭션 적용 후: 사진 게시글 입력과 첨부 파일 입력을 한 단위로 다루기
+- [39_1](bitcamp-project-server/version/v39_1)] - Connection 개별화하기: 메서드 호출마다 DBMS와 연결하기
+- [39_2](bitcamp-project-server/version/v39_2)] - Connection 개별화하기: 커넥션 객체 생성에 Factory Method 패턴 적용하기
+- [40_1](bitcamp-project-server/version/v40_1)] - Connection을 스레드에 보관하기: ThreadLocal을 사용하여 Connection 보관하기
+- [40_2](bitcamp-project-server/version/v40_1)] - Connection을 스레드에 보관하기: 한 스레드에서 Connection 을 여러 번 사용할 때 발생하는 문제점 해결하기
+- [40_3](bitcamp-project-server/version/v40_3)] - Connection을 스레드에 보관하기: 트랜잭션 적용하기
+- [40_4](bitcamp-project-server/version/v40_4)] - Connection을 스레드에 보관하기: 트랜잭션 관리자 도입하기
+- [41_1](bitcamp-project-server/version/v41_1)] - Connection Pool 도입하기
+- [41_2](bitcamp-project-server/version/v41_2)] - 트랜잭션 관리자를 사용하는 코드를 캡슐화하기
+- [42_1](bitcamp-project-server/version/v42_1)] - SQL 삽입 공격과 자바 시큐어 코딩: 사용자 로그인 기능 추가
+- [42_2](bitcamp-project-server/version/v42_2)] - SQL 삽입 공격과 자바 시큐어 코딩: PreparedStatement로 전환하기
+- [43_1](bitcamp-project-server/version/v43_1)] - MyBatis SQL 맵퍼 프레임워크를 사용하여 JDBC 코드를 대체하기
+- [43_2](bitcamp-project-server/version/v43_2)] - MyBatis + 트랜잭션 적용
+- [43_3](bitcamp-project-server/version/v43_3)] - MyBatis의 dynamic sql 문법 사용하기
+- [44_1](bitcamp-project-server/version/v44_1)] - UI 객체에서 비즈니스 로직 분리하기
+- [45_1](bitcamp-project-server/version/v45_1)] - Java Proxy를 이용하여 DAO 구현체 자동 생성하기
+- [45_2](bitcamp-project-server/version/v45_2)] - Mybatis를 이용하여 DAO 구현체 자동 생성하기
+- [46_1](bitcamp-project-server/version/v56_1)] - 객체 생성을 자동화하는 IoC 컨테이너 만들기
+- [48_1](bitcamp-project-server/version/v48_1)] - 인터페이스 대신 애노테이션으로 메서드 구분하기
+- [50_1](bitcamp-project-server/version/v50_1)] - Spring IoC 컨테이너 도입하기
+- [51_1](bitcamp-project-server/version/v51_1)] - Spring IoC 컨테이너와 MyBatis 연동하기
+- [51_2](bitcamp-project-server/version/v51_2)] - 관리하기 쉽게 Spring IoC 설정 파일(bitcamp-project-server/version/v32_1)] - Java Config)을 분리하기
+- [52_1](bitcamp-project-server/version/v52_1)] - 애노테이션을 이용하여 트랜잭션 제어하기
+- [53_1](bitcamp-project-server/version/v53_1)] - Log4j 1.2.x 를 사용하여 애플리케이션 로그 처리하기
+- [53_2](bitcamp-project-server/version/v53_2)] - Log4j 2.x 를 사용하여 애플리케이션 로그 처리하기
+- [54_1](bitcamp-project-server/version/v54_1)] - HTTP 프로토콜 적용하기
+- [54_2](bitcamp-project-server/version/v54_2)] - 출력 콘텐트에 HTML 형식 적용하기
+- [54_3](bitcamp-project-server/version/v54_3)] - Apache HttpComponents 라이브러리를 이용하여 웹서버 구현하기
+- [55_1](bitcamp-project-server/version/v55_1)] - JavaEE 의 Servlet 기술 도입하기
+- [55_2](bitcamp-project-server/version/v55_2)] - 이클립스 웹 프로젝트로 전환하기
+- [56_1](bitcamp-project-server/version/v56_1)] - HttpServlet 클래스를 상속 받아서 서블릿 만들기
+- [56_2](bitcamp-project-server/version/v56_2)] - 서블릿을 이용하여 스프링 IoC 컨테이너 준비하기
+- [56_3](bitcamp-project-server/version/v56_3)] - 리다이렉트와 리프래시 활용
+- [56_4](bitcamp-project-server/version/v56_4)] - 포워딩과 인클루딩 활용
+- [56_5](bitcamp-project-server/version/v56_5)] - HttpSession을 활용하여 로그인, 로그아웃 구현하기
+- [56_6](bitcamp-project-server/version/v56_6)] - Cookie를 활용하여 사용자 이메일을 보관하기
+- [56_7](bitcamp-project-server/version/v56_7)] - 필터를 사용하여 사용자 접근 제어하기 
+- [56_8](bitcamp-project-server/version/v56_8)] - 파일 업로드 기능 추가 
+- [57_1](bitcamp-project-server/version/v57_1)] - JSP를 활용하여 서블릿에서 출력 기능을 분리하기  
+- [57_2](bitcamp-project-server/version/v57_2)] - JSP에 EL을 적용하기 
+- [57_3](bitcamp-project-server/version/v57_3)] - JSP에 JSTL 적용하기
+- [58_1](bitcamp-project-server/version/v58_1)] - Front Controller 설계 기법 적용하기
+- [58_2](bitcamp-project-server/version/v58_2)] - Page Controller를 POJO로 전환하고 Spring IoC 컨테이너에서 관리하기
+- [58_3](bitcamp-project-server/version/v58_3)] - CRUD 페이지 컨트롤러를 한 클래스로 합친다.
+- [58_4](bitcamp-project-server/version/v58_4)] - request handler의 파라미터 값을 자동 주입하기
+- [59_1](bitcamp-project-server/version/v59_1)] - Spring WebMVC 적용하기
+- [59_2](bitcamp-project-server/version/v59_2)] - Spring WebMVC 적용하기 II : MultipartResolver, ViewResolver 등
+- [59_3](bitcamp-project-server/version/v59_3)] - Spring WebMVC 적용하기 III : DispatcherServlet 여러 개 설정하기
+- [60_1](bitcamp-project-server/version/v60_1)] - 뷰 컴포넌트에 Tiles 기술 적용하기
+- [61_1](bitcamp-project-server/version/v61_1)] - NPM 도입하여 JavaScript, CSS 라이브러리 관리하기
+- [62_1](bitcamp-project-server/version/v62_1)] - Facebook SNS 로그인 적용 + sidebar 레이아웃 템플릿 적용
+- [63_1](bitcamp-project-server/version/v63_1)] - Tiles 템플릿을 관리자 모드와 일반 모드로 구분하기

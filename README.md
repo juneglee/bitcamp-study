@@ -1,4 +1,4 @@
-# bitcamp-study
+# 나의 학습 내용
 
 ## bitcamp-docs 
 * DB modeling 관련 자료
@@ -18,12 +18,12 @@
 * [Spring WebMVC 프레임워크 학습](bitcamp-spring-webmvc/src/main/java/bitcamp)
 
 ## bitcamp-project
-* [Java를 학습한 내용으로 프로젝트 진행](bitcamp-project) (version 01 ~ version 31)
+* [학습한 내용을 프로젝트에 적용 학습](bitcamp-project) (version 01 ~ version 31)
 
 ## bitcamp-project-client
-* [Java를 학습한 내용으로 프로젝트 진행](bitcamp-project-client) (version 32 ~ version 37)
+* [학습한 내용을 프로젝트에 적용 학습](bitcamp-project-client) (version 32 ~ version 37)
 
 ## bitcamp-project-server
-* [Java를 학습한 내용으로 프로젝트 진행](bitcamp-project-server) (version 32 ~ version 61)
+* [학습한 내용을 프로젝트에 적용 학습](bitcamp-project-server) (version 32 ~ version 61)
 
 
