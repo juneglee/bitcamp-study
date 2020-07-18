@@ -7,7 +7,7 @@ public class Exam142 {
 
     int j;
 
-    int i;
+    // int i; // 변수의 이름은 중복할 수 없다.
 
   }
 }

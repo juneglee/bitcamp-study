@@ -14,7 +14,7 @@ package com.eomcs.basic.ex04.assignment;
 import java.util.Scanner; 
 import java.util.Random;
 
-public class Test02 {
+public class Test021 {
   public static void main(String[] args) {
     Scanner keyboard = new Scanner(System.in);  
     int com = (int) (Math.random() * 3) + 1; 
